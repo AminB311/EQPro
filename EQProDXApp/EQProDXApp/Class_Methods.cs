@@ -64,7 +64,19 @@ namespace EQProDXApp
                 new Exception("Error in Delete_SelectedValues, filling Combo Box", ex);
             }
         }
-        
+
+
+        public void NewMethod()
+        {
+            try
+            {
+                string sVal = "Test";
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in NewMethod", ex);
+            }
+        }
         public int AddNew_Values(string sSql)
         {
             try

@@ -20,8 +20,8 @@ namespace EQProDXApp
 
         private void btnEnvironment_Click(object sender, EventArgs e)
         {
-            this.Close();
-            this.Hide();
+            //    this.Close();
+            //    this.Hide();
 
             frmEnvironment objFrmEnvirt = new frmEnvironment();
             objFrmEnvirt.Show();

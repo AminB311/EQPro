@@ -108,3 +108,38 @@ C:\Amin\FaazTech\KCI\EQPro\VisualStudioProj\Code_Data_Details\EQProDXApp\EQProDX
 C:\Amin\FaazTech\KCI\EQPro\VisualStudioProj\Code_Data_Details\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
 C:\Amin\FaazTech\KCI\EQPro\VisualStudioProj\Code_Data_Details\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
 C:\Amin\FaazTech\KCI\EQPro\VisualStudioProj\Code_Data_Details\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.exe.config
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.exe
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.pdb
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.AssemblyReference.cache
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmUsers.resources
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvironment.resources
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.MainForm.resources
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.Properties.Resources.resources
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.GenerateResource.cache
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe.licenses
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CoreCompileInputs.cache
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmMain.resources
+C:\Users\Software Developer\Downloads\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.UserForm.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.exe.config
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.exe
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\bin\Debug\EQProDXApp.pdb
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.AssemblyReference.cache
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmUsers.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvironment.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmMain.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.MainForm.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.Properties.Resources.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.UserForm.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.GenerateResource.cache
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe.licenses
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CoreCompileInputs.cache
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.EnviromentForm.resources
+D:\My Projects\C# Projects\EQProDXApp_New\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.SuggestedBindingRedirects.cache

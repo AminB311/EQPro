@@ -30,6 +30,7 @@
         {
             this.btnEnvironment = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
+            this.cmdTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEnvironment
@@ -54,11 +55,23 @@
             this.btnUsers.UseVisualStyleBackColor = true;
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
+            // cmdTest
+            // 
+            this.cmdTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdTest.Location = new System.Drawing.Point(282, 250);
+            this.cmdTest.Name = "cmdTest";
+            this.cmdTest.Size = new System.Drawing.Size(145, 35);
+            this.cmdTest.TabIndex = 2;
+            this.cmdTest.Text = "Test";
+            this.cmdTest.UseVisualStyleBackColor = true;
+            this.cmdTest.Click += new System.EventHandler(this.cmdTest_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmdTest);
             this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.btnEnvironment);
             this.Name = "frmMain";
@@ -71,5 +84,6 @@
 
         private System.Windows.Forms.Button btnEnvironment;
         private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button cmdTest;
     }
 }

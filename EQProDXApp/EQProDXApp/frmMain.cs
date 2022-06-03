@@ -36,5 +36,11 @@ namespace EQProDXApp
             objFrmUsers.Show();
          
         }
+
+        private void cmdTest_Click(object sender, EventArgs e)
+        {
+            Form1 objFrm1 = new Form1();
+            objFrm1.Show();
+        }
     }
 }

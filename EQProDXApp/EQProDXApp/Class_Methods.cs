@@ -72,6 +72,7 @@ namespace EQProDXApp
             {
                 string sVal = "Test";
             }
+
             catch (Exception ex)
             {
                 new Exception("Error in NewMethod", ex);

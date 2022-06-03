@@ -42,5 +42,16 @@ namespace EQProDXApp
             Form1 objFrm1 = new Form1();
             objFrm1.Show();
         }
+
+        private void dockPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            frmUsers objFrmUsers = new frmUsers();
+            objFrmUsers.Show();
+        }
     }
 }

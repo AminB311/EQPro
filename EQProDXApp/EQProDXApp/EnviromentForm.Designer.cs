@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxPlantID = new System.Windows.Forms.ComboBox();
             this.usersMainBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.kCI_EQProDataSet = new EQProDXApp.KCI_EQProDataSet();
+
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxZoneID = new System.Windows.Forms.TextBox();
             this.textBoxPlanRev = new System.Windows.Forms.TextBox();
@@ -45,11 +45,11 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.testTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testTableTableAdapter = new EQProDXApp.KCI_EQProDataSetTableAdapters.TestTableTableAdapter();
+            
             this.usersMainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersMainTableAdapter = new EQProDXApp.KCI_EQProDataSetTableAdapters.UsersMainTableAdapter();
+            
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kCI_EQProDataSet)).BeginInit();
+ 
             ((System.ComponentModel.ISupportInitialize)(this.testTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -80,12 +80,11 @@
             // usersMainBindingSource1
             // 
             this.usersMainBindingSource1.DataMember = "UsersMain";
-            this.usersMainBindingSource1.DataSource = this.kCI_EQProDataSet;
+
             // 
             // kCI_EQProDataSet
             // 
-            this.kCI_EQProDataSet.DataSetName = "KCI_EQProDataSet";
-            this.kCI_EQProDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+         
             // 
             // label2
             // 
@@ -219,20 +218,20 @@
             // testTableBindingSource
             // 
             this.testTableBindingSource.DataMember = "TestTable";
-            this.testTableBindingSource.DataSource = this.kCI_EQProDataSet;
+ 
             // 
             // testTableTableAdapter
             // 
-            this.testTableTableAdapter.ClearBeforeFill = true;
+         
             // 
             // usersMainBindingSource
             // 
             this.usersMainBindingSource.DataMember = "UsersMain";
-            this.usersMainBindingSource.DataSource = this.kCI_EQProDataSet;
+           
             // 
             // usersMainTableAdapter
             // 
-            this.usersMainTableAdapter.ClearBeforeFill = true;
+     
             // 
             // EnviromentForm
             // 
@@ -258,7 +257,6 @@
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kCI_EQProDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -281,11 +279,11 @@
         private System.Windows.Forms.Button buttonSignIn;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label label14;
-        private KCI_EQProDataSet kCI_EQProDataSet;
+        
         private System.Windows.Forms.BindingSource testTableBindingSource;
-        private KCI_EQProDataSetTableAdapters.TestTableTableAdapter testTableTableAdapter;
+        
         private System.Windows.Forms.BindingSource usersMainBindingSource;
-        private KCI_EQProDataSetTableAdapters.UsersMainTableAdapter usersMainTableAdapter;
+        
         private System.Windows.Forms.BindingSource usersMainBindingSource1;
     }
 }

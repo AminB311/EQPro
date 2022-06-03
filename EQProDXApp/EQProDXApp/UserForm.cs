@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EQProDXApp.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,17 +21,34 @@ namespace EQProDXApp
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'kCI_EQProDataSet.UsersMain' table. You can move, or remove it, as needed.
-            this.usersMainTableAdapter.Fill(this.kCI_EQProDataSet.UsersMain);
+
 
             textBoxUpdatedPassDate.Text = DateTime.Today.ToString();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateForm())
+            if (ValidateForm())
             {
+                User newUser = new User();
+                newUser.EQProUserID = textBoxEQProUserID.Text + textBox4Char.Text;
+                newUser.Password = textBoxNewPass.Text;
+                newUser.FirstName = textBoxFN.Text;
+                newUser.MiddleName = textBoxMN.Text;
+                newUser.LastName = textBoxLN.Text;
+                newUser.Prefix = textBoxPrefix.Text;
+                newUser.Suffix = textBoxSuffix.Text;
+                newUser.ESignature = textBoxSignature.Text;
+                newUser.CanCreateEQProID = false;
+                newUser.CanCreateUserID = false;
+                newUser.EQRole = comboBoxEQRole.SelectedItem.ToString();
+                newUser.UserRole = comboBoxEQUserRole.SelectedItem.ToString();
+                newUser.Email = textBoxEmail.Text;
+                newUser.IsDeleted = false;
 
+                newUser.insertUser(newUser);
+
+                ResetForm();
             }
         }
 
@@ -38,11 +56,11 @@ namespace EQProDXApp
         {
             var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
             var symbolRegex = new Regex(@"[@~#$%^&*]");
-            //if (comboBoxID.Text == "" || textBoxNewPass.Text == "" || textBoxVerifyPass.Text == "" || textBoxFN.Text == "" || textBoxLN.Text == "" || textBoxEmail.Text == "" || textBoxSignature.Text == "" || comboBoxEQReport.Text == "" || comboBoxEQAppRole.Text == "" || textBoxUpdatedPassDate.Text == "" || textBoxEQProUserID.Text == "Click Here")
-            //{
-            //    MessageBox.Show("Please Fill all the empty fields!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return false;
-            //}
+            if (textBoxNewPass.Text == "" || textBoxVerifyPass.Text == "" || textBoxFN.Text == "" || textBoxLN.Text == "" || textBoxEmail.Text == "" || textBoxSignature.Text == "" || comboBoxEQRole.Text == "" || comboBoxEQUserRole.Text == "" || textBoxUpdatedPassDate.Text == "" || textBox4Char.Text == "Click Here")
+            {
+                MessageBox.Show("Please Fill all the empty fields!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
             if (textBoxNewPass.Text.Length < 8)
             {
                 MessageBox.Show("Password should be 8 or more characters long!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -73,13 +91,14 @@ namespace EQProDXApp
                 MessageBox.Show("Phone No. Cannot be set as Password!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            if(textBoxNewPass.Text.Contains(textBoxFN.Text) || textBoxNewPass.Text.Contains(textBoxLN.Text) || textBoxNewPass.Text.Contains(textBoxMN.Text))
+            if(textBoxNewPass.Text.Contains(textBoxFN.Text) || textBoxNewPass.Text.Contains(textBoxLN.Text))
             {
-                if(!textBoxFN.Text.Equals("") || !textBoxMN.Text.Equals("") || !textBoxLN.Text.Equals(""))
+                if(!textBoxFN.Text.Equals("") || !textBoxLN.Text.Equals(""))
                 {
                     MessageBox.Show("Password must not contain your name!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
+                return false;
             }
             if (!textBoxNewPass.Text.Equals(textBoxVerifyPass.Text))
             {
@@ -91,12 +110,17 @@ namespace EQProDXApp
                 MessageBox.Show("Incorrect Email Address!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
+            if (textBoxEQProUserID.Text.Equals("Click Here"))
+            {
+                MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }            
             return true;
         }
 
         private void ResetForm()
         {
-            comboBoxID.SelectedIndex = 0;
+            //comboBoxID.SelectedIndex = 0;
             textBoxNewPass.Text = "";
             textBoxVerifyPass.Text = "";
             textBoxFN.Text = "";
@@ -106,9 +130,11 @@ namespace EQProDXApp
             textBoxSuffix.Text = "";
             textBoxEmail.Text = "";
             textBoxSignature.Text = "";
-            comboBoxEQRole.SelectedIndex = 0;
-            comboBoxEQUserRole.SelectedIndex = 0;
-            textBoxUpdatedPassDate.Text = "";
+            comboBoxEQRole.Text = "";
+            comboBoxEQUserRole.Text = "";
+            textBoxEQProUserID.Text = "Click Here";
+            textBox4Char.Text = "";
+            textBoxUpdatedPassDate.Text = DateTime.Now.ToString();
         }
 
         private void textBoxNewPass_Enter(object sender, EventArgs e)
@@ -118,8 +144,13 @@ namespace EQProDXApp
 
         private void textBoxEQProUserID_Click(object sender, EventArgs e)
         {
-            
-            textBoxEQProUserID.Text = textBoxFN.Text + "" + textBoxLN.Text;
+            if(!String.IsNullOrWhiteSpace(textBoxFN.Text) || !String.IsNullOrWhiteSpace(textBoxLN.Text))
+            {
+                textBoxEQProUserID.Text = textBoxFN.Text + "" + textBoxLN.Text;
+            } else
+            {
+                MessageBox.Show("Please type First Name & Last Name to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

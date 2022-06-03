@@ -60,14 +60,14 @@
             this.buttonSignIn = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.kCI_EQProDataSet = new EQProDXApp.KCI_EQProDataSet();
+ 
             this.usersMainBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersMainTableAdapter = new EQProDXApp.KCI_EQProDataSetTableAdapters.UsersMainTableAdapter();
+   
             this.toolTipPassword = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxEQProUserID = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox4Char = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kCI_EQProDataSet)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -416,17 +416,15 @@
             // 
             // kCI_EQProDataSet
             // 
-            this.kCI_EQProDataSet.DataSetName = "KCI_EQProDataSet";
-            this.kCI_EQProDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // usersMainBindingSource
             // 
             this.usersMainBindingSource.DataMember = "UsersMain";
-            this.usersMainBindingSource.DataSource = this.kCI_EQProDataSet;
+            
             // 
             // usersMainTableAdapter
             // 
-            this.usersMainTableAdapter.ClearBeforeFill = true;
+            
             // 
             // toolTipPassword
             // 
@@ -509,7 +507,7 @@
             this.Name = "UserForm";
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.kCI_EQProDataSet)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.usersMainBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -549,9 +547,9 @@
         private System.Windows.Forms.Button buttonSignIn;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label label14;
-        private KCI_EQProDataSet kCI_EQProDataSet;
+        
         private System.Windows.Forms.BindingSource usersMainBindingSource;
-        private KCI_EQProDataSetTableAdapters.UsersMainTableAdapter usersMainTableAdapter;
+        
         private System.Windows.Forms.ToolTip toolTipPassword;
         private System.Windows.Forms.TextBox textBoxEQProUserID;
         private System.Windows.Forms.Label label15;

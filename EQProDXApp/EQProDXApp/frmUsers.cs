@@ -30,7 +30,7 @@ namespace EQProDXApp
         private void frmEnvironment_Load(object sender, EventArgs e)
         {
             sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-            objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
+            //objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
            
         }
 
@@ -79,7 +79,7 @@ namespace EQProDXApp
                                 cmbBoxUserID.Text = "";
                                 MessageBox.Show("Plant added successfully", "Transacntion");
                                 sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
+                                //objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
                             }
                             else
                             {
@@ -132,7 +132,7 @@ namespace EQProDXApp
 
                     cmbBoxUserID.Text = "";
                     sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                    objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
+                    //objPubClass.Load_CmbBoxValues(sSql, cmbBoxUserID);
                 }
                 else if (result == DialogResult.No)
                 {

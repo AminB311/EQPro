@@ -27,9 +27,8 @@ namespace EQProDXApp.Entities
         public string Email { get; set; }
         public bool IsDeleted { get; set; }
 
-        public void insertUser(User user)
-        {
-            String query = "INSERT INTO dbo.UserMain (EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) VALUES (@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, @DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)";
+        public void InsertOrUpdateUser(String query, User user, string message)
+        {            
             SqlConnection conn = new Class_PublicDataAccessLayer().getSqlConn();
             try
             {
@@ -60,7 +59,7 @@ namespace EQProDXApp.Entities
 
                 if(row > 0)
                 {
-                    MessageBox.Show("User Added Successfully!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(message, "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             } 
             catch (Exception ex)

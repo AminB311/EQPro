@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace EQProDXApp
 {
@@ -18,12 +19,12 @@ namespace EQProDXApp
         DataSet sqlDtSet = new DataSet();
         DataTable sqlDtTbl = new DataTable();
         SqlDataAdapter objSqlDtAdap = new SqlDataAdapter();
-        public void Load_CmbBoxValues(string sSql, DevExpress.XtraEditors.ComboBoxEdit objCmbBoxName)
+        public void Load_CmbBoxValues(string sSql, ComboBox objCmbBoxName)
         {
             string sVal = "";
             try
             {
-                objCmbBoxName.Properties.Items.Clear();
+                objCmbBoxName.Items.Clear();
                 SqlConn = objDALCls.getSqlConn();
                 sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
                 if (sqlDtTbl.Rows.Count > 0)
@@ -35,7 +36,7 @@ namespace EQProDXApp
                         {
                             sVal = sqlDtTbl.Rows[iCount][0].ToString();
                             sVal = sVal.TrimEnd();
-                            objCmbBoxName.Properties.Items.Add(sVal);
+                            objCmbBoxName.Items.Add(sVal);
                         }
                         iCount++;
                     }

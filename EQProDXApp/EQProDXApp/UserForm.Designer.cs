@@ -59,13 +59,12 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.textBoxEQProUserID = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox4Char = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonSignIn = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonSignIn = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,10 +73,9 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 93);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(75, 114);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 22);
+            this.label1.Size = new System.Drawing.Size(194, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID to Add/Change";
             // 
@@ -86,10 +84,10 @@
             this.comboBoxID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxID.FormattingEnabled = true;
-            this.comboBoxID.Location = new System.Drawing.Point(59, 121);
-            this.comboBoxID.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxID.Location = new System.Drawing.Point(79, 149);
+            this.comboBoxID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxID.Name = "comboBoxID";
-            this.comboBoxID.Size = new System.Drawing.Size(125, 30);
+            this.comboBoxID.Size = new System.Drawing.Size(165, 37);
             this.comboBoxID.TabIndex = 1;
             this.comboBoxID.SelectedIndexChanged += new System.EventHandler(this.comboBoxID_SelectedIndexChanged);
             // 
@@ -98,10 +96,9 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 93);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(393, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 22);
+            this.label2.Size = new System.Drawing.Size(160, 27);
             this.label2.TabIndex = 2;
             this.label2.Text = "New Password";
             // 
@@ -109,10 +106,10 @@
             // 
             this.textBoxNewPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNewPass.Location = new System.Drawing.Point(298, 124);
-            this.textBoxNewPass.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNewPass.Location = new System.Drawing.Point(397, 153);
+            this.textBoxNewPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxNewPass.Name = "textBoxNewPass";
-            this.textBoxNewPass.Size = new System.Drawing.Size(200, 28);
+            this.textBoxNewPass.Size = new System.Drawing.Size(265, 34);
             this.textBoxNewPass.TabIndex = 3;
             this.textBoxNewPass.Enter += new System.EventHandler(this.textBoxNewPass_Enter);
             // 
@@ -120,10 +117,10 @@
             // 
             this.textBoxVerifyPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxVerifyPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxVerifyPass.Location = new System.Drawing.Point(534, 124);
-            this.textBoxVerifyPass.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxVerifyPass.Location = new System.Drawing.Point(712, 153);
+            this.textBoxVerifyPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxVerifyPass.Name = "textBoxVerifyPass";
-            this.textBoxVerifyPass.Size = new System.Drawing.Size(200, 28);
+            this.textBoxVerifyPass.Size = new System.Drawing.Size(265, 34);
             this.textBoxVerifyPass.TabIndex = 5;
             // 
             // label3
@@ -131,10 +128,9 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(530, 93);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(707, 114);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 22);
+            this.label3.Size = new System.Drawing.Size(173, 27);
             this.label3.TabIndex = 4;
             this.label3.Text = "Verify Password";
             // 
@@ -142,10 +138,10 @@
             // 
             this.textBoxPrefix.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPrefix.Location = new System.Drawing.Point(751, 124);
-            this.textBoxPrefix.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPrefix.Location = new System.Drawing.Point(1001, 153);
+            this.textBoxPrefix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPrefix.Name = "textBoxPrefix";
-            this.textBoxPrefix.Size = new System.Drawing.Size(200, 28);
+            this.textBoxPrefix.Size = new System.Drawing.Size(265, 34);
             this.textBoxPrefix.TabIndex = 7;
             // 
             // label4
@@ -153,10 +149,9 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(747, 93);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(996, 114);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 22);
+            this.label4.Size = new System.Drawing.Size(71, 27);
             this.label4.TabIndex = 6;
             this.label4.Text = "Prefix";
             // 
@@ -164,10 +159,10 @@
             // 
             this.textBoxMN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxMN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMN.Location = new System.Drawing.Point(298, 207);
-            this.textBoxMN.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxMN.Location = new System.Drawing.Point(397, 255);
+            this.textBoxMN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxMN.Name = "textBoxMN";
-            this.textBoxMN.Size = new System.Drawing.Size(200, 28);
+            this.textBoxMN.Size = new System.Drawing.Size(265, 34);
             this.textBoxMN.TabIndex = 11;
             // 
             // label5
@@ -175,10 +170,9 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 177);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(393, 218);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 22);
+            this.label5.Size = new System.Drawing.Size(150, 27);
             this.label5.TabIndex = 10;
             this.label5.Text = "Middle Name";
             // 
@@ -186,10 +180,10 @@
             // 
             this.textBoxFN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxFN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFN.Location = new System.Drawing.Point(59, 207);
-            this.textBoxFN.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFN.Location = new System.Drawing.Point(79, 255);
+            this.textBoxFN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxFN.Name = "textBoxFN";
-            this.textBoxFN.Size = new System.Drawing.Size(200, 28);
+            this.textBoxFN.Size = new System.Drawing.Size(265, 34);
             this.textBoxFN.TabIndex = 9;
             // 
             // label6
@@ -197,10 +191,9 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 177);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(75, 218);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 22);
+            this.label6.Size = new System.Drawing.Size(122, 27);
             this.label6.TabIndex = 8;
             this.label6.Text = "First Name";
             // 
@@ -208,10 +201,10 @@
             // 
             this.textBoxEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(59, 288);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxEmail.Location = new System.Drawing.Point(79, 354);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(200, 28);
+            this.textBoxEmail.Size = new System.Drawing.Size(265, 34);
             this.textBoxEmail.TabIndex = 17;
             this.textBoxEmail.Enter += new System.EventHandler(this.textBoxEmail_Enter);
             // 
@@ -220,10 +213,9 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(56, 258);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(75, 318);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 22);
+            this.label7.Size = new System.Drawing.Size(67, 27);
             this.label7.TabIndex = 16;
             this.label7.Text = "Email";
             // 
@@ -231,10 +223,10 @@
             // 
             this.textBoxSuffix.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSuffix.Location = new System.Drawing.Point(751, 207);
-            this.textBoxSuffix.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSuffix.Location = new System.Drawing.Point(1001, 255);
+            this.textBoxSuffix.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSuffix.Name = "textBoxSuffix";
-            this.textBoxSuffix.Size = new System.Drawing.Size(200, 28);
+            this.textBoxSuffix.Size = new System.Drawing.Size(265, 34);
             this.textBoxSuffix.TabIndex = 15;
             // 
             // label8
@@ -242,10 +234,9 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(747, 177);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(996, 218);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 22);
+            this.label8.Size = new System.Drawing.Size(71, 27);
             this.label8.TabIndex = 14;
             this.label8.Text = "Suffix";
             // 
@@ -253,10 +244,10 @@
             // 
             this.textBoxLN.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxLN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLN.Location = new System.Drawing.Point(534, 207);
-            this.textBoxLN.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxLN.Location = new System.Drawing.Point(712, 255);
+            this.textBoxLN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxLN.Name = "textBoxLN";
-            this.textBoxLN.Size = new System.Drawing.Size(200, 28);
+            this.textBoxLN.Size = new System.Drawing.Size(265, 34);
             this.textBoxLN.TabIndex = 13;
             // 
             // label9
@@ -264,10 +255,9 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(530, 177);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(707, 218);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 22);
+            this.label9.Size = new System.Drawing.Size(120, 27);
             this.label9.TabIndex = 12;
             this.label9.Text = "Last Name";
             // 
@@ -275,10 +265,10 @@
             // 
             this.textBoxSignature.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxSignature.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSignature.Location = new System.Drawing.Point(298, 288);
-            this.textBoxSignature.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSignature.Location = new System.Drawing.Point(397, 354);
+            this.textBoxSignature.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSignature.Name = "textBoxSignature";
-            this.textBoxSignature.Size = new System.Drawing.Size(200, 28);
+            this.textBoxSignature.Size = new System.Drawing.Size(265, 34);
             this.textBoxSignature.TabIndex = 19;
             // 
             // label10
@@ -286,10 +276,9 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(295, 258);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(393, 318);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 22);
+            this.label10.Size = new System.Drawing.Size(126, 27);
             this.label10.TabIndex = 18;
             this.label10.Text = "E Signature";
             // 
@@ -302,10 +291,10 @@
             "Preparer",
             "Viewer",
             "Approver"});
-            this.comboBoxEQRole.Location = new System.Drawing.Point(534, 286);
-            this.comboBoxEQRole.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxEQRole.Location = new System.Drawing.Point(712, 352);
+            this.comboBoxEQRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxEQRole.Name = "comboBoxEQRole";
-            this.comboBoxEQRole.Size = new System.Drawing.Size(200, 30);
+            this.comboBoxEQRole.Size = new System.Drawing.Size(265, 37);
             this.comboBoxEQRole.TabIndex = 21;
             // 
             // label11
@@ -313,10 +302,9 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(530, 258);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(707, 318);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 22);
+            this.label11.Size = new System.Drawing.Size(90, 27);
             this.label11.TabIndex = 20;
             this.label11.Text = "EQ Role";
             // 
@@ -330,10 +318,10 @@
             "ReadOnly",
             "Edit",
             "Report"});
-            this.comboBoxEQUserRole.Location = new System.Drawing.Point(751, 286);
-            this.comboBoxEQUserRole.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxEQUserRole.Location = new System.Drawing.Point(1001, 352);
+            this.comboBoxEQUserRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxEQUserRole.Name = "comboBoxEQUserRole";
-            this.comboBoxEQUserRole.Size = new System.Drawing.Size(200, 30);
+            this.comboBoxEQUserRole.Size = new System.Drawing.Size(265, 37);
             this.comboBoxEQUserRole.TabIndex = 23;
             // 
             // label12
@@ -341,10 +329,9 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(747, 258);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(996, 318);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 22);
+            this.label12.Size = new System.Drawing.Size(142, 27);
             this.label12.TabIndex = 22;
             this.label12.Text = "EQ User Role";
             // 
@@ -352,11 +339,11 @@
             // 
             this.textBoxUpdatedPassDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxUpdatedPassDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUpdatedPassDate.Location = new System.Drawing.Point(59, 369);
-            this.textBoxUpdatedPassDate.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxUpdatedPassDate.Location = new System.Drawing.Point(79, 454);
+            this.textBoxUpdatedPassDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxUpdatedPassDate.Name = "textBoxUpdatedPassDate";
             this.textBoxUpdatedPassDate.ReadOnly = true;
-            this.textBoxUpdatedPassDate.Size = new System.Drawing.Size(200, 28);
+            this.textBoxUpdatedPassDate.Size = new System.Drawing.Size(265, 34);
             this.textBoxUpdatedPassDate.TabIndex = 25;
             // 
             // label13
@@ -364,10 +351,9 @@
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(56, 339);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(75, 417);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(207, 22);
+            this.label13.Size = new System.Drawing.Size(255, 27);
             this.label13.TabIndex = 24;
             this.label13.Text = "Password Updated Date";
             // 
@@ -377,10 +363,9 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Navy;
-            this.label14.Location = new System.Drawing.Point(50, 7);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(67, 9);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(219, 50);
+            this.label14.Size = new System.Drawing.Size(277, 64);
             this.label14.TabIndex = 30;
             this.label14.Text = "User Form";
             // 
@@ -392,11 +377,11 @@
             // 
             this.textBoxEQProUserID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxEQProUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEQProUserID.Location = new System.Drawing.Point(298, 369);
-            this.textBoxEQProUserID.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxEQProUserID.Location = new System.Drawing.Point(397, 454);
+            this.textBoxEQProUserID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEQProUserID.Name = "textBoxEQProUserID";
             this.textBoxEQProUserID.ReadOnly = true;
-            this.textBoxEQProUserID.Size = new System.Drawing.Size(139, 28);
+            this.textBoxEQProUserID.Size = new System.Drawing.Size(265, 34);
             this.textBoxEQProUserID.TabIndex = 32;
             this.textBoxEQProUserID.Text = "Click Here";
             this.textBoxEQProUserID.Click += new System.EventHandler(this.textBoxEQProUserID_Click);
@@ -406,23 +391,11 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(295, 339);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(393, 417);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(130, 22);
+            this.label15.Size = new System.Drawing.Size(160, 27);
             this.label15.TabIndex = 31;
             this.label15.Text = "EQ Pro User ID";
-            // 
-            // textBox4Char
-            // 
-            this.textBox4Char.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox4Char.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4Char.Location = new System.Drawing.Point(441, 369);
-            this.textBox4Char.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4Char.MaxLength = 4;
-            this.textBox4Char.Name = "textBox4Char";
-            this.textBox4Char.Size = new System.Drawing.Size(57, 28);
-            this.textBox4Char.TabIndex = 33;
             // 
             // buttonClear
             // 
@@ -431,10 +404,10 @@
             this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClear.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClear.ForeColor = System.Drawing.Color.White;
-            this.buttonClear.Location = new System.Drawing.Point(188, 121);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonClear.Location = new System.Drawing.Point(251, 149);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(71, 30);
+            this.buttonClear.Size = new System.Drawing.Size(95, 37);
             this.buttonClear.TabIndex = 34;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = false;
@@ -447,55 +420,11 @@
             this.flowLayoutPanel1.Controls.Add(this.buttonDelete);
             this.flowLayoutPanel1.Controls.Add(this.buttonSignIn);
             this.flowLayoutPanel1.Controls.Add(this.buttonExit);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(59, 421);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(79, 518);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(892, 58);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1189, 71);
             this.flowLayoutPanel1.TabIndex = 35;
-            // 
-            // buttonExit
-            // 
-            this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonExit.BackColor = System.Drawing.Color.Navy;
-            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.ForeColor = System.Drawing.Color.White;
-            this.buttonExit.Location = new System.Drawing.Point(434, 2);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(140, 38);
-            this.buttonExit.TabIndex = 33;
-            this.buttonExit.Text = "Exit App";
-            this.buttonExit.UseVisualStyleBackColor = false;
-            // 
-            // buttonSignIn
-            // 
-            this.buttonSignIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSignIn.BackColor = System.Drawing.Color.Navy;
-            this.buttonSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSignIn.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSignIn.ForeColor = System.Drawing.Color.White;
-            this.buttonSignIn.Location = new System.Drawing.Point(290, 2);
-            this.buttonSignIn.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSignIn.Name = "buttonSignIn";
-            this.buttonSignIn.Size = new System.Drawing.Size(140, 38);
-            this.buttonSignIn.TabIndex = 32;
-            this.buttonSignIn.Text = "Sign In";
-            this.buttonSignIn.UseVisualStyleBackColor = false;
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonDelete.BackColor = System.Drawing.Color.Navy;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(146, 2);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(140, 38);
-            this.buttonDelete.TabIndex = 31;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = false;
             // 
             // buttonAdd
             // 
@@ -504,23 +433,69 @@
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(2, 2);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdd.Location = new System.Drawing.Point(3, 2);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(140, 38);
+            this.buttonAdd.Size = new System.Drawing.Size(187, 47);
             this.buttonAdd.TabIndex = 30;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonDelete.BackColor = System.Drawing.Color.Navy;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(196, 2);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(187, 47);
+            this.buttonDelete.TabIndex = 31;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonSignIn
+            // 
+            this.buttonSignIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSignIn.BackColor = System.Drawing.Color.Navy;
+            this.buttonSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignIn.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignIn.ForeColor = System.Drawing.Color.White;
+            this.buttonSignIn.Location = new System.Drawing.Point(389, 2);
+            this.buttonSignIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSignIn.Name = "buttonSignIn";
+            this.buttonSignIn.Size = new System.Drawing.Size(187, 47);
+            this.buttonSignIn.TabIndex = 32;
+            this.buttonSignIn.Text = "Sign In";
+            this.buttonSignIn.UseVisualStyleBackColor = false;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonExit.BackColor = System.Drawing.Color.Navy;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.ForeColor = System.Drawing.Color.White;
+            this.buttonExit.Location = new System.Drawing.Point(582, 2);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(187, 47);
+            this.buttonExit.TabIndex = 33;
+            this.buttonExit.Text = "Exit App";
+            this.buttonExit.UseVisualStyleBackColor = false;
             // 
             // UserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1006, 519);
+            this.ClientSize = new System.Drawing.Size(1341, 639);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.textBox4Char);
             this.Controls.Add(this.textBoxEQProUserID);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -551,7 +526,7 @@
             this.Controls.Add(this.comboBoxID);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserForm";
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserForm_Load);
@@ -594,7 +569,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.TextBox textBoxEQProUserID;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox4Char;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonAdd;

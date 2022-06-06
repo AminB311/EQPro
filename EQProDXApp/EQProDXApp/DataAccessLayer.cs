@@ -15,7 +15,7 @@ namespace EQProDXApp
         {
             SqlConnection SqlConn = new SqlConnection();
             //EQPro_AcessDB_WthData
-            sConnStr = "Data Source=UmairMushtaq;Initial Catalog=KCI_EQPro;Integrated Security=True";
+            sConnStr = "Data Source=DESKTOP-6SVBO8T;Initial Catalog=KCI_EQPro;Integrated Security=True";
             try
             {
                 //SqlConnection objSqlConn = new SqlConnection(sConnStr);

@@ -44,7 +44,8 @@ namespace EQProDXApp
                     User user = readFormData();
                     user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, @DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)", user, "User Added Successfully!");
                     ResetForm();
-                } else
+                }
+                else
                 {
                     User user = readFormData();
                     user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, CanCreateEQProID = @CanCreateEQProID, CanCreateUserID = @CanCreateUserID, EQRole = @EQRole, UserRole = @UserRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
@@ -55,7 +56,7 @@ namespace EQProDXApp
         private User readFormData()
         {
             User newUser = new User();
-            newUser.EQProUserID = textBoxEQProUserID.Text + textBox4Char.Text;
+            newUser.EQProUserID = textBoxEQProUserID.Text;
             newUser.Password = textBoxNewPass.Text;
             newUser.FirstName = textBoxFN.Text;
             newUser.MiddleName = textBoxMN.Text;
@@ -125,13 +126,7 @@ namespace EQProDXApp
                 MessageBox.Show("Select EQ User Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 errorProvider.SetError(comboBoxEQUserRole, "No Item Selected");
                 return false;
-            }
-            if (textBox4Char.Text == "")
-            {
-                MessageBox.Show("Type 4 character with User ID!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBox4Char, "No Item Selected");
-                return false;
-            }
+            }            
             if (textBoxNewPass.Text.Length < 8)
             {
                 MessageBox.Show("Password should be 8 or more characters long!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -185,12 +180,7 @@ namespace EQProDXApp
             {
                 MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
-            }
-            if (!Regex.IsMatch(textBox4Char.Text.Trim(), @"^\d+$"))
-            {
-                errorProvider.SetError(textBox4Char, "Enter only digits!");
-                return false;
-            }
+            }            
             errorProvider.Clear();
             return true;
         }
@@ -210,7 +200,7 @@ namespace EQProDXApp
             comboBoxEQRole.Text = "";
             comboBoxEQUserRole.Text = "";
             textBoxEQProUserID.Text = "Click Here";
-            textBox4Char.Text = "";
+            
             textBoxUpdatedPassDate.Text = DateTime.Now.ToString();
             buttonAdd.Text = "Add";
         }
@@ -245,11 +235,7 @@ namespace EQProDXApp
 
             userID = int.Parse(dataTable.Rows[0][0].ToString());
 
-            Regex re = new Regex(@"([a-zA-Z]+)(\d+)");
-            Match result = re.Match(dataTable.Rows[0][1].ToString());
-            textBoxEQProUserID.Text = result.Groups[1].Value;
-            textBox4Char.Text = result.Groups[2].Value;
-
+            textBoxEQProUserID.Text = dataTable.Rows[0][1].ToString();
             textBoxNewPass.Text = dataTable.Rows[0][2].ToString();
             textBoxVerifyPass.Text = dataTable.Rows[0][2].ToString();
             textBoxFN.Text = dataTable.Rows[0][3].ToString();
@@ -262,8 +248,6 @@ namespace EQProDXApp
             comboBoxEQRole.Text = dataTable.Rows[0][13].ToString();
             comboBoxEQUserRole.Text = dataTable.Rows[0][14].ToString();
             textBoxEmail.Text = dataTable.Rows[0][15].ToString();
-
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)

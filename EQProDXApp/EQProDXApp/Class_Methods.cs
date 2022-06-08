@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+
 
 namespace EQProDXApp
 {
@@ -19,35 +21,82 @@ namespace EQProDXApp
         DataTable sqlDtTbl = new DataTable();
         SqlDataAdapter objSqlDtAdap = new SqlDataAdapter();
 
-        public void Load_CmbBoxValues(string sSql, DevExpress.XtraEditors.ComboBoxEdit objCmbBoxName)
+        public bool Load_CmbBoxValues(string sSql, DevExpress.XtraEditors.ComboBoxEdit objCmbBoxName)
         {
             string sVal = "";
             try
             {
                 objCmbBoxName.Properties.Items.Clear();
-                SqlConn = objDALCls.getSqlConn();
-                sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
-                if (sqlDtTbl.Rows.Count > 0)
+                if (objDALCls.getSqlConn() != null)
                 {
-                    iCount = 0;
-                    foreach (DataRow dr_RowSel in sqlDtTbl.Rows)//Loop on Tbl
+                    SqlConn = objDALCls.getSqlConn();
+                    sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
+                    if (sqlDtTbl.Rows.Count > 0)
                     {
-                        if (String.IsNullOrEmpty(sqlDtTbl.Rows[iCount][0].ToString()) == false)
+                        iCount = 0;
+                        foreach (DataRow dr_RowSel in sqlDtTbl.Rows)//Loop on Tbl
                         {
-                            sVal = sqlDtTbl.Rows[iCount][0].ToString();
-                            sVal = sVal.TrimEnd();
-                            objCmbBoxName.Properties.Items.Add(sVal);
+                            if (String.IsNullOrEmpty(sqlDtTbl.Rows[iCount][0].ToString()) == false)
+                            {
+                                sVal = sqlDtTbl.Rows[iCount][0].ToString();
+                                sVal = sVal.TrimEnd();
+                                objCmbBoxName.Properties.Items.Add(sVal);
+                            }
+                            iCount++;
                         }
-                        iCount++;
                     }
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 new Exception("Error in Load_CmbBoxValues, filling Combo Box", ex);
+                return false;
             }
         }
-        
+
+        public bool Load_CmbBoxValues(string sSql, ComboBox objCmbBoxName)
+        {
+            string sVal = "";
+            try
+            {
+                objCmbBoxName.Items.Clear();
+                if (objDALCls.getSqlConn() != null)
+                {
+                    SqlConn = objDALCls.getSqlConn();
+                    sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
+                    if (sqlDtTbl.Rows.Count > 0)
+                    {
+                        iCount = 0;
+                        foreach (DataRow dr_RowSel in sqlDtTbl.Rows)//Loop on Tbl
+                        {
+                            if (String.IsNullOrEmpty(sqlDtTbl.Rows[iCount][0].ToString()) == false)
+                            {
+                                sVal = sqlDtTbl.Rows[iCount][0].ToString();
+                                sVal = sVal.TrimEnd();
+                                objCmbBoxName.Items.Add(sVal);
+                            }
+                            iCount++;
+                        }
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in Load_CmbBoxValues, filling Combo Box", ex);
+                return false;
+            }
+        }
+
         public void Delete_SelectedValues(string sSql)
         {
             try
@@ -66,16 +115,17 @@ namespace EQProDXApp
         }
 
 
-        public void NewMethod()
+        public int CheckForUniqueID(string sSql)
         {
             try
             {
-                string sVal = "Test";
+                SqlConn = objDALCls.getSqlConn();
+                SqlCommand cmd = new SqlCommand(sSql, SqlConn);
+                return (int)cmd.ExecuteScalar();
             }
-
             catch (Exception ex)
             {
-                new Exception("Error in NewMethod", ex);
+                throw new Exception("Error in Get_DataTable", ex);
             }
         }
         public int AddNew_Values(string sSql)
@@ -111,6 +161,10 @@ namespace EQProDXApp
             try
             {
                 SqlConn = objDALCls.getSqlConn();
+                //if(SqlConn= null)
+                //{
+
+                //}
                 sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
                 //objDtTable = objPhdAdoTRG.LoadDataTable(sSql);
                 if (sqlDtTbl.Rows.Count != 0)

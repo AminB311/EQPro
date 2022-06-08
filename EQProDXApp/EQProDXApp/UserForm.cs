@@ -18,7 +18,7 @@ namespace EQProDXApp
         DataTable dataTable = new DataTable();
         int userID;
         //Set it to false to see the Non-Admin Form
-        bool isAdmin = true;
+        bool isAdmin = false;
         public UserForm()
         {
             InitializeComponent();
@@ -166,12 +166,12 @@ namespace EQProDXApp
                 }
                 return false;
             }
-            if (!textBoxNewPass.Text.Equals(textBoxVerifyPass.Text))
+            if(!textBoxNewPass.Text.Equals(textBoxVerifyPass.Text))
             {
                 MessageBox.Show("Password not matched, Try Again!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            if(!Regex.IsMatch(textBoxEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
+            if (!Regex.IsMatch(textBoxEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
             {
                 MessageBox.Show("Incorrect Email Address!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -181,6 +181,12 @@ namespace EQProDXApp
                 MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }            
+            if (methods.CheckForUniqueID("select COUNT(UserID) from dbo.UserMain where EQProUserID = '" + textBoxEQProUserID.Text + "'") > 0)
+            {
+                MessageBox.Show("EQ Pro User ID is not Unique! Try Another Username", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                errorProvider.SetError(textBoxEQProUserID, "ID already Exist!");
+                return false;
+            }
             errorProvider.Clear();
             return true;
         }

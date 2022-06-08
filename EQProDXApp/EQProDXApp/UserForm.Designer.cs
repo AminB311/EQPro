@@ -365,7 +365,7 @@
             this.label14.ForeColor = System.Drawing.Color.Navy;
             this.label14.Location = new System.Drawing.Point(67, 9);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(277, 64);
+            this.label14.Size = new System.Drawing.Size(270, 62);
             this.label14.TabIndex = 30;
             this.label14.Text = "User Form";
             // 
@@ -380,7 +380,6 @@
             this.textBoxEQProUserID.Location = new System.Drawing.Point(397, 454);
             this.textBoxEQProUserID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEQProUserID.Name = "textBoxEQProUserID";
-            this.textBoxEQProUserID.ReadOnly = true;
             this.textBoxEQProUserID.Size = new System.Drawing.Size(265, 34);
             this.textBoxEQProUserID.TabIndex = 32;
             this.textBoxEQProUserID.Text = "Click Here";

@@ -246,3 +246,4 @@ E:\C# Projects\EQPro\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CoreCompi
 E:\C# Projects\EQPro\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
 E:\C# Projects\EQPro\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
 E:\C# Projects\EQPro\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
+D:\My Projects\C# Projects\EQProDXApp\EQPro\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.SuggestedBindingRedirects.cache

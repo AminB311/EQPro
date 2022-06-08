@@ -125,6 +125,18 @@ namespace EQProDXApp
             }
         }
 
-
+        public int CheckForUniqueID(string sSql)
+        {
+            try
+            {
+                SqlConn = objDALCls.getSqlConn();
+                SqlCommand cmd = new SqlCommand(sSql, SqlConn);
+                return (int) cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Get_DataTable", ex);
+            }
+        }
     }
 }

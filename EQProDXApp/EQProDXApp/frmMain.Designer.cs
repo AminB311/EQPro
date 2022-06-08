@@ -28,203 +28,184 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
-            this.dockPanel_UserAccount = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.picBoxUser = new System.Windows.Forms.PictureBox();
-            this.dockPanel_EnvParam = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel_EquipList = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.dockPanel_Utilities = new DevExpress.XtraBars.Docking.DockPanel();
-            this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.hideContainerLeft.SuspendLayout();
-            this.dockPanel_UserAccount.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxUser)).BeginInit();
-            this.dockPanel_EnvParam.SuspendLayout();
-            this.dockPanel_EquipList.SuspendLayout();
-            this.dockPanel_Utilities.SuspendLayout();
+            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEnvParam = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.centerPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dockPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.centerPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dockManager1
-            // 
-            this.dockManager1.AutoHideContainers.AddRange(new DevExpress.XtraBars.Docking.AutoHideContainer[] {
-            this.hideContainerLeft});
-            this.dockManager1.Form = this;
-            this.dockManager1.TopZIndexControls.AddRange(new string[] {
-            "DevExpress.XtraBars.BarDockControl",
-            "DevExpress.XtraBars.StandaloneBarDockControl",
-            "System.Windows.Forms.MenuStrip",
-            "System.Windows.Forms.StatusStrip",
-            "System.Windows.Forms.StatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
-            "DevExpress.XtraBars.Ribbon.RibbonControl",
-            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
-            "DevExpress.XtraBars.Navigation.TileNavPane",
-            "DevExpress.XtraBars.TabFormControl",
-            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
-            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
-            // 
-            // hideContainerLeft
-            // 
-            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.hideContainerLeft.Controls.Add(this.dockPanel_UserAccount);
-            this.hideContainerLeft.Controls.Add(this.dockPanel_EnvParam);
-            this.hideContainerLeft.Controls.Add(this.dockPanel_EquipList);
-            this.hideContainerLeft.Controls.Add(this.dockPanel_Utilities);
-            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
-            this.hideContainerLeft.Name = "hideContainerLeft";
-            this.hideContainerLeft.Size = new System.Drawing.Size(21, 999);
-            // 
-            // dockPanel_UserAccount
-            // 
-            this.dockPanel_UserAccount.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dockPanel_UserAccount.Appearance.Options.UseBackColor = true;
-            this.dockPanel_UserAccount.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel_UserAccount.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_UserAccount.ID = new System.Guid("10f75dec-5f08-4b28-ba6e-0c3932d79f88");
-            this.dockPanel_UserAccount.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel_UserAccount.Name = "dockPanel_UserAccount";
-            this.dockPanel_UserAccount.OriginalSize = new System.Drawing.Size(293, 200);
-            this.dockPanel_UserAccount.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_UserAccount.SavedIndex = 0;
-            this.dockPanel_UserAccount.Size = new System.Drawing.Size(293, 999);
-            this.dockPanel_UserAccount.Text = "User Account";
-            this.dockPanel_UserAccount.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            this.dockPanel_UserAccount.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.picBoxUser);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 26);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(286, 970);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 421);
             this.dockPanel1_Container.TabIndex = 0;
             // 
-            // picBoxUser
+            // dockPanel1
             // 
-            this.picBoxUser.BackgroundImage = global::EQProDXApp.Properties.Resources.HandShakeBusiness_Depositphotos_5;
-            this.picBoxUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picBoxUser.Location = new System.Drawing.Point(53, 52);
-            this.picBoxUser.Name = "picBoxUser";
-            this.picBoxUser.Size = new System.Drawing.Size(139, 98);
-            this.picBoxUser.TabIndex = 0;
-            this.picBoxUser.TabStop = false;
-            this.picBoxUser.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
+            this.dockPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
+            this.dockPanel1.ID = new System.Guid("3774a8e5-5e12-406e-a461-51dd062522ff");
+            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1.Name = "dockPanel1";
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 450);
+            this.dockPanel1.Text = "dockPanel1";
             // 
-            // dockPanel_EnvParam
+            // panel1
             // 
-            this.dockPanel_EnvParam.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dockPanel_EnvParam.Appearance.Options.UseBackColor = true;
-            this.dockPanel_EnvParam.Controls.Add(this.dockPanel2_Container);
-            this.dockPanel_EnvParam.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_EnvParam.ID = new System.Guid("0c700e13-cddd-47bf-95b0-448b3d70bd60");
-            this.dockPanel_EnvParam.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel_EnvParam.Name = "dockPanel_EnvParam";
-            this.dockPanel_EnvParam.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel_EnvParam.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_EnvParam.SavedIndex = 0;
-            this.dockPanel_EnvParam.Size = new System.Drawing.Size(200, 999);
-            this.dockPanel_EnvParam.Text = "Environmental Parameters";
-            this.dockPanel_EnvParam.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.Controls.Add(this.btnEnvParam);
+            this.panel1.Controls.Add(this.btnUsers);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(242, 753);
+            this.panel1.TabIndex = 14;
             // 
-            // dockPanel2_Container
+            // btnEnvParam
             // 
-            this.dockPanel2_Container.Location = new System.Drawing.Point(3, 26);
-            this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(193, 970);
-            this.dockPanel2_Container.TabIndex = 0;
+            this.btnEnvParam.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnEnvParam.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEnvParam.FlatAppearance.BorderSize = 0;
+            this.btnEnvParam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnvParam.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnvParam.ForeColor = System.Drawing.Color.White;
+            this.btnEnvParam.Location = new System.Drawing.Point(0, 135);
+            this.btnEnvParam.Name = "btnEnvParam";
+            this.btnEnvParam.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.btnEnvParam.Size = new System.Drawing.Size(242, 56);
+            this.btnEnvParam.TabIndex = 13;
+            this.btnEnvParam.Text = "Environmental ";
+            this.btnEnvParam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEnvParam.UseVisualStyleBackColor = false;
+            this.btnEnvParam.Click += new System.EventHandler(this.btnEnvParam_Click);
             // 
-            // dockPanel_EquipList
+            // btnUsers
             // 
-            this.dockPanel_EquipList.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dockPanel_EquipList.Appearance.Options.UseBackColor = true;
-            this.dockPanel_EquipList.Controls.Add(this.dockPanel4_Container);
-            this.dockPanel_EquipList.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_EquipList.ID = new System.Guid("3503b550-e2bd-4a08-a566-88b1a2414604");
-            this.dockPanel_EquipList.Location = new System.Drawing.Point(-200, 0);
-            this.dockPanel_EquipList.Name = "dockPanel_EquipList";
-            this.dockPanel_EquipList.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel_EquipList.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_EquipList.SavedIndex = 1;
-            this.dockPanel_EquipList.Size = new System.Drawing.Size(200, 999);
-            this.dockPanel_EquipList.Text = "EQ Equipment List";
-            this.dockPanel_EquipList.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.btnUsers.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsers.FlatAppearance.BorderSize = 0;
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.ForeColor = System.Drawing.Color.White;
+            this.btnUsers.Location = new System.Drawing.Point(0, 79);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.btnUsers.Size = new System.Drawing.Size(242, 56);
+            this.btnUsers.TabIndex = 12;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsers.UseVisualStyleBackColor = false;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
-            // dockPanel4_Container
+            // btnExit
             // 
-            this.dockPanel4_Container.Location = new System.Drawing.Point(3, 26);
-            this.dockPanel4_Container.Name = "dockPanel4_Container";
-            this.dockPanel4_Container.Size = new System.Drawing.Size(193, 970);
-            this.dockPanel4_Container.TabIndex = 0;
+            this.btnExit.BackColor = System.Drawing.Color.Firebrick;
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(0, 697);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(242, 56);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "Exit";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // dockPanel_Utilities
+            // panel2
             // 
-            this.dockPanel_Utilities.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.dockPanel_Utilities.Appearance.Options.UseBackColor = true;
-            this.dockPanel_Utilities.Controls.Add(this.controlContainer1);
-            this.dockPanel_Utilities.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_Utilities.ID = new System.Guid("96e07f2f-8216-47f0-9276-564f1fc1a57b");
-            this.dockPanel_Utilities.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel_Utilities.Name = "dockPanel_Utilities";
-            this.dockPanel_Utilities.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel_Utilities.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel_Utilities.SavedIndex = 0;
-            this.dockPanel_Utilities.Size = new System.Drawing.Size(200, 999);
-            this.dockPanel_Utilities.Text = "Utilities";
-            this.dockPanel_Utilities.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(242, 79);
+            this.panel2.TabIndex = 0;
             // 
-            // controlContainer1
+            // pictureBox1
             // 
-            this.controlContainer1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.controlContainer1.Location = new System.Drawing.Point(3, 26);
-            this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(193, 970);
-            this.controlContainer1.TabIndex = 0;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(242, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // centerPanel
+            // 
+            this.centerPanel.AllowDrop = true;
+            this.centerPanel.Controls.Add(this.panel3);
+            this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.centerPanel.Location = new System.Drawing.Point(242, 0);
+            this.centerPanel.MinimumSize = new System.Drawing.Size(1442, 792);
+            this.centerPanel.Name = "centerPanel";
+            this.centerPanel.Size = new System.Drawing.Size(1442, 792);
+            this.centerPanel.TabIndex = 15;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Navy;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1442, 79);
+            this.panel3.TabIndex = 0;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1584, 999);
-            this.Controls.Add(this.hideContainerLeft);
-            this.MaximumSize = new System.Drawing.Size(1600, 1038);
-            this.MinimumSize = new System.Drawing.Size(1500, 900);
+            this.ClientSize = new System.Drawing.Size(1426, 753);
+            this.Controls.Add(this.centerPanel);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dockPanel1);
+            this.MinimumSize = new System.Drawing.Size(1442, 792);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMain";
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.hideContainerLeft.ResumeLayout(false);
-            this.dockPanel_UserAccount.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxUser)).EndInit();
-            this.dockPanel_EnvParam.ResumeLayout(false);
-            this.dockPanel_EquipList.ResumeLayout(false);
-            this.dockPanel_Utilities.ResumeLayout(false);
+            this.Text = "EQ Pro Home";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.dockPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.centerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel_EquipList;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel_EnvParam;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel_UserAccount;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnEnvParam;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel_Utilities;
-        private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
-        private System.Windows.Forms.PictureBox picBoxUser;
+        private System.Windows.Forms.Panel centerPanel;
+        private System.Windows.Forms.Panel panel3;
     }
 }

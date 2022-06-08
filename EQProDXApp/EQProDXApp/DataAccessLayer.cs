@@ -15,13 +15,25 @@ namespace EQProDXApp
         {
             SqlConnection SqlConn = new SqlConnection();
             //EQPro_AcessDB_WthData
-            sConnStr = "Data Source = AMINSPC\\MSSQLSERVER_NEW;Initial Catalog = EQPro_AcessDB_WthData; Integrated Security = true";
+            sConnStr = "Data Source = AMINSPC\\SQLEXPRESS;Initial Catalog = KCI_EQPro; Integrated Security = true";
+            //Data Source = AMINSPC\\SQLEXPRESS; Initial Catalog = KCIEqPro_Umair; Integrated Security = True
             try
             {
                 //SqlConnection objSqlConn = new SqlConnection(sConnStr);
                 SqlConn = new SqlConnection(sConnStr);
                 SqlConn.Open();
                 return SqlConn;
+                //if (SqlConn != null && SqlConn.State == ConnectionState.Closed)
+                //{
+                //    return null;
+                //}
+                //else
+                //{                    
+                //    SqlConn.Open();
+                //    return SqlConn;
+                //}
+
+                //return SqlConn;
             }
             catch (Exception ex)
             {

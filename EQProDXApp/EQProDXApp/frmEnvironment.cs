@@ -29,7 +29,15 @@ namespace EQProDXApp
         private void frmEnvironment_Load(object sender, EventArgs e)
         {
             sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-            objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant);
+            if (objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant) == true)
+            {
+                objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant);
+            }
+            else
+            {
+                MessageBox.Show("Error in connection string opening the DB ");
+                new Exception("Error in connection string opening the DB ");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -147,10 +155,14 @@ namespace EQProDXApp
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            btnAdd.Text = "Add";
-
+            //this.Close();
+            Form objOpenFrm = Application.OpenForms["frmEnvironment"];
+            if (objOpenFrm != null)
+            {
+                objOpenFrm.Close();
+            }
         }
 
         private void cmbBoxtxtPlant_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,17 +200,39 @@ namespace EQProDXApp
         }
 
         private void btnMianPg_Click(object sender, EventArgs e)
+        {         
+            Form objOpenFrm = Application.OpenForms["frmEnvironment"];
+            if (objOpenFrm != null)
+            {
+                objOpenFrm.Close();
+                frmMain objFrmMain = new frmMain();
+                objFrmMain.Show();
+            }
+            
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            //frmEnvironment objFrmEnvirt = new frmEnvironment();
-            //objFrmEnvirt.Hide();
-            //this.Hide();
+            ResetForm();
+        }
+        private void ResetForm()
+        {
+            cmbBoxtxtPlant.Text = "";
+            cmbBoxtxtPlant.Text = "";
+            //textBoxVerifyPass.Text = "";
+            //textBoxFN.Text = "";
+            //textBoxMN.Text = "";
+            //textBoxLN.Text = "";
+            //textBoxPrefix.Text = "";
+            //textBoxSuffix.Text = "";
+            //textBoxEmail.Text = "";
+            //textBoxSignature.Text = "";
+            //comboBoxEQRole.Text = "";
+            //comboBoxEQUserRole.Text = "";
+            //textBoxEQProUserID.Text = "Click Here";
 
-           // this.Close ();
-            this.Hide();
-
-            frmMain objFrmMain1 = new frmMain();
-            objFrmMain1.Show();
-
+            //textBoxUpdatedPassDate.Text = DateTime.Now.ToString();
+            btnAdd.Text = "Add";
         }
     }
 }

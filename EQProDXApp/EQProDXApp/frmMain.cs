@@ -13,7 +13,7 @@ namespace EQProDXApp
     public partial class frmMain : Form
     {
         UserForm objUserForm;
-        frmEnvironment objFrmEnvirt;
+        frmCreateRoom objFrmEnvirt;
 
         public frmMain()
         {
@@ -73,7 +73,7 @@ namespace EQProDXApp
             {
                 objOpenFrm.Close();
                 closeAllForms();
-                frmEnvironment objFrmEnvirt = new frmEnvironment();
+                frmCreateRoom objFrmEnvirt = new frmCreateRoom();
                 objFrmEnvirt.TopLevel = false;
                 this.centerPanel.Controls.Add(objFrmEnvirt);
                 objFrmEnvirt.Dock = DockStyle.Fill;
@@ -82,7 +82,7 @@ namespace EQProDXApp
             else
             {   
                 closeAllForms();
-                frmEnvironment objFrmEnvirt = new frmEnvironment();
+                frmCreateRoom objFrmEnvirt = new frmCreateRoom();
                 objFrmEnvirt.TopLevel = false;
                 this.centerPanel.Controls.Add(objFrmEnvirt);
                 objFrmEnvirt.Dock = DockStyle.Fill;
@@ -95,6 +95,16 @@ namespace EQProDXApp
         private void btnExit_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(-1);
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+            Visible = true;
+        }
+
+        private void pnlEnvironmental_Paint(object sender, PaintEventArgs e)
+        {
+            Visible = false;
         }
     }
 }

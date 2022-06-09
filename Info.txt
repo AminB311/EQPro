@@ -5,3 +5,6 @@ url = https://github.com/AminB311/EQPro
 https://github.com/AminB311/EQPro.git
 
 GitHub warning to add .suo File
+
+GitHub warning to add txt File
+

@@ -18,8 +18,8 @@ namespace EQProDXApp
         DataTable dataTable = new DataTable();
         int userID;
         //Set it to false to see the Non-Admin Form
-        //bool isAdmin = true;
-        bool isAdmin = false;
+        bool isAdmin = true;
+        //bool isAdmin = false;
 
         public UserForm()
         {

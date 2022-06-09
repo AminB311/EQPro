@@ -121,5 +121,14 @@
   <ItemGroup>
     <Folder Include="Classes\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pics\Team_Depositphotos_16.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pics\sign-form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pics\Form.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

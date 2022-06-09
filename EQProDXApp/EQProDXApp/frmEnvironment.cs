@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 namespace EQProDXApp
 {
     
-    public partial class frmEnvironment : Form
+    public partial class frmCreateRoom : Form
     { 
         string sSql = "";
         //int iCount= 0;
@@ -21,7 +21,7 @@ namespace EQProDXApp
         SqlConnection SqlConn = new SqlConnection();
         DataSet sqlDtSet = new DataSet();
         DataTable sqlDtTbl = new DataTable();
-        public frmEnvironment()
+        public frmCreateRoom()
         {
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace EQProDXApp
         private void frmEnvironment_Load(object sender, EventArgs e)
         {
             sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-            if (objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant) == true)
+            if (objPubClass.Load_CmbBoxValues(sSql, cmbStationName) == true)
             {
-                objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant);
+                objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
             }
             else
             {
@@ -42,63 +42,65 @@ namespace EQProDXApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
+            string sStationName, sRoomNo, sDescription;
             try
             {
                 if (btnAdd.Text == "Add")
                 {
-                    cmbBoxtxtPlant.Text = "";
-                    tBoxPlanRev.Text = "";
-                    tBoxZoneID.Text = "";
-                    tBoxPlantSearched.Text = "";
+                    cmbStationName.Text = "";
+                    tBoxRoomNo.Text = "";
+                    tBoxDescrip.Text = "";                  
                     btnAdd.Text = "Save";
                 }
                 else if (btnAdd.Text == "Save")
                 {
-                    stxtPlant = stxtPlanRev = stxtZoneID = stxtPlantSearched = "";
+                    sStationName =  sRoomNo = sDescription = "";
                     btnAdd.Enabled = false;
                     //sSql = "SELECT txtPlant, txtPlanRev, txtZoneID, txtPlantSearched FROM tblEnviParameterCurrentInfo where txtPlant = " + "'" + stxtPlant + "'";
-                    //sSql = "SELECT Plant,EquipmentID,Equip_Revision,ZoneID,ZoneRev  FROM TblEquipmentAssignment where StationName = " + sStName + " ";
-                    if (String.IsNullOrEmpty(cmbBoxtxtPlant.Text) == false)
+                    if (String.IsNullOrEmpty(cmbStationName.Text) == false)
                     {
-                        stxtPlanRev = "";
-                        stxtPlant = cmbBoxtxtPlant.Text;
-                        sSql = "SELECT txtPlanRev FROM tblEnviParameterCurrentInfo where txtPlant = '" + stxtPlant + "'";
-                        stxtPlanRev = objPubClass.Get_ValueStrfromTable(sSql);
-                        if (String.IsNullOrEmpty(stxtPlanRev) == false)
+                        //sStationName, sRoomNo, sDescription
+                        string sStationNameExist = "";
+                        sStationName = cmbStationName.Text;
+                        sSql = "SELECT txtPlanRev FROM tblEnviParameterCurrentInfo where txtPlant = '" + sStationName + "'";
+                        sStationNameExist = objPubClass.Get_ValueStrfromTable(sSql);
+                        if (String.IsNullOrEmpty(sStationNameExist) == false)
                         {
                             MessageBox.Show("Plant already exists, please enter a new Plant", "Existing Field");
                             btnAdd.Enabled = true;
                         }
                         else
                         {
-                            stxtPlant = cmbBoxtxtPlant.Text;
-                            stxtPlanRev = tBoxPlanRev.Text;
-                            stxtZoneID = tBoxZoneID.Text;
-                            stxtPlantSearched = tBoxPlantSearched.Text;
+                          DialogResult drResult =      MessageBox.Show("Plant name currently not in EQPro. Do you wish to add this Plant toEQPro?", "Unknown Plant",MessageBoxButtons.YesNo);
 
-                            sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
-                                       "Values('" + stxtPlant + "','" + stxtPlanRev + "','" + stxtZoneID + "', '" + stxtPlantSearched + "')";
+                            if (drResult == DialogResult.Yes)
+                            {
+                                sStationName = cmbStationName.Text;
+                                sRoomNo = tBoxRoomNo.Text;
+                                sDescription = tBoxDescrip.Text;
 
-                            if (objPubClass.AddNew_Values(sSql) == 1)
-                            {
-                                cmbBoxtxtPlant.Text = "";
-                                MessageBox.Show("Plant added successfully", "Transacntion");
-                                sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error Plant was not added", "Transacntion");
+
+                                sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
+                                           "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
+
+                                if (objPubClass.AddNew_Values(sSql) == 1)
+                                {
+                                    cmbStationName.Text = "";
+                                    MessageBox.Show("Plant added successfully", "Transacntion");
+                                    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
+                                    objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error Plant was not added", "Transacntion");
+                                }
                             }
 
                             btnAdd.Text = "Add";
                             btnAdd.Enabled = true;
-                            cmbBoxtxtPlant.Text = "";
-                            tBoxPlanRev.Text = "";
-                            tBoxZoneID.Text = "";
-                            tBoxPlantSearched.Text = "";
-                            btnAdd.Text = "Save";
+                            tBoxRoomNo.Text = "";
+                            tBoxDescrip.Text = "";                           
+                            //btnAdd.Text = "Save";
                         }
                     }
                     else
@@ -120,25 +122,25 @@ namespace EQProDXApp
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to Delete the Plant", "Please Confirm", MessageBoxButtons.YesNoCancel);
 
-                if (String.IsNullOrEmpty(cmbBoxtxtPlant.Text) == false)
+                if (String.IsNullOrEmpty(cmbStationName.Text) == false)
                 {
-                    stxtPlant = cmbBoxtxtPlant.Text;
+                    stxtPlant = cmbStationName.Text;
                 }
                 else
                 {
                     MessageBox.Show("Plant can't be empty", "Empty Field");
                 }
 
-                if ((result == DialogResult.Yes) && (String.IsNullOrEmpty(cmbBoxtxtPlant.Text) == false))
+                if ((result == DialogResult.Yes) && (String.IsNullOrEmpty(cmbStationName.Text) == false))
                 {
-                    stxtPlant = cmbBoxtxtPlant.Text;
+                    stxtPlant = cmbStationName.Text;
                     //sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
                     sSql = "Delete FROM tblEnviParameterCurrentInfo where txtPlant = '" + stxtPlant + "'";
                     objPubClass.Delete_SelectedValues(sSql);
 
-                    cmbBoxtxtPlant.Text = "";
+                    cmbStationName.Text = "";
                     sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                    objPubClass.Load_CmbBoxValues(sSql, cmbBoxtxtPlant);
+                    objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
                 }
                 else if (result == DialogResult.No)
                 {
@@ -167,14 +169,14 @@ namespace EQProDXApp
 
         private void cmbBoxtxtPlant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sSql, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
+            string  sSql, sStatName, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
             DataTable dtTbl = new DataTable();
             int iCount;
             try
             {
-                stxtPlanRev = stxtZoneID = stxtPlantSearched = "";
-                stxtPlant = cmbBoxtxtPlant.Text;
-                sSql = "SELECT txtPlant, txtPlanRev, txtZoneID, txtPlantSearched FROM tblEnviParameterCurrentInfo where txtPlant = " + "'" + stxtPlant + "'";
+                sStatName = stxtPlanRev = stxtZoneID = stxtPlantSearched = "";
+                sStatName = cmbStationName.Text;
+                sSql = "SELECT txtPlant, txtPlanRev, txtZoneID, txtPlantSearched FROM tblEnviParameterCurrentInfo where txtPlant = " + "'" + sStatName + "'";
                 //sSql = "SELECT Plant,EquipmentID,Equip_Revision,ZoneID,ZoneRev  FROM TblEquipmentAssignment where StationName = " + sStName + " ";
                 dtTbl = objPubClass.Get_DataTable(sSql);
                 if (dtTbl.Rows.Count > 0)
@@ -182,14 +184,14 @@ namespace EQProDXApp
                     iCount = 0;
                     foreach (DataRow dr_Row in dtTbl.Rows)
                     {
-                        stxtPlanRev = dtTbl.Rows[iCount][1].ToString().TrimEnd();
+                        sStatName = dtTbl.Rows[iCount][1].ToString().TrimEnd();
                         stxtZoneID = dtTbl.Rows[iCount][2].ToString().TrimEnd();
                         stxtPlantSearched = dtTbl.Rows[iCount][3].ToString().TrimEnd();
                     }
                 }
-                tBoxPlanRev.Text = stxtPlanRev;
-                tBoxZoneID.Text = stxtZoneID;
-                tBoxPlantSearched.Text = stxtPlantSearched;
+                cmbStationName.Text = sStatName;
+                //tBoxPlantSearched.Text = stxtPlantSearched;
+                tBoxDescrip.Text = stxtPlanRev;
             }
 
             catch (Exception ex)
@@ -217,8 +219,8 @@ namespace EQProDXApp
         }
         private void ResetForm()
         {
-            cmbBoxtxtPlant.Text = "";
-            cmbBoxtxtPlant.Text = "";
+            cmbStationName.Text = "";
+            cmbStationName.Text = "";
             //textBoxVerifyPass.Text = "";
             //textBoxFN.Text = "";
             //textBoxMN.Text = "";
@@ -233,6 +235,16 @@ namespace EQProDXApp
 
             //textBoxUpdatedPassDate.Text = DateTime.Now.ToString();
             btnAdd.Text = "Add";
+        }
+
+        private void lblEnv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tBoxPlanRev_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

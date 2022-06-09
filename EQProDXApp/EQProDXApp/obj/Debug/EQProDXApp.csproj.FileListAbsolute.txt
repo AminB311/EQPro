@@ -159,7 +159,6 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\ja\DevExpress.Pdf.v21.2.Core.reso
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\ru\DevExpress.Pdf.v21.2.Core.resources.dll
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.AssemblyReference.cache
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.SuggestedBindingRedirects.cache
-C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvironment.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmMain.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.Properties.Resources.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.GenerateResource.cache
@@ -169,3 +168,4 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.UserForm.resources
+C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmCreateRoom.resources

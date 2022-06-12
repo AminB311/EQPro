@@ -297,13 +297,15 @@
             this.comboBoxEQRole.FormattingEnabled = true;
             this.comboBoxEQRole.Items.AddRange(new object[] {
             "Preparer",
-            "Viewer",
-            "Approver"});
+            "Reiewer",
+            "Approver ",
+            "ReadOnly"});
             this.comboBoxEQRole.Location = new System.Drawing.Point(534, 286);
             this.comboBoxEQRole.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxEQRole.Name = "comboBoxEQRole";
             this.comboBoxEQRole.Size = new System.Drawing.Size(200, 30);
             this.comboBoxEQRole.TabIndex = 21;
+            this.comboBoxEQRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxEQRole_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -320,18 +322,19 @@
             // comboBoxEQUserRole
             // 
             this.comboBoxEQUserRole.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxEQUserRole.Enabled = false;
             this.comboBoxEQUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEQUserRole.FormattingEnabled = true;
             this.comboBoxEQUserRole.Items.AddRange(new object[] {
             "Admin",
             "ReadOnly",
-            "Edit",
-            "Report"});
+            "ReportsOnly"});
             this.comboBoxEQUserRole.Location = new System.Drawing.Point(751, 286);
             this.comboBoxEQUserRole.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxEQUserRole.Name = "comboBoxEQUserRole";
             this.comboBoxEQUserRole.Size = new System.Drawing.Size(200, 30);
             this.comboBoxEQUserRole.TabIndex = 23;
+            this.comboBoxEQUserRole.Text = "Admin";
             // 
             // label12
             // 
@@ -431,7 +434,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(59, 449);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(892, 58);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(632, 58);
             this.flowLayoutPanel1.TabIndex = 35;
             // 
             // btnAdd

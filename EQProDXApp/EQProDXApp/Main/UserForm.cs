@@ -14,7 +14,7 @@ namespace EQProDXApp
     public partial class UserForm : Form
     {
         ToolTip toolTip = new ToolTip();
-        Class_PublicMethods methods = new Class_PublicMethods();
+        Class_PublicMethods objMethods = new Class_PublicMethods();
         DataTable dataTable = new DataTable();
         int userID;
         //Set it to false to see the Non-Admin Form
@@ -34,7 +34,7 @@ namespace EQProDXApp
                 btnDelete.Visible = false;
             }
             textBoxUpdatedPassDate.Text = DateTime.Today.ToString();
-            methods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+            objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -183,7 +183,7 @@ namespace EQProDXApp
                 MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-            if (methods.CheckForUniqueID("select COUNT(UserID) from dbo.UserMain where EQProUserID = '" + textBoxEQProUserID.Text + "'") > 0)
+            if (objMethods.CheckForUniqueID("select COUNT(UserID) from dbo.UserMain where EQProUserID = '" + textBoxEQProUserID.Text + "'") > 0)
             {
                 MessageBox.Show("EQ Pro User ID is not Unique! Try Another Username", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 errorProvider.SetError(textBoxEQProUserID, "ID already Exist!");
@@ -239,7 +239,7 @@ namespace EQProDXApp
         private void comboBoxID_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnAdd.Text = "Update";
-            dataTable = methods.Get_DataTable("SELECT * from dbo.UserMain Where UserID = " + int.Parse(comboBoxID.Text));
+            dataTable = objMethods.Get_DataTable("SELECT * from dbo.UserMain Where UserID = " + int.Parse(comboBoxID.Text));
             userID = int.Parse(dataTable.Rows[0][0].ToString());
             textBoxEQProUserID.Text = dataTable.Rows[0][1].ToString();
             textBoxNewPass.Text = dataTable.Rows[0][2].ToString();
@@ -262,8 +262,8 @@ namespace EQProDXApp
             DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                methods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                methods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
+                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
                 ResetForm();
             }
             else if (dialogResult == DialogResult.No)
@@ -300,8 +300,8 @@ namespace EQProDXApp
             DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                methods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                methods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
+                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
                 ResetForm();
             }
             else if (dialogResult == DialogResult.No)
@@ -328,6 +328,11 @@ namespace EQProDXApp
                 frmMain objFrmMain = new frmMain();
                 objFrmMain.Show();
             }
+        }
+
+        private void comboBoxEQRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

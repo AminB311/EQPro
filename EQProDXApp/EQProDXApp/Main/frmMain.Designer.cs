@@ -278,6 +278,7 @@
             this.Controls.Add(this.centerPanel);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.dockPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1442, 792);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

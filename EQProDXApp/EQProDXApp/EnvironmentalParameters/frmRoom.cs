@@ -26,9 +26,10 @@ namespace EQProDXApp
             InitializeComponent();
         }
 
-        private void frmEnvironment_Load(object sender, EventArgs e)
+        private void frmCreateRoom_Load(object sender, EventArgs e)
         {
-            sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
+            sSql = "SELECT PlantNumber,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber, Parameter,"+
+                   "LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
             if (objPubClass.Load_CmbBoxValues(sSql, cmbStationName) == true)
             {
                 objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
@@ -42,7 +43,8 @@ namespace EQProDXApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string sStationName, sRoomNo, sDescription;
+            string sPlantNumber, sPlantName, sLocation, sBuilding, sRoomNumber, sDescription, sZone, sDocketNumber, sParameter;
+            string sLicensingCriteria, sStatus, sDescriptionChange, sRevisionNumber;
             try
             {
                 if (btnAdd.Text == "Add")
@@ -54,15 +56,17 @@ namespace EQProDXApp
                 }
                 else if (btnAdd.Text == "Save")
                 {
-                    sStationName =  sRoomNo = sDescription = "";
+                    sPlantNumber= sPlantName= sLocation= sBuilding= sRoomNumber= sDescription= sZone= sDocketNumber= sParameter = "";
+                    sLicensingCriteria= sStatus= sDescriptionChange= sRevisionNumber = "";
                     btnAdd.Enabled = false;
-                    //sSql = "SELECT txtPlant, txtPlanRev, txtZoneID, txtPlantSearched FROM tblEnviParameterCurrentInfo where txtPlant = " + "'" + stxtPlant + "'";
+                    //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
+                    //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
                     if (String.IsNullOrEmpty(cmbStationName.Text) == false)
                     {
                         //sStationName, sRoomNo, sDescription
                         string sStationNameExist = "";
-                        sStationName = cmbStationName.Text;
-                        sSql = "SELECT txtPlanRev FROM tblEnviParameterCurrentInfo where txtPlant = '" + sStationName + "'";
+                        sPlantName = cmbStationName.Text;
+                        sSql = "SELECT PlantNumber FROM RoomStation where PlantName = '" + sPlantName + "'";
                         sStationNameExist = objPubClass.Get_ValueStrfromTable(sSql);
                         if (String.IsNullOrEmpty(sStationNameExist) == false)
                         {
@@ -71,29 +75,43 @@ namespace EQProDXApp
                         }
                         else
                         {
-                          DialogResult drResult =      MessageBox.Show("Plant name currently not in EQPro. Do you wish to add this Plant toEQPro?", "Unknown Plant",MessageBoxButtons.YesNo);
+                          DialogResult drResult = MessageBox.Show("Plant name currently not in EQPro. Do you wish to add this Plant toEQPro?", "Unknown Plant",MessageBoxButtons.YesNo);
 
                             if (drResult == DialogResult.Yes)
                             {
-                                sStationName = cmbStationName.Text;
-                                sRoomNo = tBoxRoomNo.Text;
+//                                MUST be exactly as you wish it to appear in printedEQ Binders, as
+//the station name cannot be changed after creation.
+
+//                                The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
+//the station name cannot be changed after creation
+
+//                                    Yes and then OK button to the message box displayed by EQPro and proceed to
+//enter the Plant Docket Number(s) and Plant Licensing Criteria respectively.Note clicking
+//cancel button suspends Station creation process\\
+
+//                                    If the user clicks “OK” button after providing the Docket Number(s), EQPro displays the
+//following message with Plant Licensing Criteria expected values.
+//                                    Station creation has been cancelled
+
+                                sPlantName = cmbStationName.Text;
+                                sRoomNumber = tBoxRoomNo.Text;
                                 sDescription = tBoxDescrip.Text;
 
 
-                                sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
-                                           "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
+                                //sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
+                                //           "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
 
-                                if (objPubClass.AddNew_Values(sSql) == 1)
-                                {
-                                    cmbStationName.Text = "";
-                                    MessageBox.Show("Plant added successfully", "Transacntion");
-                                    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                    objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Error Plant was not added", "Transacntion");
-                                }
+                                //if (objPubClass.AddNew_Values(sSql) == 1)
+                                //{
+                                //    cmbStationName.Text = "";
+                                //    MessageBox.Show("Plant added successfully", "Transacntion");
+                                //    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
+                                //    objPubClass.Load_CmbBoxValues(sSql, cmbStationName);
+                                //}
+                                //else
+                                //{
+                                //    MessageBox.Show("Error Plant was not added", "Transacntion");
+                                //}
                             }
 
                             btnAdd.Text = "Add";
@@ -160,11 +178,11 @@ namespace EQProDXApp
         private void btnClose_Click(object sender, EventArgs e)
         {
             //this.Close();
-            Form objOpenFrm = Application.OpenForms["frmEnvironment"];
+            Form objOpenFrm = Application.OpenForms["frmRoom"];
             if (objOpenFrm != null)
             {
                 objOpenFrm.Close();
-            }
+            }           
         }
 
         private void cmbBoxtxtPlant_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,6 +261,16 @@ namespace EQProDXApp
         }
 
         private void tBoxPlanRev_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbStationName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tBoxRoomNo_EditValueChanged(object sender, EventArgs e)
         {
 
         }

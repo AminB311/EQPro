@@ -44,7 +44,11 @@ namespace EQProDXApp
                 if (btnAdd.Text.Equals("Add"))
                 {
                     User user = readFormData();
-                    user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, @DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)", user, "User Added Successfully!");
+                    user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, " +
+                        "ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) " +
+                        "VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, " +
+                        "@DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)", 
+                        user, "User Added Successfully!");
                     ResetForm();
                 }
                 else

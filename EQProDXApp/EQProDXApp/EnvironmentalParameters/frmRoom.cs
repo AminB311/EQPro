@@ -96,7 +96,6 @@ namespace EQProDXApp
                                                     "'" + sRoomNumber + "','" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
                                                    "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
                                         }
-
                                     }
                                     else
                                     {

@@ -169,3 +169,4 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.UserForm.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmCreateRoom.resources
+C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvParam.resources

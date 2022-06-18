@@ -34,15 +34,18 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDescription = new DevExpress.XtraEditors.LabelControl();
-            this.tBoxDescrip = new DevExpress.XtraEditors.TextEdit();
+            this.txtBoxDescription = new DevExpress.XtraEditors.TextEdit();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblEnv = new System.Windows.Forms.Label();
             this.lblCrtRoom = new System.Windows.Forms.Label();
-            this.tBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
-            this.cmbStationName = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxDescrip.Properties)).BeginInit();
+            this.txtBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbboxStation = new DevExpress.XtraEditors.ComboBoxEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxRoomNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStationName
@@ -108,16 +111,16 @@
             this.lblDescription.TabIndex = 9;
             this.lblDescription.Text = "Description";
             // 
-            // tBoxDescrip
+            // txtBoxDescription
             // 
-            this.tBoxDescrip.Location = new System.Drawing.Point(500, 456);
-            this.tBoxDescrip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.tBoxDescrip.Name = "tBoxDescrip";
-            this.tBoxDescrip.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tBoxDescrip.Properties.Appearance.Options.UseFont = true;
-            this.tBoxDescrip.Size = new System.Drawing.Size(162, 26);
-            this.tBoxDescrip.TabIndex = 3;
-            this.tBoxDescrip.EditValueChanged += new System.EventHandler(this.tBoxPlanRev_EditValueChanged);
+            this.txtBoxDescription.Location = new System.Drawing.Point(500, 456);
+            this.txtBoxDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtBoxDescription.Properties.Appearance.Options.UseFont = true;
+            this.txtBoxDescription.Size = new System.Drawing.Size(162, 26);
+            this.txtBoxDescription.TabIndex = 3;
+            this.txtBoxDescription.EditValueChanged += new System.EventHandler(this.tBoxPlanRev_EditValueChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -157,27 +160,40 @@
             this.lblCrtRoom.TabIndex = 38;
             this.lblCrtRoom.Text = "Create Room";
             // 
-            // tBoxRoomNo
+            // txtBoxRoomNo
             // 
-            this.tBoxRoomNo.Location = new System.Drawing.Point(500, 400);
-            this.tBoxRoomNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.tBoxRoomNo.Name = "tBoxRoomNo";
-            this.tBoxRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tBoxRoomNo.Properties.Appearance.Options.UseFont = true;
-            this.tBoxRoomNo.Size = new System.Drawing.Size(162, 26);
-            this.tBoxRoomNo.TabIndex = 2;
-            this.tBoxRoomNo.EditValueChanged += new System.EventHandler(this.tBoxRoomNo_EditValueChanged);
+            this.txtBoxRoomNo.Location = new System.Drawing.Point(500, 400);
+            this.txtBoxRoomNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtBoxRoomNo.Name = "txtBoxRoomNo";
+            this.txtBoxRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtBoxRoomNo.Properties.Appearance.Options.UseFont = true;
+            this.txtBoxRoomNo.Size = new System.Drawing.Size(162, 26);
+            this.txtBoxRoomNo.TabIndex = 2;
+            this.txtBoxRoomNo.EditValueChanged += new System.EventHandler(this.tBoxRoomNo_EditValueChanged);
             // 
-            // cmbStationName
+            // btnClear
             // 
-            this.cmbStationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStationName.FormattingEnabled = true;
-            this.cmbStationName.Location = new System.Drawing.Point(500, 350);
-            this.cmbStationName.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbStationName.Name = "cmbStationName";
-            this.cmbStationName.Size = new System.Drawing.Size(162, 30);
-            this.cmbStationName.TabIndex = 1;
-            this.cmbStationName.SelectedIndexChanged += new System.EventHandler(this.cmbStationName_SelectedIndexChanged);
+            this.btnClear.Location = new System.Drawing.Point(0, 0);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            // 
+            // cmbboxStation
+            // 
+            this.cmbboxStation.Location = new System.Drawing.Point(500, 347);
+            this.cmbboxStation.Name = "cmbboxStation";
+            this.cmbboxStation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbboxStation.Size = new System.Drawing.Size(162, 26);
+            this.cmbboxStation.TabIndex = 1;
+            this.cmbboxStation.SelectedIndexChanged += new System.EventHandler(this.cmbboxStation_SelectedIndexChanged);
             // 
             // frmCreateRoom
             // 
@@ -185,12 +201,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
-            this.Controls.Add(this.tBoxRoomNo);
-            this.Controls.Add(this.cmbStationName);
+            this.Controls.Add(this.cmbboxStation);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.txtBoxRoomNo);
             this.Controls.Add(this.lblCrtRoom);
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.tBoxDescrip);
+            this.Controls.Add(this.txtBoxDescription);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblRoomNumber);
             this.Controls.Add(this.lblStationName);
@@ -200,9 +218,10 @@
             this.Name = "frmCreateRoom";
             this.Text = "RoomForm";
             this.Load += new System.EventHandler(this.frmCreateRoom_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxDescrip.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tBoxRoomNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,12 +233,14 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClose;
         private DevExpress.XtraEditors.LabelControl lblDescription;
-        private DevExpress.XtraEditors.TextEdit tBoxDescrip;
+        private DevExpress.XtraEditors.TextEdit txtBoxDescription;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblEnv;
         private System.Windows.Forms.Label lblCrtRoom;
-        private System.Windows.Forms.ComboBox cmbStationName;
-        private DevExpress.XtraEditors.TextEdit tBoxRoomNo;
+        private DevExpress.XtraEditors.TextEdit txtBoxRoomNo;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbboxStation;
     }
 }
 

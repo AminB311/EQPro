@@ -12,6 +12,7 @@ namespace EQProDXApp
 {
     public partial class frmEnvParam : Form
     {
+        //frmMain objfrmMain;
         public frmEnvParam()
         {
             InitializeComponent();
@@ -37,28 +38,32 @@ namespace EQProDXApp
        
         private void btnRoom_Click(object sender, EventArgs e)
         {
+            frmCreateRoom objFrmEnvirt = new frmCreateRoom();
+            objFrmEnvirt.TopLevel = false;
+            this.centerPanel.Controls.Add(objFrmEnvirt);
+            objFrmEnvirt.Dock = DockStyle.Fill;
+            objFrmEnvirt.Show();
+        }
+             
+        //Close Frm
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            //System.Environment.Exit(-1);
+            //Form objfrmMain = Application.OpenForms["frmMain"];
             Form objOpenFrm = Application.OpenForms["frmEnvParam"];
             if (objOpenFrm != null)
             {
-                closeAllForms();
-                frmCreateRoom objFrmEnvirt = new frmCreateRoom();
-                objFrmEnvirt.TopLevel = false;
-                this.centerPanel.Controls.Add(objFrmEnvirt);
-                objFrmEnvirt.Dock = DockStyle.Fill;
-                objFrmEnvirt.Show();
+                pnlEnvParam.Hide();
+                //objOpenFrm.Close();
+                objOpenFrm.TopLevel = false;
+                //objOpenFrm.Hide();
+                //Form objFrmMain = Application.OpenForms["frmMain"];
+                frmMain objfrmMain = new frmMain();
+                objfrmMain.TopLevel = false;
+                this.centerPanel.Controls.Add(objfrmMain);
+                objfrmMain.Dock = DockStyle.Fill;
+                objfrmMain.Show();
             }
-            else
-            {
-                closeAllForms();
-                frmCreateRoom objFrmEnvirt = new frmCreateRoom();
-                objFrmEnvirt.TopLevel = false;
-                this.centerPanel.Controls.Add(objFrmEnvirt);
-                objFrmEnvirt.Dock = DockStyle.Fill;
-                objFrmEnvirt.Show();
-
-
-            }
-
         }
 
         private void btnEnvParam_Click(object sender, EventArgs e)
@@ -69,19 +74,6 @@ namespace EQProDXApp
         private void btnRevision_Click(object sender, EventArgs e)
         {
 
-        }
-
-        //Close Frm
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            //System.Environment.Exit(-1);
-            pnlEnvParam.Hide(); 
-            closeAllForms();
-            frmMain objFrm = new frmMain();
-            objFrm.TopLevel = false;
-            this.centerPanel.Controls.Add(objFrm);
-            objFrm.Dock = DockStyle.Fill;
-            objFrm.Show();
         }
 
 

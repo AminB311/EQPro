@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace EQProDXApp
 {
-    public partial class UserForm : Form
+    public partial class frmUser : Form
     {
         ToolTip toolTip = new ToolTip();
         Class_PublicMethods objMethods = new Class_PublicMethods();
@@ -21,179 +21,214 @@ namespace EQProDXApp
         bool isAdmin = true;
         //bool isAdmin = false;
 
-        public UserForm()
+        public frmUser()
         {
             InitializeComponent();
         }
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            if (!isAdmin)
+
+            try
             {
-                comboBoxID.Enabled = false;
-                btnDelete.Visible = false;
+                if (!isAdmin)
+                {
+                    comboBoxID.Enabled = false;
+                    btnDelete.Visible = false;
+                }
+                textBoxUpdatedPassDate.Text = DateTime.Today.ToString();
+                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
             }
-            textBoxUpdatedPassDate.Text = DateTime.Today.ToString();
-            objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+            catch (Exception ex)
+            {
+                new Exception("Error in UserForm_Load", ex);
+            }
+           
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (ValidateForm())
+
+            try
             {
-                if (btnAdd.Text.Equals("Add"))
+                if (ValidateForm())
                 {
-                    User user = readFormData();
-                    user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, " +
-                        "ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) " +
-                        "VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, " +
-                        "@DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)", 
-                        user, "User Added Successfully!");
-                    ResetForm();
-                }
-                else
-                {
-                    User user = readFormData();
-                    user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, CanCreateEQProID = @CanCreateEQProID, CanCreateUserID = @CanCreateUserID, EQRole = @EQRole, UserRole = @UserRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
+                    if (btnAdd.Text.Equals("Add"))
+                    {
+                        User user = readFormData();
+                        user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, " +
+                            "ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) " +
+                            "VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, " +
+                            "@DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)",
+                            user, "User Added Successfully!");
+                        ResetForm();
+                    }
+                    else
+                    {
+                        User user = readFormData();
+                        user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, CanCreateEQProID = @CanCreateEQProID, CanCreateUserID = @CanCreateUserID, EQRole = @EQRole, UserRole = @UserRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                new Exception("Error in UserForm_Load", ex);
+            }
+            
         }
 
         private User readFormData()
         {
-            User newUser = new User();
-            newUser.EQProUserID = textBoxEQProUserID.Text;
-            newUser.Password = textBoxNewPass.Text;
-            newUser.FirstName = textBoxFN.Text;
-            newUser.MiddleName = textBoxMN.Text;
-            newUser.LastName = textBoxLN.Text;
-            newUser.Prefix = textBoxPrefix.Text;
-            newUser.Suffix = textBoxSuffix.Text;
-            newUser.ESignature = textBoxSignature.Text;
-            newUser.CanCreateEQProID = false;
-            newUser.CanCreateUserID = false;
-            newUser.EQRole = comboBoxEQRole.SelectedItem.ToString();
-            newUser.UserRole = comboBoxEQUserRole.SelectedItem.ToString();
-            newUser.Email = textBoxEmail.Text;
-            newUser.IsDeleted = false;
+            try
+            {
+                User newUser = new User();
+                newUser.EQProUserID = textBoxEQProUserID.Text;
+                newUser.Password = textBoxNewPass.Text;
+                newUser.FirstName = textBoxFN.Text;
+                newUser.MiddleName = textBoxMN.Text;
+                newUser.LastName = textBoxLN.Text;
+                newUser.Prefix = textBoxPrefix.Text;
+                newUser.Suffix = textBoxSuffix.Text;
+                newUser.ESignature = textBoxSignature.Text;
+                newUser.CanCreateEQProID = false;
+                newUser.CanCreateUserID = false;
+                newUser.EQRole = comboBoxEQRole.SelectedItem.ToString();
+                newUser.UserRole = comboBoxEQUserRole.SelectedItem.ToString();
+                newUser.Email = textBoxEmail.Text;
+                newUser.IsDeleted = false;
 
-            return newUser;
+                return newUser;
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in readFormData", ex);
+                return null;
+
+            }
+
         }
 
         private bool ValidateForm()
         {
-            ErrorProvider errorProvider = new ErrorProvider();
-            var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
-            var symbolRegex = new Regex(@"[@~#$%^&*]");
-            if (textBoxNewPass.Text == "")
+            try
             {
-                MessageBox.Show("Password Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxNewPass, "Empty Field");
-                return false;
-            }
-            if (textBoxVerifyPass.Text == "")
-            {
-                MessageBox.Show("Verify Password Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxVerifyPass, "Empty Field");
-                return false;
-            }
-            if (textBoxFN.Text == "")
-            {
-                MessageBox.Show("First Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxFN, "Empty Field");
-                return false;
-            }
-            if (textBoxLN.Text == "")
-            {
-                MessageBox.Show("Last Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxLN, "Empty Field");
-                return false;
-            }
-            if (textBoxEmail.Text == "")
-            {
-                MessageBox.Show("Email Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxEmail, "Empty Field");
-                return false;
-            }
-            if (textBoxSignature.Text == "")
-            {
-                MessageBox.Show("E-Signature Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxSignature, "Empty Field");
-                return false;
-            }
-            if (comboBoxEQRole.Text == "")
-            {
-                MessageBox.Show("Select EQ Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(comboBoxEQRole, "No Item Selected");
-                return false;
-            }
-            if (comboBoxEQUserRole.Text == "")
-            {
-                MessageBox.Show("Select EQ User Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(comboBoxEQUserRole, "No Item Selected");
-                return false;
-            }
-            if (textBoxNewPass.Text.Length < 8)
-            {
-                MessageBox.Show("Password should be 8 or more characters long!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (!textBoxNewPass.Text.Any(char.IsUpper))
-            {
-                MessageBox.Show("Password must contain at least one Upper Case Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (!textBoxNewPass.Text.Any(char.IsLower))
-            {
-                MessageBox.Show("Password must contain at least one Lower Case Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (!textBoxNewPass.Text.Any(char.IsNumber))
-            {
-                MessageBox.Show("Password must contain at least one Numeric Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (!symbolRegex.IsMatch(textBoxNewPass.Text))
-            {
-                MessageBox.Show("Password must contain at least one Symbol (~ @ # $ % ^ & *)", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (phoneRegex.IsMatch(textBoxNewPass.Text))
-            {
-                MessageBox.Show("Phone No. Cannot be set as Password!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (textBoxNewPass.Text.Contains(textBoxFN.Text) || textBoxNewPass.Text.Contains(textBoxLN.Text))
-            {
-                if (!textBoxFN.Text.Equals("") || !textBoxLN.Text.Equals(""))
+                ErrorProvider errorProvider = new ErrorProvider();
+                var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+                var symbolRegex = new Regex(@"[@~#$%^&*]");
+                if (textBoxNewPass.Text == "")
                 {
-                    MessageBox.Show("Password must not contain your name!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Password Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxNewPass, "Empty Field");
                     return false;
                 }
-                return false;
+                if (textBoxVerifyPass.Text == "")
+                {
+                    MessageBox.Show("Verify Password Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxVerifyPass, "Empty Field");
+                    return false;
+                }
+                if (textBoxFN.Text == "")
+                {
+                    MessageBox.Show("First Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxFN, "Empty Field");
+                    return false;
+                }
+                if (textBoxLN.Text == "")
+                {
+                    MessageBox.Show("Last Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxLN, "Empty Field");
+                    return false;
+                }
+                if (textBoxEmail.Text == "")
+                {
+                    MessageBox.Show("Email Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxEmail, "Empty Field");
+                    return false;
+                }
+                if (textBoxSignature.Text == "")
+                {
+                    MessageBox.Show("E-Signature Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxSignature, "Empty Field");
+                    return false;
+                }
+                if (comboBoxEQRole.Text == "")
+                {
+                    MessageBox.Show("Select EQ Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(comboBoxEQRole, "No Item Selected");
+                    return false;
+                }
+                if (comboBoxEQUserRole.Text == "")
+                {
+                    MessageBox.Show("Select EQ User Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(comboBoxEQUserRole, "No Item Selected");
+                    return false;
+                }
+                if (textBoxNewPass.Text.Length < 8)
+                {
+                    MessageBox.Show("Password should be 8 or more characters long!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (!textBoxNewPass.Text.Any(char.IsUpper))
+                {
+                    MessageBox.Show("Password must contain at least one Upper Case Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (!textBoxNewPass.Text.Any(char.IsLower))
+                {
+                    MessageBox.Show("Password must contain at least one Lower Case Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (!textBoxNewPass.Text.Any(char.IsNumber))
+                {
+                    MessageBox.Show("Password must contain at least one Numeric Character!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (!symbolRegex.IsMatch(textBoxNewPass.Text))
+                {
+                    MessageBox.Show("Password must contain at least one Symbol (~ @ # $ % ^ & *)", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (phoneRegex.IsMatch(textBoxNewPass.Text))
+                {
+                    MessageBox.Show("Phone No. Cannot be set as Password!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (textBoxNewPass.Text.Contains(textBoxFN.Text) || textBoxNewPass.Text.Contains(textBoxLN.Text))
+                {
+                    if (!textBoxFN.Text.Equals("") || !textBoxLN.Text.Equals(""))
+                    {
+                        MessageBox.Show("Password must not contain your name!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+                    return false;
+                }
+                if (!textBoxNewPass.Text.Equals(textBoxVerifyPass.Text))
+                {
+                    MessageBox.Show("Password not matched, Try Again!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (!Regex.IsMatch(textBoxEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
+                {
+                    MessageBox.Show("Incorrect Email Address!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (textBoxEQProUserID.Text.Equals("Click Here"))
+                {
+                    MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return false;
+                }
+                if (objMethods.CheckForUniqueID("select COUNT(UserID) from dbo.UserMain where EQProUserID = '" + textBoxEQProUserID.Text + "'") > 0)
+                {
+                    MessageBox.Show("EQ Pro User ID is not Unique! Try Another Username", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    errorProvider.SetError(textBoxEQProUserID, "ID already Exist!");
+                    return false;
+                }
+                errorProvider.Clear();
             }
-            if (!textBoxNewPass.Text.Equals(textBoxVerifyPass.Text))
+            catch (Exception ex)
             {
-                MessageBox.Show("Password not matched, Try Again!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
+                new Exception("Error in ValidateForm", ex);
             }
-            if (!Regex.IsMatch(textBoxEmail.Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
-            {
-                MessageBox.Show("Incorrect Email Address!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (textBoxEQProUserID.Text.Equals("Click Here"))
-            {
-                MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return false;
-            }
-            if (objMethods.CheckForUniqueID("select COUNT(UserID) from dbo.UserMain where EQProUserID = '" + textBoxEQProUserID.Text + "'") > 0)
-            {
-                MessageBox.Show("EQ Pro User ID is not Unique! Try Another Username", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                errorProvider.SetError(textBoxEQProUserID, "ID already Exist!");
-                return false;
-            }
-            errorProvider.Clear();
             return true;
         }
 
@@ -263,17 +298,25 @@ namespace EQProDXApp
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+
+            try
             {
-                objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
-                ResetForm();
+                DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
+                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                    ResetForm();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
             }
-            else if (dialogResult == DialogResult.No)
+            catch (Exception ex)
             {
-                return;   
-            }            
+                new Exception("Error in buttonDelete_Click", ex);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -301,29 +344,57 @@ namespace EQProDXApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
-                ResetForm();
+                DialogResult dialogResult = MessageBox.Show("Do you really want to Delete this User?", "Attention Required", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
+                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                    ResetForm();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
             }
-            else if (dialogResult == DialogResult.No)
+            catch (Exception ex)
             {
-                return;
+                new Exception("Error in btnDelete_Click", ex);
             }
+                        
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Form objOpenFrm = Application.OpenForms["UserForm"];
-            if (objOpenFrm != null)
+            try
             {
-                objOpenFrm.Close();
+                Form objOpenFrm = Application.OpenForms["frmUser"];
+                if (objOpenFrm != null)
+                {
+                    objOpenFrm.Hide();
+                    objOpenFrm.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                new Exception("Error in btnClose_Click", ex);
+            }
+            //Form objOpenFrm = Application.OpenForms["frmEnvParam"];
+            //if (objOpenFrm != null)
+            //{
+            //    pnlEnvParam.Hide();
+            //    //objOpenFrm.Close();
+            //    objOpenFrm.TopLevel = false;
+            //    //Form objFrmMain = Application.OpenForms["frmMain"];
+            //    frmMain objFrmMain = new frmMain();
+            //    //objFrmMain.TopLevel = false;
+            //    //this.centerPanel.Controls.Add(objFrmMain);
+            //    objFrmMain.Dock = DockStyle.Fill;
+            //    objFrmMain.Show();
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+            private void btnSignIn_Click(object sender, EventArgs e)
         {
             Form objOpenFrm = Application.OpenForms["UserForm"];
             if (objOpenFrm != null)

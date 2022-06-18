@@ -1,6 +1,6 @@
 ﻿namespace EQProDXApp
 {
-    partial class UserForm
+    partial class frmUser
     {
         /// <summary>
         /// Required designer variable.
@@ -501,7 +501,7 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // UserForm
+            // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -540,7 +540,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "UserForm";
+            this.Name = "frmUser";
             this.Text = "UserForm";
             this.Load += new System.EventHandler(this.UserForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);

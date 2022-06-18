@@ -167,6 +167,6 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CoreCompileInpu
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.csproj.CopyComplete
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.exe
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.pdb
-C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.UserForm.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmCreateRoom.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvParam.resources
+C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmUser.resources

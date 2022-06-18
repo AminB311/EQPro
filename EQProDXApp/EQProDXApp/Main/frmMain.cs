@@ -12,7 +12,7 @@ namespace EQProDXApp
 {
     public partial class frmMain : Form
     {
-        UserForm objUserForm;
+        frmUser objUserForm;
         frmCreateRoom objFrmEnvirt;
 
         public frmMain()
@@ -37,67 +37,35 @@ namespace EQProDXApp
             }
 
         }
-        
+
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            Form objOpenFrm = Application.OpenForms["UserForm"];
-            closeAllForms();
-            UserForm objFrmUsers = new UserForm();
-            objFrmUsers.TopLevel = false;
-            this.centerPanel.Controls.Add(objFrmUsers);
-            objFrmUsers.Dock = DockStyle.Fill;
-            objFrmUsers.Show();
-            //if (objOpenFrm != null)
-            //{
-            //    objOpenFrm.Close();
-            //    closeAllForms();
-            //    UserForm objFrmUsers = new UserForm();
-            //    objFrmUsers.TopLevel = false;
-            //    this.centerPanel.Controls.Add(objFrmUsers);
-            //    objFrmUsers.Dock = DockStyle.Fill;
-            //    objFrmUsers.Show();
-            //}
-            //else
-            //{
-            //    closeAllForms();
-            //    UserForm objFrmUsers = new UserForm();
-            //    objFrmUsers.TopLevel = false;
-            //    this.centerPanel.Controls.Add(objFrmUsers);
-            //    objFrmUsers.Dock = DockStyle.Fill;
-            //    objFrmUsers.Show();
-            //}
+            //Form objOpenFrm = Application.OpenForms["UserForm"];
+            frmUser objFrmUser = new frmUser ();
+            if (objFrmUser != null)
+            {
+                objFrmUser.TopLevel = false;
+                this.centerPanel.Controls.Add(objFrmUser);
+                objFrmUser.Dock = DockStyle.Fill;
+                objFrmUser.Show();
+            }
         }
+
         private void btnEnvParam_Click(object sender, EventArgs e)
         {
-            Form objOpenFrm = Application.OpenForms["frmEnvParam"];
-            closeAllForms();
-            pnlMain.Hide();
-            frmEnvParam objFrm = new frmEnvParam();
-            objFrm.TopLevel = false;
-            this.centerPanel.Controls.Add(objFrm);
-            objFrm.Dock = DockStyle.Fill;
-            objFrm.Show();
-            //if (objOpenFrm != null)
-            //{
-            //    objOpenFrm.Close();
-            //    closeAllForms();
-            //    frmEnvParam objFrmEnvirt = new frmEnvParam();
-            //    objFrmEnvirt.TopLevel = false;
-            //    this.centerPanel.Controls.Add(objFrmEnvirt);
-            //    objFrmEnvirt.Dock = DockStyle.Fill;
-            //    objFrmEnvirt.Show();
-            //}
-            //else
-            //{   
-            //    closeAllForms();
-            //    pnlMain.Hide();
-            //    frmEnvParam objFrmEnvirt = new frmEnvParam();
-            //    objFrmEnvirt.TopLevel = false;
-            //    this.centerPanel.Controls.Add(objFrmEnvirt);
-            //    objFrmEnvirt.Dock = DockStyle.Fill;
-            //    objFrmEnvirt.Show();
-            //}
-
+            Form objOpenFrmMain = Application.OpenForms["frmMain"];
+            if (objOpenFrmMain != null)
+            {
+                //objOpenFrmMain.Hide();
+                //closeAllForms();
+                pnlMain.Hide();
+                frmEnvParam objFrmEnvirt = new frmEnvParam();
+                objFrmEnvirt.TopLevel = false;
+                this.centerPanel.Controls.Add(objFrmEnvirt);
+                objFrmEnvirt.Dock = DockStyle.Fill;
+                objFrmEnvirt.Show();
+                //objOpenFrmMain.Close();
+            }
         }
 
         //Exit App

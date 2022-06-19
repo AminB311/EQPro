@@ -68,7 +68,11 @@ namespace EQProDXApp
 
         private void btnEnvParam_Click(object sender, EventArgs e)
         {
-
+            //frmEnvParamSelScreen objFrmEnvirt = new frmEnvParamSelScreen();
+            //objFrmEnvirt.TopLevel = false;
+            //this.centerPanel.Controls.Add(objFrmEnvirt);
+            //objFrmEnvirt.Dock = DockStyle.Fill;
+            //objFrmEnvirt.Show();
         }
 
         private void btnRevision_Click(object sender, EventArgs e)

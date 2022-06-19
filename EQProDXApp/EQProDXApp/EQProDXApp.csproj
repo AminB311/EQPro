@@ -67,6 +67,12 @@
     <Compile Include="EnvironmentalParameters\EnvironmentalParameters.Designer.cs">
       <DependentUpon>EnvironmentalParameters.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnvironmentalParameters\frmEnvParamSelScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnvironmentalParameters\frmEnvParamSelScreen.Designer.cs">
+      <DependentUpon>frmEnvParamSelScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="EnvironmentalParameters\EnvironmentalParameters.resx">
       <DependentUpon>EnvironmentalParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnvironmentalParameters\frmEnvParamSelScreen.resx">
+      <DependentUpon>frmEnvParamSelScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -8,12 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using DevExpress.XtraEditors;  
+using DevExpress.XtraEditors;
 
-namespace EQProDXApp
-{    
-    public partial class frmCreateRoom : Form
-    { 
+
+namespace EQProDXApp.EnvironmentalParameters
+{
+    public partial class frmEnvParamSelScreen : Form
+    {
+        public frmEnvParamSelScreen()
+        {
+            InitializeComponent();
+        }
+
         string sSql = "";
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
         Class_PublicMethods objClssMethods = new Class_PublicMethods();
@@ -23,11 +29,7 @@ namespace EQProDXApp
         SqlConnection SqlConn = new SqlConnection();
         DataSet sqlDtSet = new DataSet();
         DataTable sqlDtTbl = new DataTable();
-        public frmCreateRoom()
-        {
-            InitializeComponent();
-        }
-
+       
         private void frmCreateRoom_Load(object sender, EventArgs e)
         {
             try
@@ -48,7 +50,7 @@ namespace EQProDXApp
             {
                 new Exception("Error in frmCreateRoom_Load", ex);
             }
-           
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -59,11 +61,11 @@ namespace EQProDXApp
             {
                 if (ValidateForm())
                 {
-                    if (btnAdd.Text == "Add Room")
+                    if (btnFilter.Text == "Add Room")
                     {
                         sPlantNumber = sPlantName = sLocation = sBuilding = sRoomNumber = sDescription = sZone = sDocketNumber = sParameter = "";
                         sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = "";
-                        btnAdd.Enabled = false;
+                        btnFilter.Enabled = false;
                         //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                         //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
                         if (String.IsNullOrEmpty(cmbboxStation.Text) == false)
@@ -79,7 +81,7 @@ namespace EQProDXApp
                             if (String.IsNullOrEmpty(sStationNameExist) == false)
                             {
                                 MessageBox.Show("Plant already exists, please enter a new Plant", "Existing Field");
-                                btnAdd.Enabled = true;
+                                btnFilter.Enabled = true;
                             }
                             else
                             {
@@ -95,15 +97,15 @@ namespace EQProDXApp
                                         if (String.IsNullOrEmpty(vLicensing) == false)
                                         {
                                             sPlantName = cmbboxStation.Text;
-                                            sRoomNumber = txtBoxRoomNo.Text;
-                                            sDescription = txtBoxDescription.Text;
+                                            sRoomNumber = txtBoxStation.Text;
+                                            sDescription = txtBoxStatus.Text;
                                             sDocketNumber = vDocketResult;
                                             sLicensingCriteria = vLicensing;
                                             //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                                             //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
                                             sSql = "Insert into RoomStation(PlantName, Location, Building, RoomNumber, Description, Zone," +
                                                    "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber) " +
-                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sBuilding + "','" + sRoomNumber + "',"+
+                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sBuilding + "','" + sRoomNumber + "'," +
                                                     "'" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
                                                    "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
                                             objClssMethods.AddNew_Values(sSql);
@@ -150,7 +152,7 @@ namespace EQProDXApp
                     else
                     {
                         //Edit Update SQL
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
@@ -171,16 +173,16 @@ namespace EQProDXApp
                     errorProvider.SetError(cmbboxStation, "Empty Field");
                     return false;
                 }
-                if (txtBoxRoomNo.Text == "")
+                if (txtBoxStation.Text == "")
                 {
                     MessageBox.Show("Room Number Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxRoomNo, "Empty Field");
+                    errorProvider.SetError(txtBoxStation, "Empty Field");
                     return false;
                 }
-                if (txtBoxDescription.Text == "")
+                if (txtBoxStatus.Text == "")
                 {
                     MessageBox.Show("Description Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxDescription, "Empty Field");
+                    errorProvider.SetError(txtBoxStatus, "Empty Field");
                     return false;
                 }
             }
@@ -190,7 +192,7 @@ namespace EQProDXApp
                 new Exception("Error in ValidateForm", ex);
             }
 
-            
+
             return true;
         }
         private void ResetRoomValues()
@@ -199,18 +201,18 @@ namespace EQProDXApp
             try
             {
                 cmbboxStation.Text = "";
-                txtBoxRoomNo.Text = "";
-                txtBoxDescription.Text = "";
+                txtBoxStation.Text = "";
+                txtBoxStatus.Text = "";
                 cmbboxStation.Visible = true;
-                btnAdd.Text = "Add";
-                btnAdd.Enabled = true;
+                btnFilter.Text = "Add";
+                btnFilter.Enabled = true;
             }
 
             catch (Exception ex)
             {
                 new Exception("Error in ResetRoomValues", ex);
             }
-           
+
         }
         //private void btnDelete_Click(object sender, EventArgs e)
         //{
@@ -264,8 +266,8 @@ namespace EQProDXApp
             //}           
         }
 
-       private void btnMianPg_Click(object sender, EventArgs e)
-        {         
+        private void btnMianPg_Click(object sender, EventArgs e)
+        {
             Form objOpenFrm = Application.OpenForms["frmEnvironment"];
             if (objOpenFrm != null)
             {
@@ -273,7 +275,7 @@ namespace EQProDXApp
                 frmMain objFrmMain = new frmMain();
                 objFrmMain.Show();
             }
-            
+
         }
         private void lblEnv_Click(object sender, EventArgs e)
         {
@@ -289,7 +291,7 @@ namespace EQProDXApp
         {
 
         }
-        
+
         private void cmbboxStation_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string  sSql, sStatName, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
@@ -301,13 +303,18 @@ namespace EQProDXApp
                 sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbboxStation.Text);
                 dataTable = objClssMethods.Get_DataTable(sSql);
                 //userID = int.Parse(dataTable.Rows[0][0].ToString());
-                txtBoxRoomNo.Text = dataTable.Rows[0][1].ToString();
-                txtBoxDescription.Text = dataTable.Rows[0][2].ToString();
+                txtBoxStation.Text = dataTable.Rows[0][1].ToString();
+                txtBoxStatus.Text = dataTable.Rows[0][2].ToString();
             }
             catch (Exception ex)
             {
                 new Exception("Error in cmbboxStation_SelectedIndexChanged", ex);
             }
+        }
+
+        private void labelControl4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

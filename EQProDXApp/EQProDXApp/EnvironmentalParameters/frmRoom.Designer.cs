@@ -187,8 +187,11 @@
             // 
             // cmbboxStation
             // 
+            this.cmbboxStation.EditValue = "";
             this.cmbboxStation.Location = new System.Drawing.Point(500, 347);
             this.cmbboxStation.Name = "cmbboxStation";
+            this.cmbboxStation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.cmbboxStation.Properties.Appearance.Options.UseFont = true;
             this.cmbboxStation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbboxStation.Size = new System.Drawing.Size(162, 26);

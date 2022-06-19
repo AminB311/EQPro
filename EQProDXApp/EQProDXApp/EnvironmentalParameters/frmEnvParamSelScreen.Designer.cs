@@ -1,6 +1,6 @@
 ﻿namespace EQProDXApp.EnvironmentalParameters
 {
-    partial class frmEnvParamSelScreen
+    partial class EnvParamSelScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,6 @@
             this.txtBoxStatus = new DevExpress.XtraEditors.TextEdit();
             this.lblEnv = new System.Windows.Forms.Label();
             this.txtBoxStation = new DevExpress.XtraEditors.TextEdit();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.cmbboxStation = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbboxRevStation = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -52,6 +50,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtBoxAppBy = new DevExpress.XtraEditors.TextEdit();
             this.txtBoxDateApp = new DevExpress.XtraEditors.TextEdit();
+            this.btnRoleAsg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).BeginInit();
@@ -137,20 +136,6 @@
             this.txtBoxStation.TabIndex = 3;
             this.txtBoxStation.EditValueChanged += new System.EventHandler(this.tBoxRoomNo_EditValueChanged);
             // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(0, 0);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            // 
             // cmbboxStation
             // 
             this.cmbboxStation.EditValue = "";
@@ -219,7 +204,6 @@
             this.labelControl4.Size = new System.Drawing.Size(110, 19);
             this.labelControl4.TabIndex = 42;
             this.labelControl4.Text = "Prepeared By";
-            this.labelControl4.Click += new System.EventHandler(this.labelControl4_Click);
             // 
             // txtBoxPrpBy
             // 
@@ -331,12 +315,28 @@
             this.txtBoxDateApp.Size = new System.Drawing.Size(162, 26);
             this.txtBoxDateApp.TabIndex = 49;
             // 
-            // frmEnvParamSelScreen
+            // btnRoleAsg
+            // 
+            this.btnRoleAsg.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoleAsg.BackColor = System.Drawing.Color.Navy;
+            this.btnRoleAsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoleAsg.ForeColor = System.Drawing.Color.White;
+            this.btnRoleAsg.Location = new System.Drawing.Point(806, 375);
+            this.btnRoleAsg.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRoleAsg.Name = "btnRoleAsg";
+            this.btnRoleAsg.Size = new System.Drawing.Size(140, 38);
+            this.btnRoleAsg.TabIndex = 52;
+            this.btnRoleAsg.Text = "Role Assg";
+            this.btnRoleAsg.UseVisualStyleBackColor = false;
+            this.btnRoleAsg.Click += new System.EventHandler(this.btnRoleAsg_Click);
+            // 
+            // EnvParamSelScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
+            this.Controls.Add(this.btnRoleAsg);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.txtBoxAppBy);
@@ -354,8 +354,6 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.cmbboxRevStation);
             this.Controls.Add(this.cmbboxStation);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtBoxStation);
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.txtBoxStatus);
@@ -363,7 +361,7 @@
             this.Controls.Add(this.lblStationName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmEnvParamSelScreen";
+            this.Name = "EnvParamSelScreen";
             this.Text = "Environmental Parameters Selection Screen";
             this.Load += new System.EventHandler(this.frmCreateRoom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).EndInit();
@@ -388,8 +386,6 @@
         private DevExpress.XtraEditors.TextEdit txtBoxStatus;
         private System.Windows.Forms.Label lblEnv;
         private DevExpress.XtraEditors.TextEdit txtBoxStation;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.ComboBoxEdit cmbboxStation;
         private DevExpress.XtraEditors.ComboBoxEdit cmbboxRevStation;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -406,5 +402,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.TextEdit txtBoxAppBy;
         private DevExpress.XtraEditors.TextEdit txtBoxDateApp;
+        private System.Windows.Forms.Button btnRoleAsg;
     }
 }

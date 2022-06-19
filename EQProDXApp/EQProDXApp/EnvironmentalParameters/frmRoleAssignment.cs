@@ -12,9 +12,9 @@ using DevExpress.XtraEditors;
 
 namespace EQProDXApp.EnvironmentalParameters
 {
-    public partial class EnvParamSelScreen : Form
+    public partial class frmRoleAssignment : Form
     {
-        public EnvParamSelScreen()
+        public frmRoleAssignment()
         {
             InitializeComponent();
         }
@@ -28,16 +28,24 @@ namespace EQProDXApp.EnvironmentalParameters
         SqlConnection SqlConn = new SqlConnection();
         DataSet sqlDtSet = new DataSet();
         DataTable sqlDtTbl = new DataTable();
-       
-        private void frmCreateRoom_Load(object sender, EventArgs e)
+
+        private void frmRoleAssignment_Load(object sender, EventArgs e)
         {
             try
             {
+
+//                SELECT EnvAsgID, PlantID, RoomNumber, RevisionNumber, Status, DateEnvSel
+//  FROM EnvParamAssignment
+
+
+//SELECT UserRoleAsgID, UserID, UserRole, AssignedBy, DateAssigned, CancelledBy, DateCancelled
+//      , PantID, Status
+//  FROM RoleAssignment
                 sSql = "SELECT PlantNumber,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber, Parameter," +
                    "LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
-                if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
+                if (objPubClass.Load_CmbBoxValues(sSql, cmbBoxPrepearer) == true)
                 {
-                    objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
+                    objPubClass.Load_CmbBoxValues(sSql, cmbBoxPrepearer);
                 }
                 else
                 {
@@ -47,7 +55,7 @@ namespace EQProDXApp.EnvironmentalParameters
             }
             catch (Exception ex)
             {
-                new Exception("Error in frmCreateRoom_Load", ex);
+                new Exception("Error in frmRoleAssignment_Load", ex);
             }
 
         }
@@ -60,18 +68,18 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 if (ValidateForm())
                 {
-                    if (btnFilter.Text == "Add Room")
+                    if (btnAssign.Text == "Add Room")
                     {
                         sPlantNumber = sPlantName = sLocation = sBuilding = sRoomNumber = sDescription = sZone = sDocketNumber = sParameter = "";
                         sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = "";
-                        btnFilter.Enabled = false;
+                        btnAssign.Enabled = false;
                         //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                         //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                        if (String.IsNullOrEmpty(cmbboxStation.Text) == false)
+                        if (String.IsNullOrEmpty(cmbBoxPrepearer.Text) == false)
                         {
                             //sStationName, sRoomNo, sDescription
                             string sStationNameExist = "";
-                            sPlantName = cmbboxStation.Text;
+                            sPlantName = cmbBoxPrepearer.Text;
                             sSql = "SELECT PlantNumber FROM RoomStation where PlantName = '" + sPlantName + "'";
                             sStationNameExist = objPubClass.Get_ValueStrfromTable(sSql);
 
@@ -80,7 +88,7 @@ namespace EQProDXApp.EnvironmentalParameters
                             if (String.IsNullOrEmpty(sStationNameExist) == false)
                             {
                                 MessageBox.Show("Plant already exists, please enter a new Plant", "Existing Field");
-                                btnFilter.Enabled = true;
+                                btnAssign.Enabled = true;
                             }
                             else
                             {
@@ -95,9 +103,8 @@ namespace EQProDXApp.EnvironmentalParameters
                                         vLicensing = XtraInputBox.Show("Please in the Plant Licensing Criterea", "Required Plant Licensing Criterea Needed", "", MessageBoxButtons.OKCancel);
                                         if (String.IsNullOrEmpty(vLicensing) == false)
                                         {
-                                            sPlantName = cmbboxStation.Text;
-                                            sRoomNumber = txtBoxStation.Text;
-                                            sDescription = txtBoxStatus.Text;
+                                            sPlantName = cmbBoxPrepearer.Text;
+                                           
                                             sDocketNumber = vDocketResult;
                                             sLicensingCriteria = vLicensing;
                                             //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
@@ -114,36 +121,7 @@ namespace EQProDXApp.EnvironmentalParameters
                                     {
 
                                     }
-                                    ResetRoomValues();
-                                    //if (MessageBoxButtons.OKCancel == DialogResult.Cancel )
-                                    //{
-                                    //}
-                                    //if (vResult == Cancel )
-                                    //{
-                                    //}
-                                    //MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation.
-                                    //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation
-                                    //Yes and then OK button to the message box displayed by EQPro and proceed to
-                                    //enter the Plant Docket Number(s) and Plant Licensing Criteria respectively.Note clicking
-                                    //cancel button suspends Station creation process
-                                    //If the user clicks “OK” button after providing the Docket Number(s), EQPro displays the
-                                    //following message with Plant Licensing Criteria expected values.
-                                    //Station creation has been cancelled
-                                    //sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
-                                    //       "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
-                                    //if (objPubClass.AddNew_Values(sSql) == 1)
-                                    //{
-                                    //    cmbboxStation.Text = "";
-                                    //    MessageBox.Show("Plant added successfully", "Transacntion");
-                                    //    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                    //    objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
-                                    //}
-                                    //else
-                                    //{
-                                    //    MessageBox.Show("Error Plant was not added", "Transacntion");
-                                    //}
+                                    ResetRoleAssigValues();
                                 }
                             }
                         }
@@ -166,24 +144,19 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 ErrorProvider errorProvider = new ErrorProvider();
                 //var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
-                if (cmbboxStation.Text == "")
+                if (cmbBoxPrepearer.Text == "")
                 {
                     MessageBox.Show("Station Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(cmbboxStation, "Empty Field");
+                    errorProvider.SetError(cmbBoxPrepearer, "Empty Field");
                     return false;
                 }
-                if (txtBoxStation.Text == "")
-                {
-                    MessageBox.Show("Room Number Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxStation, "Empty Field");
-                    return false;
-                }
-                if (txtBoxStatus.Text == "")
-                {
-                    MessageBox.Show("Description Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxStatus, "Empty Field");
-                    return false;
-                }
+                //if (txtBoxStation.Text == "")
+                //{
+                //    MessageBox.Show("Room Number Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    errorProvider.SetError(txtBoxStation, "Empty Field");
+                //    return false;
+                //}
+               
             }
 
             catch (Exception ex)
@@ -194,36 +167,25 @@ namespace EQProDXApp.EnvironmentalParameters
 
             return true;
         }
-        private void ResetRoomValues()
+        private void ResetRoleAssigValues()
         {
 
             try
             {
-                cmbboxStation.Text = "";
-                txtBoxStation.Text = "";
-                txtBoxStatus.Text = "";
-                cmbboxStation.Visible = true;
-                btnFilter.Text = "Add";
-                btnFilter.Enabled = true;
+                cmbBoxPrepearer.Text = "";
+                cmbBoxPrepearer.Visible = true;
+                btnAssign.Text = "Add";
+                btnAssign.Enabled = true;
             }
 
             catch (Exception ex)
             {
-                new Exception("Error in ResetRoomValues", ex);
+                new Exception("Error in ResetRoleAssigValues", ex);
             }
 
         }
-        
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            //Form objOpenFrm = Application.OpenForms["frmRoom"];
-            //if (objOpenFrm != null)
-            //{
-            //    objOpenFrm.Close();
-            //}           
-        }
 
+      
         private void btnMianPg_Click(object sender, EventArgs e)
         {
             Form objOpenFrm = Application.OpenForms["frmEnvironment"];
@@ -258,26 +220,20 @@ namespace EQProDXApp.EnvironmentalParameters
             //int iCount;
             try
             {
-                sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbboxStation.Text);
+                sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbBoxPrepearer.Text);
                 dataTable = objClssMethods.Get_DataTable(sSql);
                 //userID = int.Parse(dataTable.Rows[0][0].ToString());
-                txtBoxStation.Text = dataTable.Rows[0][1].ToString();
-                txtBoxStatus.Text = dataTable.Rows[0][2].ToString();
+                //txtBoxStation.Text = dataTable.Rows[0][1].ToString();
             }
             catch (Exception ex)
             {
                 new Exception("Error in cmbboxStation_SelectedIndexChanged", ex);
             }
         }
-              
 
-        private void btnRoleAsg_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            frmRoleAssignment objfrmRoleAssg = new frmRoleAssignment();
-            objfrmRoleAssg.TopLevel = false;
-            //this.centerPanel.Controls.Add(objfrmRoleAssg);
-            objfrmRoleAssg.Dock = DockStyle.Fill;
-            objfrmRoleAssg.Show();
+            this.Close();         
         }
     }
 }

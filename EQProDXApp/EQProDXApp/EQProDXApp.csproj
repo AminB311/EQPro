@@ -61,17 +61,23 @@
   <ItemGroup>
     <Compile Include="Classes\Class_Methods.cs" />
     <Compile Include="Classes\DataAccessLayer.cs" />
-    <Compile Include="EnvironmentalParameters\EnvironmentalParameters.cs">
+    <Compile Include="EnvironmentalParameters\frmEnvironmentalParameters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EnvironmentalParameters\EnvironmentalParameters.Designer.cs">
-      <DependentUpon>EnvironmentalParameters.cs</DependentUpon>
+    <Compile Include="EnvironmentalParameters\frmEnvironmentalParameters.Designer.cs">
+      <DependentUpon>frmEnvironmentalParameters.cs</DependentUpon>
     </Compile>
     <Compile Include="EnvironmentalParameters\frmEnvParamSelScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EnvironmentalParameters\frmEnvParamSelScreen.Designer.cs">
       <DependentUpon>frmEnvParamSelScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnvironmentalParameters\frmRoleAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnvironmentalParameters\frmRoleAssignment.Designer.cs">
+      <DependentUpon>frmRoleAssignment.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\frmMain.cs">
       <SubType>Form</SubType>
@@ -94,11 +100,14 @@
     <Compile Include="Main\UserForm.designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EnvironmentalParameters\EnvironmentalParameters.resx">
-      <DependentUpon>EnvironmentalParameters.cs</DependentUpon>
+    <EmbeddedResource Include="EnvironmentalParameters\frmEnvironmentalParameters.resx">
+      <DependentUpon>frmEnvironmentalParameters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EnvironmentalParameters\frmEnvParamSelScreen.resx">
       <DependentUpon>frmEnvParamSelScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnvironmentalParameters\frmRoleAssignment.resx">
+      <DependentUpon>frmRoleAssignment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EQProDXApp.EnvironmentalParameters;  
 
 namespace EQProDXApp
 {
@@ -68,11 +69,12 @@ namespace EQProDXApp
 
         private void btnEnvParam_Click(object sender, EventArgs e)
         {
-            //frmEnvParamSelScreen objFrmEnvirt = new frmEnvParamSelScreen();
-            //objFrmEnvirt.TopLevel = false;
-            //this.centerPanel.Controls.Add(objFrmEnvirt);
-            //objFrmEnvirt.Dock = DockStyle.Fill;
-            //objFrmEnvirt.Show();
+            EnvParamSelScreen objEnvParamSel = new EnvParamSelScreen();
+            objEnvParamSel.TopLevel = false;
+            this.centerPanel.Controls.Add(objEnvParamSel);
+            objEnvParamSel.Dock = DockStyle.Fill;
+            objEnvParamSel.Show();
+
         }
 
         private void btnRevision_Click(object sender, EventArgs e)

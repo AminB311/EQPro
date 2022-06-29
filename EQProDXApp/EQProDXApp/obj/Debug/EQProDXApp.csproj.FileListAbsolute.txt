@@ -171,4 +171,4 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmCreateRoom.resource
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmEnvParam.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.frmUser.resources
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.EnvironmentalParameters.frmRoleAssignment.resources
-C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.EnvironmentalParameters.EnvParamSelScreen.resources
+C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.EnvironmentalParameters.frmEnvParamSelScreen.resources

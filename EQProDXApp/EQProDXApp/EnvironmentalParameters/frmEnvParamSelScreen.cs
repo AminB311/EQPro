@@ -12,14 +12,15 @@ using DevExpress.XtraEditors;
 
 namespace EQProDXApp.EnvironmentalParameters
 {
-    public partial class EnvParamSelScreen : Form
+    public partial class frmEnvParamSelScreen : Form
     {
-        public EnvParamSelScreen()
+        public frmEnvParamSelScreen()
         {
             InitializeComponent();
         }
 
         string sSql = "";
+        string sEnvAsgID, sPlantID, sRoomNumber, sRevisionNumber, sStatus, sDateEnvSel;
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
         Class_PublicMethods objClssMethods = new Class_PublicMethods();
         //int iCount= 0;
@@ -29,12 +30,16 @@ namespace EQProDXApp.EnvironmentalParameters
         DataSet sqlDtSet = new DataSet();
         DataTable sqlDtTbl = new DataTable();
        
-        private void frmCreateRoom_Load(object sender, EventArgs e)
+        private void frmEnvParamSelScreen_Load(object sender, EventArgs e)
         {
             try
             {
-                sSql = "SELECT PlantNumber,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber, Parameter," +
-                   "LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
+                //string sPlantName;
+                //  SELECT EnvAsgID, PlantID, RoomNumber, RevisionNumber, Status, DateEnvSel
+                //  FROM EnvParamAssignment
+                //sRoomNumber = cmbboxStation.Text;
+                sSql = "SELECT PlantName FROM RoomStation";
+                //sPlantName = objPubClass.Get_ValueStrfromTable(sSql);
                 if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
                 {
                     objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
@@ -54,99 +59,30 @@ namespace EQProDXApp.EnvironmentalParameters
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string sPlantNumber, sPlantName, sLocation, sBuilding, sRoomNumber, sDescription, sZone, sDocketNumber, sParameter;
-            string sLicensingCriteria, sStatus, sDescriptionChange, sRevisionNumber;
             try
             {
                 if (ValidateForm())
                 {
                     if (btnFilter.Text == "Add Room")
                     {
-                        sPlantNumber = sPlantName = sLocation = sBuilding = sRoomNumber = sDescription = sZone = sDocketNumber = sParameter = "";
-                        sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = "";
+                        sEnvAsgID = sPlantID = sRoomNumber = sRevisionNumber = sStatus = sDateEnvSel = "";
                         btnFilter.Enabled = false;
                         //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                         //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
                         if (String.IsNullOrEmpty(cmbboxStation.Text) == false)
                         {
                             //sStationName, sRoomNo, sDescription
-                            string sStationNameExist = "";
-                            sPlantName = cmbboxStation.Text;
-                            sSql = "SELECT PlantNumber FROM RoomStation where PlantName = '" + sPlantName + "'";
-                            sStationNameExist = objPubClass.Get_ValueStrfromTable(sSql);
+                            //string sPlantID = "";
+                            sRoomNumber = cmbboxStation.Text;
+                            sSql = "SELECT RoomNumber FROM EnvParamAssignment where PlantID = '" + sPlantID + "'";
+                            sRoomNumber = objPubClass.Get_ValueStrfromTable(sSql);
 
-                            //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
-                            //the station name cannot be changed after creation.
-                            if (String.IsNullOrEmpty(sStationNameExist) == false)
-                            {
-                                MessageBox.Show("Plant already exists, please enter a new Plant", "Existing Field");
-                                btnFilter.Enabled = true;
-                            }
-                            else
-                            {
-                                DialogResult drResult = MessageBox.Show("Plant name currently not in EQPro. Do you wish to add this Plant to EQPro?", "Unknown Plant", MessageBoxButtons.YesNo);
-                                var vDocketResult = "";
-                                if (drResult == DialogResult.Yes)
-                                {
-                                    vDocketResult = XtraInputBox.Show("Please fill in the Plant Docket Number(s)", "Required Docket Number(s) Needed ", "", MessageBoxButtons.OKCancel);
-                                    if (String.IsNullOrEmpty(vDocketResult) == false)
-                                    {
-                                        var vLicensing = "";
-                                        vLicensing = XtraInputBox.Show("Please in the Plant Licensing Criterea", "Required Plant Licensing Criterea Needed", "", MessageBoxButtons.OKCancel);
-                                        if (String.IsNullOrEmpty(vLicensing) == false)
-                                        {
-                                            sPlantName = cmbboxStation.Text;
-                                            sRoomNumber = txtBoxStation.Text;
-                                            sDescription = txtBoxStatus.Text;
-                                            sDocketNumber = vDocketResult;
-                                            sLicensingCriteria = vLicensing;
-                                            //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
-                                            //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                                            sSql = "Insert into RoomStation(PlantName, Location, Building, RoomNumber, Description, Zone," +
-                                                   "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber) " +
-                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sBuilding + "','" + sRoomNumber + "'," +
-                                                    "'" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
-                                                   "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
-                                            objClssMethods.AddNew_Values(sSql);
-                                        }
-                                    }
-                                    else
-                                    {
-
-                                    }
-                                    ResetRoomValues();
-                                    //if (MessageBoxButtons.OKCancel == DialogResult.Cancel )
-                                    //{
-                                    //}
-                                    //if (vResult == Cancel )
-                                    //{
-                                    //}
-                                    //MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation.
-                                    //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation
-                                    //Yes and then OK button to the message box displayed by EQPro and proceed to
-                                    //enter the Plant Docket Number(s) and Plant Licensing Criteria respectively.Note clicking
-                                    //cancel button suspends Station creation process
-                                    //If the user clicks “OK” button after providing the Docket Number(s), EQPro displays the
-                                    //following message with Plant Licensing Criteria expected values.
-                                    //Station creation has been cancelled
-                                    //sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
-                                    //       "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
-                                    //if (objPubClass.AddNew_Values(sSql) == 1)
-                                    //{
-                                    //    cmbboxStation.Text = "";
-                                    //    MessageBox.Show("Plant added successfully", "Transacntion");
-                                    //    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                    //    objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
-                                    //}
-                                    //else
-                                    //{
-                                    //    MessageBox.Show("Error Plant was not added", "Transacntion");
-                                    //}
-                                }
-                            }
+                            sSql = "Insert into EnvParamAssignment(PlantNumber, PlantName, Location, Building, RoomNumber, Description)" +
+                                   "Values('" + sPlantID + "','" + sRoomNumber  + "','" + sRevisionNumber + "'," +
+                                   "'" + sStatus + "','" + sDateEnvSel + ")";
+                            objClssMethods.AddNew_Values(sSql);
                         }
+                        ResetRoomValues();
                     }
                     else
                     {
@@ -196,7 +132,6 @@ namespace EQProDXApp.EnvironmentalParameters
         }
         private void ResetRoomValues()
         {
-
             try
             {
                 cmbboxStation.Text = "";
@@ -211,17 +146,11 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 new Exception("Error in ResetRoomValues", ex);
             }
-
         }
         
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            //Form objOpenFrm = Application.OpenForms["frmRoom"];
-            //if (objOpenFrm != null)
-            //{
-            //    objOpenFrm.Close();
-            //}           
         }
 
         private void btnMianPg_Click(object sender, EventArgs e)
@@ -233,23 +162,8 @@ namespace EQProDXApp.EnvironmentalParameters
                 frmMain objFrmMain = new frmMain();
                 objFrmMain.Show();
             }
-
-        }
-        private void lblEnv_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tBoxPlanRev_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tBoxRoomNo_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        }       
+             
         private void cmbboxStation_SelectedIndexChanged(object sender, EventArgs e)
         {
             //string  sSql, sStatName, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
@@ -269,15 +183,26 @@ namespace EQProDXApp.EnvironmentalParameters
                 new Exception("Error in cmbboxStation_SelectedIndexChanged", ex);
             }
         }
-              
 
         private void btnRoleAsg_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            this.Close();
             frmRoleAssignment objfrmRoleAssg = new frmRoleAssignment();
-            objfrmRoleAssg.TopLevel = false;
+            //objfrmRoleAssg.TopLevel = false;
             //this.centerPanel.Controls.Add(objfrmRoleAssg);
-            objfrmRoleAssg.Dock = DockStyle.Fill;
+            //objfrmRoleAssg.Dock = DockStyle.Fill;
             objfrmRoleAssg.Show();
+
+
+            //frmEnvParamSelScreen objEnvParamSel = new frmEnvParamSelScreen();
+            //objEnvParamSel.TopLevel = false;
+            //this.centerPanel.Controls.Add(objEnvParamSel);
+            //objEnvParamSel.Dock = DockStyle.Fill;
+            //objEnvParamSel.Show();
+
         }
+
+
     }
 }

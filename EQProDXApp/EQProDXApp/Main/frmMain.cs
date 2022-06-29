@@ -55,7 +55,7 @@ namespace EQProDXApp
         {
             Form objOpenFrmMain = Application.OpenForms["frmMain"];
             if (objOpenFrmMain != null)
-            {
+            {                
                 //objOpenFrmMain.Hide();
                 //closeAllForms();
                 pnlMain.Hide();

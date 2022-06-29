@@ -69,7 +69,7 @@ namespace EQProDXApp
 
         private void btnEnvParam_Click(object sender, EventArgs e)
         {
-            EnvParamSelScreen objEnvParamSel = new EnvParamSelScreen();
+            frmEnvParamSelScreen objEnvParamSel = new frmEnvParamSelScreen();             
             objEnvParamSel.TopLevel = false;
             this.centerPanel.Controls.Add(objEnvParamSel);
             objEnvParamSel.Dock = DockStyle.Fill;

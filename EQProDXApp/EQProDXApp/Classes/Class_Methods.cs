@@ -59,6 +59,55 @@ namespace EQProDXApp
             }
         }
 
+
+        public bool Load_CmbTextBoxValues(string sSql, DevExpress.XtraEditors.ComboBoxEdit objCmbBoxName, DevExpress.XtraEditors.TextEdit objTextBoxName)
+        {
+            string sVal = "";
+            try
+            {
+                //Create Temp Table 
+                //sSql = "CREATE TABLE " + sTmpTblName + "(" + sTmpTblFieldNameSRC + " [int]," + sTmpTblFieldNameTRG + "[int], " + sBitColName + "[bit] NULL)";
+                ////objPhdAdoTarget.ExecuteNonQuery(sSql);
+                //sSql = "Drop Table " + sSchemaName + sDtTblName;
+                //objPhdAdoTarget.ExecuteNonQuery(sSql);
+                //sSql = "SELECT count(*) as IsExists FROM dbo.sysobjects where id = object_id('" + sCreateTmpTblName + "')";
+                //iCount = objPhdAdoTarget.ExecuterScalar<int>(sSql);
+                objCmbBoxName.Properties.Items.Clear();
+                if (objDALCls.getSqlConn() != null)
+                {
+                    SqlConn = objDALCls.getSqlConn();
+                    sqlDtTbl = objDALCls.getDataTable(sSql, SqlConn);
+                    if (sqlDtTbl.Rows.Count > 0)
+                    {
+                        iCount = 0;
+                        foreach (DataRow dr_RowSel in sqlDtTbl.Rows)//Loop on Tbl
+                        {
+                            if (String.IsNullOrEmpty(sqlDtTbl.Rows[iCount][0].ToString()) == false)
+                            {
+                                sVal = sqlDtTbl.Rows[iCount][0].ToString();
+                                sVal = sVal.TrimEnd();
+                                objCmbBoxName.Properties.Items.Add(sVal);
+                                sVal = sqlDtTbl.Rows[iCount][1].ToString();//Load ID in txt Box
+                                sVal = sVal.TrimEnd();
+                                objTextBoxName.Text = sVal;
+                            }
+                            iCount++;
+                        }
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in Load_CmbTextBoxValues, filling Combo Box", ex);
+                return false;
+            }
+        }
+
         public bool Load_CmbBoxValues(string sSql, ComboBox objCmbBoxName)
         {
             string sVal = "";

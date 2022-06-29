@@ -1,6 +1,6 @@
 ﻿namespace EQProDXApp.EnvironmentalParameters
 {
-    partial class EnvParamSelScreen
+    partial class frmEnvParamSelScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,6 @@
             this.txtBoxStatus.Properties.Appearance.Options.UseFont = true;
             this.txtBoxStatus.Size = new System.Drawing.Size(162, 26);
             this.txtBoxStatus.TabIndex = 4;
-            this.txtBoxStatus.EditValueChanged += new System.EventHandler(this.tBoxPlanRev_EditValueChanged);
             // 
             // lblEnv
             // 
@@ -123,7 +122,6 @@
             this.lblEnv.Size = new System.Drawing.Size(854, 50);
             this.lblEnv.TabIndex = 37;
             this.lblEnv.Text = "Environmental Parameters Selection Screen";
-            this.lblEnv.Click += new System.EventHandler(this.lblEnv_Click);
             // 
             // txtBoxStation
             // 
@@ -134,7 +132,6 @@
             this.txtBoxStation.Properties.Appearance.Options.UseFont = true;
             this.txtBoxStation.Size = new System.Drawing.Size(326, 26);
             this.txtBoxStation.TabIndex = 3;
-            this.txtBoxStation.EditValueChanged += new System.EventHandler(this.tBoxRoomNo_EditValueChanged);
             // 
             // cmbboxStation
             // 
@@ -158,6 +155,10 @@
             this.cmbboxRevStation.Properties.Appearance.Options.UseFont = true;
             this.cmbboxRevStation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbboxRevStation.Properties.Items.AddRange(new object[] {
+            "Active",
+            "Revision in Progress",
+            "Superseded"});
             this.cmbboxRevStation.Size = new System.Drawing.Size(306, 26);
             this.cmbboxRevStation.TabIndex = 2;
             // 
@@ -330,7 +331,7 @@
             this.btnRoleAsg.UseVisualStyleBackColor = false;
             this.btnRoleAsg.Click += new System.EventHandler(this.btnRoleAsg_Click);
             // 
-            // EnvParamSelScreen
+            // frmEnvParamSelScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -361,9 +362,9 @@
             this.Controls.Add(this.lblStationName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "EnvParamSelScreen";
+            this.Name = "frmEnvParamSelScreen";
             this.Text = "Environmental Parameters Selection Screen";
-            this.Load += new System.EventHandler(this.frmCreateRoom_Load);
+            this.Load += new System.EventHandler(this.frmEnvParamSelScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).EndInit();

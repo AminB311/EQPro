@@ -20,12 +20,11 @@ namespace EQProDXApp.EnvironmentalParameters
         }
 
         string sSql = "";
-        string sStr, sTmp, sLastName, sFirstName, sUserRoleAsgID, sUserID, sUserRole, sUserRoleAccepted, sDateAccepted;
-        string sAssignedBy, sDateAssigned, sCancelledBy, sDateCancelled, sPlantID, sStatus;
+        string sStr, sTmp, sLastName, sFirstName, sUserIDPrp, sUserRolePrp;
+        string sUserIDRvw, sUserRoleRvw, sUserIDApv, sUserRoleApv, sAssignedBy, sDateAssigned, sPlantID, sStatus;
+
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
         Class_PublicMethods objClssMethods = new Class_PublicMethods();
-        //int iCount= 0;
-        //Class_PublicDataAccessLayer objDALCls;
         Class_PublicMethods objPubClass = new Class_PublicMethods();
         SqlConnection SqlConn = new SqlConnection();
 
@@ -103,66 +102,47 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 if (ValidateForm())
                 {
-                    //if (btnAssign.Text == "Add Room")
-                    //{
-                    //    btnAssign.Enabled = false;
-                    //    //SELECT UserRoleAsgID, UserID, UserRole, UserRoleAccepted, DateAccepted,
-                    //    //AssignedBy, DateAssigned, CancelledBy, DateCancelled, PlantID, Status FROM UserRoleAssignment
-                    //    if (String.IsNullOrEmpty(cmbBoxPrepearer.Text) == false)
-                    //    {
-                    //        //sStationName, sRoomNo, sDescription
-                    //        string sStationNameExist = "";
-                    //        sPlantName = cmbBoxPrepearer.Text;
-                    //        sSql = "SELECT PlantNumber FROM RoomStation where UserRoleAssignment = '" + sPlantName + "'";
-                    //        sStationNameExist = objPubClass.Get_ValueStrfromTable(sSql);
+                    if (btnAssign.Text == "Assign")
+                    {
+                        //Remove Status; Add Notifier Yes/No; Add Subject Line; Bool int or bit
+                        btnAssign.Enabled = false;
+                        //SELECT UserRoleAsgID, UserID, UserRole, UserRoleAccepted, DateAccepted, AssignedBy, DateAssigned, CancelledBy
+                        //DateCancelled, PlantID, Status  FROM UserRoleAssignment
+                        if (String.IsNullOrEmpty(txtEditPrprID.Text) == false)
+                        {
+                            //sStationName, sRoomNo, sDescription
+                            string sUserRoleExist = "";
+                            sUserIDPrp  = txtEditPrprID.Text;
+                            sSql = "SELECT UserRole FROM UserRoleAssignment where UserID = '" + sUserIDPrp + "' AND UserRoleAccepted = '" + 1 + "'";
+                            sUserRoleExist = objPubClass.Get_ValueStrfromTable(sSql);
 
-                    //        //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
-                    //        //the station name cannot be changed after creation.
-                    //        if (String.IsNullOrEmpty(sStationNameExist) == false)
-                    //        {
-                    //            MessageBox.Show("Plant already exists, please enter a new Plant", "Existing Field");
-                    //            btnAssign.Enabled = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            DialogResult drResult = MessageBox.Show("Plant name currently not in EQPro. Do you wish to add this Plant to EQPro?", "Unknown Plant", MessageBoxButtons.YesNo);
-                    //            var vDocketResult = "";
-                    //            if (drResult == DialogResult.Yes)
-                    //            {
-                    //                vDocketResult = XtraInputBox.Show("Please fill in the Plant Docket Number(s)", "Required Docket Number(s) Needed ", "", MessageBoxButtons.OKCancel);
-                    //                if (String.IsNullOrEmpty(vDocketResult) == false)
-                    //                {
-                    //                    var vLicensing = "";
-                    //                    vLicensing = XtraInputBox.Show("Please in the Plant Licensing Criterea", "Required Plant Licensing Criterea Needed", "", MessageBoxButtons.OKCancel);
-                    //                    if (String.IsNullOrEmpty(vLicensing) == false)
-                    //                    {
-                    //                        sPlantName = cmbBoxPrepearer.Text;
+                            //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
+                            //the station name cannot be changed after creation.
+                            if (String.IsNullOrEmpty(sUserRoleExist) == false)
+                            {
+                                MessageBox.Show("User already exists, please enter a new Role", "Existing Field");
+                                btnAssign.Enabled = true;
+                            }
+                            else
+                            {
+                                //sUserID = txtEditPrprID.Text;
 
-                    //                        sDocketNumber = vDocketResult;
-                    //                        sLicensingCriteria = vLicensing;
-                    //                        //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
-                    //                        //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                    //                        sSql = "Insert into RoomStation(PlantName, Location, Building, RoomNumber, Description, Zone," +
-                    //                               "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber) " +
-                    //                                "Values('" + sPlantName + "','" + sLocation + "','" + sBuilding + "','" + sRoomNumber + "'," +
-                    //                                "'" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
-                    //                               "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
-                    //                        objClssMethods.AddNew_Values(sSql);
-                    //                    }
-                    //                }
-                    //                else
-                    //                {
 
-                    //                }
-                    //                ResetRoleAssigValues();
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    //Edit Update SQL
-                    //}
+                                //sSql = "Insert into RoomStation(UserID, UserRole,AssignedBy," +
+                                //       "DateAssigned, CancelledBy, DateCancelled, PlantID, Status ) " +
+                                //        "Values('" + sUserID + "','" + sUserRole + "','" + sBuilding + "','" + sRoomNumber + "'," +
+                                //        "'" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
+                                //       "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
+                                //objClssMethods.AddNew_Values(sSql);
+
+                                ResetRoleAssigValues();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //Edit Update SQL
+                    }
                 }
             }
             catch (Exception ex)

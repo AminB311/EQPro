@@ -145,7 +145,9 @@
   <ItemGroup>
     <None Include="Main\Pics\HandShakeBusiness_Depositphotos_5.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Depositphotos_9467149_XL.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Main\Pics\Team_Depositphotos_16.jpg" />
   </ItemGroup>
@@ -154,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Main\Pics\Form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Depositphotos_9467149_XL1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlantImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

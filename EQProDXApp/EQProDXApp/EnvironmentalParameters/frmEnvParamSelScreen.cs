@@ -130,6 +130,17 @@ namespace EQProDXApp.EnvironmentalParameters
 
             return true;
         }
+
+        private void cmbboxRevStation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmBoxEdtRoomNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void ResetRoomValues()
         {
             try

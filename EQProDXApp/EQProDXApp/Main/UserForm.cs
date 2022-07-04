@@ -37,7 +37,7 @@ namespace EQProDXApp
                 //    btnDelete.Visible = false;
                 //}
                 textBoxUpdatedPassDate.Text = DateTime.Today.ToString();
-                objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                objMethods.Load_CmbBoxValues("SELECT EQProUserID from UserMain", cmbBoxEQProUserID);
             }
             catch (Exception ex)
             {
@@ -46,37 +46,7 @@ namespace EQProDXApp
            
         }
 
-        //private void buttonAdd_Click(object sender, EventArgs e)
-        //{
-
-        //    try
-        //    {
-        //        if (ValidateForm())
-        //        {
-        //            if (btnAdd.Text.Equals("Add"))
-        //            {
-        //                User user = readFormData();
-        //                user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, " +
-        //                    "ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) " +
-        //                    "VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, " +
-        //                    "@DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)",
-        //                    user, "User Added Successfully!");
-        //                ResetForm();
-        //            }
-        //            else
-        //            {
-        //                User user = readFormData();
-        //                user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, CanCreateEQProID = @CanCreateEQProID, CanCreateUserID = @CanCreateUserID, EQRole = @EQRole, UserRole = @UserRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        new Exception("Error in UserForm_Load", ex);
-        //    }
-            
-        //}
-
+      
         private User readFormData()
         {
             try
@@ -90,10 +60,7 @@ namespace EQProDXApp
                 newUser.Prefix = textBoxPrefix.Text;
                 newUser.Suffix = textBoxSuffix.Text;
                 newUser.ESignature = textBoxSignature.Text;
-                newUser.CanCreateEQProID = false;
-                newUser.CanCreateUserID = false;
                 newUser.EQRole = comboBoxEQRole.SelectedItem.ToString();
-                newUser.UserRole = comboBoxEQUserRole.SelectedItem.ToString();
                 newUser.Email = textBoxEmail.Text;
                 newUser.IsDeleted = false;
 
@@ -158,12 +125,7 @@ namespace EQProDXApp
                     errorProvider.SetError(comboBoxEQRole, "No Item Selected");
                     return false;
                 }
-                if (comboBoxEQUserRole.Text == "")
-                {
-                    MessageBox.Show("Select EQ User Role From ComboBox!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(comboBoxEQUserRole, "No Item Selected");
-                    return false;
-                }
+              
                 if (textBoxNewPass.Text.Length < 8)
                 {
                     MessageBox.Show("Password should be 8 or more characters long!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -214,10 +176,16 @@ namespace EQProDXApp
                     MessageBox.Show("Incorrect Email Address!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
-                if (textBoxEQProUserID.Text.Equals("Click Here"))
+                //if (textBoxEQProUserID.Text.Equals("Click Here"))
+                //{
+                //    MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    return false;
+                //}
+                if (textBoxEQProUserID.Text.Equals(""))
                 {
-                    MessageBox.Show("Click EQ Pro User ID Textbox to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Please enter a User ID, User ID can't be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
+
                 }
                 if (sVal == "Add")
                 {
@@ -239,7 +207,7 @@ namespace EQProDXApp
 
         private void ResetForm()
         {
-            comboBoxID.Text = "";
+            cmbBoxEQProUserID.Text = "";
             textBoxNewPass.Text = "";
             textBoxVerifyPass.Text = "";
             textBoxFN.Text = "";
@@ -250,13 +218,15 @@ namespace EQProDXApp
             textBoxEmail.Text = "";
             textBoxSignature.Text = "";
             comboBoxEQRole.Text = "";
-            comboBoxEQUserRole.Text = "";
-            textBoxEQProUserID.Text = "Click Here";
+            textBoxEQProUserID.Text = "";
+            textBoxEQProUserID.Enabled = true;
+            cmbBoxEQProUserID.Enabled = true;
+
 
             textBoxUpdatedPassDate.Text = DateTime.Now.ToString();
             btnAdd.Text = "Add";
 
-            objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+            objMethods.Load_CmbBoxValues("SELECT EQProUserID from UserMain", cmbBoxEQProUserID);
 
         }
 
@@ -268,13 +238,13 @@ namespace EQProDXApp
 
         private void textBoxEQProUserID_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrWhiteSpace(textBoxFN.Text) || !String.IsNullOrWhiteSpace(textBoxLN.Text))
-            {
-                textBoxEQProUserID.Text = textBoxFN.Text + "" + textBoxLN.Text;
-            } else
-            {
-                MessageBox.Show("Please type First Name & Last Name to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            //if(!String.IsNullOrWhiteSpace(textBoxFN.Text) || !String.IsNullOrWhiteSpace(textBoxLN.Text))
+            //{
+            //    textBoxEQProUserID.Text = textBoxFN.Text + "," + textBoxLN.Text;
+            //} else
+            //{
+            //    MessageBox.Show("Please type First Name & Last Name to generate ID", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //}
         }
 
         private void textBoxEmail_Enter(object sender, EventArgs e)
@@ -290,8 +260,11 @@ namespace EQProDXApp
                 btnAdd.Text = "Add";
                 btnEdit.Text = "Edit";
 
-                dataTable = objMethods.Get_DataTable("SELECT * from dbo.UserMain Where UserID = " + int.Parse(comboBoxID.Text));
-                userID = int.Parse(dataTable.Rows[0][0].ToString());
+                //dataTable = objMethods.Get_DataTable("SELECT * from dbo.UserMain Where UserID = " + int.Parse(comboBoxID.Text));
+                //Updated on 07/04/2022 As per Asghar only load EQ Pro User ID
+                //sSql = "SELECT RoomNumber FROM EnvParamAssignment where PlantID = '" + sPlantID + "'";
+
+                dataTable = objMethods.Get_DataTable("SELECT * from dbo.UserMain Where EQProUserID = '" + cmbBoxEQProUserID.Text + "'"); 
                 textBoxEQProUserID.Text = dataTable.Rows[0][1].ToString();
                 textBoxNewPass.Text = dataTable.Rows[0][2].ToString();
                 textBoxVerifyPass.Text = dataTable.Rows[0][2].ToString();
@@ -303,7 +276,6 @@ namespace EQProDXApp
                 textBoxSignature.Text = dataTable.Rows[0][8].ToString();
                 textBoxUpdatedPassDate.Text = dataTable.Rows[0][9].ToString();
                 comboBoxEQRole.Text = dataTable.Rows[0][13].ToString();
-                comboBoxEQUserRole.Text = dataTable.Rows[0][14].ToString();
                 textBoxEmail.Text = dataTable.Rows[0][15].ToString();
             }
 
@@ -322,7 +294,7 @@ namespace EQProDXApp
                 if (dialogResult == DialogResult.Yes)
                 {
                     objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", cmbBoxEQProUserID);
                     ResetForm();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -351,6 +323,9 @@ namespace EQProDXApp
                     ResetForm();
                     btnAdd.Text = "Save";
                     btnEdit.Text = "Edit";
+                    textBoxEQProUserID.Enabled = true;
+                    cmbBoxEQProUserID.Enabled = false;
+
                 }
                 else
                 {
@@ -359,8 +334,11 @@ namespace EQProDXApp
                         if (ValidateForm("Add"))
                         {
                             User user = readFormData();
-                            user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, ESignature, DateChange, DateCurrent, CanCreateEQProID, CanCreateUserID, EQRole, UserRole, email, IsDeleted) VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, @DateChange, @DateCurrent, @CanCreateEQProID, @CanCreateUserID, @EQRole, @UserRole, @email, @IsDeleted)", user, "User Added Successfully!");
+                            user.InsertOrUpdateUser("INSERT INTO dbo.UserMain(EQProUserID, Password, FirstName, LastName, MiddleName, Prefix, Suffix, ESignature, DateChange, DateCurrent, EQRole, email, IsDeleted) VALUES(@EQProUserID, @Password, @FirstName, @LastName, @MiddleName, @Prefix, @Suffix, @ESignature, @DateChange, @DateCurrent, @EQRole, @email, @IsDeleted)", user, "User Added Successfully!");
                             ResetForm();
+                            textBoxEQProUserID.Enabled = true;
+                            cmbBoxEQProUserID.Enabled = true;
+
                             btnAdd.Text = "Add";
                         }
                     }
@@ -380,6 +358,8 @@ namespace EQProDXApp
                 {                    
                     btnEdit.Text = "Save";
                     btnAdd.Text = "Add";
+                    textBoxEQProUserID.Enabled=false;
+                    cmbBoxEQProUserID.Enabled = false;
                 }
                 else
                 {
@@ -388,9 +368,10 @@ namespace EQProDXApp
                         if (ValidateForm("Edit"))
                         {
                             User user = readFormData();
-                            user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, CanCreateEQProID = @CanCreateEQProID, CanCreateUserID = @CanCreateUserID, EQRole = @EQRole, UserRole = @UserRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
+                            user.InsertOrUpdateUser("UPDATE dbo.UserMain SET EQProUserID = @EQProUserID, Password = @Password, FirstName = @FirstName, LastName = @LastName, MiddleName = @MiddleName, Prefix = @Prefix, Suffix = @Suffix, ESignature = @ESignature, DateChange = @DateChange, DateCurrent = @DateCurrent, EQRole = @EQRole, email = @email, IsDeleted = @IsDeleted WHERE UserID = " + userID, user, "User Updated Successfully!");
                             ResetForm();
-
+                            textBoxEQProUserID.Enabled = true;
+                            cmbBoxEQProUserID.Enabled = true;
                             btnEdit.Text = "Edit";
                         }
                     }
@@ -410,7 +391,7 @@ namespace EQProDXApp
                 if (dialogResult == DialogResult.Yes)
                 {
                     objMethods.Delete_SelectedValues("Delete from dbo.UserMain Where UserID = " + userID);
-                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", comboBoxID);
+                    objMethods.Load_CmbBoxValues("SELECT UserID from UserMain", cmbBoxEQProUserID);
                     ResetForm();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -429,12 +410,13 @@ namespace EQProDXApp
         {
             try
             {
+                frmMain objFrmMain;
                 Form objOpenFrm = Application.OpenForms["frmUser"];
                 if (objOpenFrm != null)
                 {
                     objOpenFrm.Hide();
                     objOpenFrm.Close();
-                }
+                }                
             }
             catch (Exception ex)
             {
@@ -475,6 +457,9 @@ namespace EQProDXApp
 
         }
 
-       
+        private void textBoxEQProUserID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

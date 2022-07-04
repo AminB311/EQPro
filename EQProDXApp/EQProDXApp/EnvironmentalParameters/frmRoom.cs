@@ -32,8 +32,9 @@ namespace EQProDXApp
         {
             try
             {
-                sSql = "SELECT PlantNumber,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber, Parameter," +
-                   "LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
+                //sSql = "Select PlantID,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber,"+
+                //       "Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
+                sSql = "Select PlantName FROM RoomStation";//Station Name
                 if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
                 {
                     objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
@@ -294,15 +295,16 @@ namespace EQProDXApp
         {
             //string  sSql, sStatName, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
             DataTable dataTable = new DataTable();
-            string sSql;
+            string sSql, sStatName;
             //int iCount;
             try
             {
-                sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbboxStation.Text);
+                sStatName = cmbboxStation.Text;
+                sSql = "SELECT RoomNumber, Description FROM RoomStation where PlantName =  '" + sStatName + "'";
                 dataTable = objClssMethods.Get_DataTable(sSql);
                 //userID = int.Parse(dataTable.Rows[0][0].ToString());
-                txtBoxRoomNo.Text = dataTable.Rows[0][1].ToString();
-                txtBoxDescription.Text = dataTable.Rows[0][2].ToString();
+                txtBoxRoomNo.Text = dataTable.Rows[0][0].ToString();
+                txtBoxDescription.Text = dataTable.Rows[0][1].ToString();
             }
             catch (Exception ex)
             {

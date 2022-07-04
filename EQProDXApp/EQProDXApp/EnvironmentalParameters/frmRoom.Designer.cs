@@ -196,6 +196,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbboxStation.Size = new System.Drawing.Size(162, 26);
             this.cmbboxStation.TabIndex = 1;
+            this.cmbboxStation.Enabled = true;
             this.cmbboxStation.SelectedIndexChanged += new System.EventHandler(this.cmbboxStation_SelectedIndexChanged);
             // 
             // frmCreateRoom

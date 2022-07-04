@@ -25,10 +25,8 @@ namespace EQProDXApp
         public string ESignature { get; set; }
         public DateTime DateChange { get; set; } = DateTime.Now;
         public DateTime DateCurrent { get; set; } = DateTime.Now;
-        public bool CanCreateEQProID { get; set; }
-        public bool CanCreateUserID { get; set; }
+     
         public string EQRole { get; set; }
-        public string UserRole { get; set; }
         public string Email { get; set; }
         public bool IsDeleted { get; set; }
 
@@ -52,11 +50,8 @@ namespace EQProDXApp
                 command.Parameters.AddWithValue("@Suffix", user.Suffix);
                 command.Parameters.AddWithValue("@ESignature", user.ESignature);
                 command.Parameters.AddWithValue("@DateChange", DateChange);
-                command.Parameters.AddWithValue("@DateCurrent", DateCurrent);
-                command.Parameters.AddWithValue("@CanCreateEQProID", user.CanCreateEQProID);
-                command.Parameters.AddWithValue("@CanCreateUserID", user.CanCreateUserID);
+                command.Parameters.AddWithValue("@DateCurrent", DateCurrent);             
                 command.Parameters.AddWithValue("@EQRole", user.EQRole);
-                command.Parameters.AddWithValue("@UserRole", user.UserRole);
                 command.Parameters.AddWithValue("@email", user.Email);
                 command.Parameters.AddWithValue("@IsDeleted", user.IsDeleted);
 

@@ -21,7 +21,9 @@ namespace EQProDXApp
         }
 
         private void frmMain_Load(object sender, EventArgs e)
-        { 
+        {
+            centerPanel.Visible = true; 
+            
         }
 
         private void closeAllForms()
@@ -45,6 +47,7 @@ namespace EQProDXApp
             if (objFrmUser != null)
             {
                 objFrmUser.TopLevel = false;
+               
                 this.centerPanel.Controls.Add(objFrmUser);
                 objFrmUser.Dock = DockStyle.Fill;
                 objFrmUser.Show();
@@ -87,6 +90,11 @@ namespace EQProDXApp
         private void centerPanel_Paint(object sender, PaintEventArgs e)
         {
 
-        }       
+        }
+
+        private void picMain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -33,7 +33,6 @@
             this.txtBoxStatus = new DevExpress.XtraEditors.TextEdit();
             this.lblEnv = new System.Windows.Forms.Label();
             this.txtBoxStation = new DevExpress.XtraEditors.TextEdit();
-            this.cmbboxStation = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -50,26 +49,31 @@
             this.txtBoxDateApp = new DevExpress.XtraEditors.TextEdit();
             this.btnRoleAsg = new System.Windows.Forms.Button();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txtBoxPlantRev = new DevExpress.XtraEditors.TextEdit();
             this.cmBoxEdtRoomNo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtDescrption = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.txtReferences = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateRev.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxAppBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateApp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxPlantRev.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmBoxEdtRoomNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescrption.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReferences.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStationName
             // 
             this.lblStationName.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.lblStationName.Appearance.Options.UseFont = true;
-            this.lblStationName.Location = new System.Drawing.Point(77, 309);
+            this.lblStationName.Location = new System.Drawing.Point(69, 250);
             this.lblStationName.Margin = new System.Windows.Forms.Padding(2);
             this.lblStationName.Name = "lblStationName";
             this.lblStationName.Size = new System.Drawing.Size(217, 19);
@@ -82,7 +86,7 @@
             this.btnFilter.BackColor = System.Drawing.Color.Navy;
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(784, 300);
+            this.btnFilter.Location = new System.Drawing.Point(798, 241);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(140, 38);
@@ -93,7 +97,7 @@
             // 
             // txtBoxStatus
             // 
-            this.txtBoxStatus.Location = new System.Drawing.Point(784, 414);
+            this.txtBoxStatus.Location = new System.Drawing.Point(775, 312);
             this.txtBoxStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtBoxStatus.Name = "txtBoxStatus";
             this.txtBoxStatus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -116,7 +120,7 @@
             // 
             // txtBoxStation
             // 
-            this.txtBoxStation.Location = new System.Drawing.Point(145, 414);
+            this.txtBoxStation.Location = new System.Drawing.Point(136, 312);
             this.txtBoxStation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtBoxStation.Name = "txtBoxStation";
             this.txtBoxStation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -124,24 +128,11 @@
             this.txtBoxStation.Size = new System.Drawing.Size(228, 26);
             this.txtBoxStation.TabIndex = 3;
             // 
-            // cmbboxStation
-            // 
-            this.cmbboxStation.EditValue = "";
-            this.cmbboxStation.Location = new System.Drawing.Point(67, 468);
-            this.cmbboxStation.Name = "cmbboxStation";
-            this.cmbboxStation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.cmbboxStation.Properties.Appearance.Options.UseFont = true;
-            this.cmbboxStation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbboxStation.Size = new System.Drawing.Size(306, 26);
-            this.cmbboxStation.TabIndex = 1;
-            this.cmbboxStation.SelectedIndexChanged += new System.EventHandler(this.cmbboxStation_SelectedIndexChanged);
-            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(77, 417);
+            this.labelControl1.Location = new System.Drawing.Point(68, 315);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(2);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(64, 19);
@@ -152,7 +143,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(717, 417);
+            this.labelControl2.Location = new System.Drawing.Point(708, 315);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(2);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(52, 19);
@@ -297,7 +288,7 @@
             this.btnRoleAsg.BackColor = System.Drawing.Color.Navy;
             this.btnRoleAsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoleAsg.ForeColor = System.Drawing.Color.White;
-            this.btnRoleAsg.Location = new System.Drawing.Point(827, 724);
+            this.btnRoleAsg.Location = new System.Drawing.Point(806, 724);
             this.btnRoleAsg.Margin = new System.Windows.Forms.Padding(2);
             this.btnRoleAsg.Name = "btnRoleAsg";
             this.btnRoleAsg.Size = new System.Drawing.Size(140, 38);
@@ -310,27 +301,27 @@
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(412, 413);
+            this.labelControl9.Location = new System.Drawing.Point(400, 311);
             this.labelControl9.Margin = new System.Windows.Forms.Padding(2);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(117, 19);
             this.labelControl9.TabIndex = 54;
             this.labelControl9.Text = "Plant Revision";
             // 
-            // textEdit1
+            // txtBoxPlantRev
             // 
-            this.textEdit1.Location = new System.Drawing.Point(539, 410);
-            this.textEdit1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(162, 26);
-            this.textEdit1.TabIndex = 53;
+            this.txtBoxPlantRev.Location = new System.Drawing.Point(527, 308);
+            this.txtBoxPlantRev.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtBoxPlantRev.Name = "txtBoxPlantRev";
+            this.txtBoxPlantRev.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtBoxPlantRev.Properties.Appearance.Options.UseFont = true;
+            this.txtBoxPlantRev.Size = new System.Drawing.Size(162, 26);
+            this.txtBoxPlantRev.TabIndex = 53;
             // 
             // cmBoxEdtRoomNo
             // 
             this.cmBoxEdtRoomNo.EditValue = "";
-            this.cmBoxEdtRoomNo.Location = new System.Drawing.Point(354, 306);
+            this.cmBoxEdtRoomNo.Location = new System.Drawing.Point(346, 247);
             this.cmBoxEdtRoomNo.Name = "cmBoxEdtRoomNo";
             this.cmBoxEdtRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cmBoxEdtRoomNo.Properties.Appearance.Options.UseFont = true;
@@ -340,15 +331,65 @@
             this.cmBoxEdtRoomNo.TabIndex = 55;
             this.cmBoxEdtRoomNo.SelectedIndexChanged += new System.EventHandler(this.cmBoxEdtRoomNo_SelectedIndexChanged);
             // 
+            // txtDescrption
+            // 
+            this.txtDescrption.Location = new System.Drawing.Point(174, 376);
+            this.txtDescrption.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtDescrption.Name = "txtDescrption";
+            this.txtDescrption.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtDescrption.Properties.Appearance.Options.UseFont = true;
+            this.txtDescrption.Properties.AutoHeight = false;
+            this.txtDescrption.Size = new System.Drawing.Size(763, 140);
+            this.txtDescrption.TabIndex = 56;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl11.Appearance.Options.UseFont = true;
+            this.labelControl11.Location = new System.Drawing.Point(67, 570);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(2);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(91, 19);
+            this.labelControl11.TabIndex = 59;
+            this.labelControl11.Text = "References";
+            this.labelControl11.Click += new System.EventHandler(this.labelControl11_Click);
+            // 
+            // txtReferences
+            // 
+            this.txtReferences.Location = new System.Drawing.Point(174, 540);
+            this.txtReferences.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtReferences.Name = "txtReferences";
+            this.txtReferences.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtReferences.Properties.Appearance.Options.UseFont = true;
+            this.txtReferences.Properties.AutoHeight = false;
+            this.txtReferences.Size = new System.Drawing.Size(763, 81);
+            this.txtReferences.TabIndex = 58;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl10.Location = new System.Drawing.Point(69, 417);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(2);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(103, 38);
+            this.labelControl10.TabIndex = 61;
+            this.labelControl10.Text = "Change Description";
+            // 
             // frmEnvParamSelScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
+            this.Controls.Add(this.labelControl10);
+            this.Controls.Add(this.labelControl11);
+            this.Controls.Add(this.txtReferences);
+            this.Controls.Add(this.txtDescrption);
             this.Controls.Add(this.cmBoxEdtRoomNo);
             this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.txtBoxPlantRev);
             this.Controls.Add(this.btnRoleAsg);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl8);
@@ -365,7 +406,6 @@
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.cmbboxStation);
             this.Controls.Add(this.txtBoxStation);
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.txtBoxStatus);
@@ -377,15 +417,16 @@
             this.Load += new System.EventHandler(this.frmEnvParamSelScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateRev.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxAppBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateApp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxPlantRev.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmBoxEdtRoomNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescrption.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReferences.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,7 +438,6 @@
         private DevExpress.XtraEditors.TextEdit txtBoxStatus;
         private System.Windows.Forms.Label lblEnv;
         private DevExpress.XtraEditors.TextEdit txtBoxStation;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbboxStation;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -414,7 +454,11 @@
         private DevExpress.XtraEditors.TextEdit txtBoxDateApp;
         private System.Windows.Forms.Button btnRoleAsg;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txtBoxPlantRev;
         private DevExpress.XtraEditors.ComboBoxEdit cmBoxEdtRoomNo;
+        private DevExpress.XtraEditors.TextEdit txtDescrption;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.TextEdit txtReferences;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }

@@ -36,16 +36,14 @@
             this.btnEnvParam = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.centerPanel = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.picMain = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dockPanel1.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.centerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.centerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // dockPanel1_Container
@@ -144,39 +142,6 @@
             this.panel2.Size = new System.Drawing.Size(242, 79);
             this.panel2.TabIndex = 0;
             // 
-            // centerPanel
-            // 
-            this.centerPanel.AllowDrop = true;
-            this.centerPanel.Controls.Add(this.picMain);
-            this.centerPanel.Controls.Add(this.panel3);
-            this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.centerPanel.Location = new System.Drawing.Point(242, 0);
-            this.centerPanel.MinimumSize = new System.Drawing.Size(1442, 792);
-            this.centerPanel.Name = "centerPanel";
-            this.centerPanel.Size = new System.Drawing.Size(1442, 792);
-            this.centerPanel.TabIndex = 15;
-            this.centerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.centerPanel_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Navy;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1442, 79);
-            this.panel3.TabIndex = 0;
-            // 
-            // picMain
-            // 
-            this.picMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picMain.BackgroundImage")));
-            this.picMain.Image = global::EQProDXApp.Properties.Resources.PlantImage;
-            this.picMain.Location = new System.Drawing.Point(6, 84);
-            this.picMain.Name = "picMain";
-            this.picMain.Size = new System.Drawing.Size(1173, 669);
-            this.picMain.TabIndex = 1;
-            this.picMain.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -187,6 +152,30 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
+            // 
+            // centerPanel
+            // 
+            this.centerPanel.AllowDrop = true;
+            this.centerPanel.BackgroundImage = global::EQProDXApp.Properties.Resources.PlantImage;
+            this.centerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.centerPanel.Controls.Add(this.panel3);
+            this.centerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.centerPanel.Location = new System.Drawing.Point(242, 0);
+            this.centerPanel.MinimumSize = new System.Drawing.Size(1800, 1000);
+            this.centerPanel.Name = "centerPanel";
+            this.centerPanel.Size = new System.Drawing.Size(1800, 1000);
+            this.centerPanel.TabIndex = 15;
+            this.centerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.centerPanel_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Navy;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1800, 79);
+            this.panel3.TabIndex = 0;
             // 
             // frmMain
             // 
@@ -206,9 +195,8 @@
             this.dockPanel1.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.centerPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.centerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -224,6 +212,5 @@
         private System.Windows.Forms.Panel centerPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.PictureBox picMain;
     }
 }

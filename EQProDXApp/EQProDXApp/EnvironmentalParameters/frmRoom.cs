@@ -115,35 +115,7 @@ namespace EQProDXApp
 
                                     }
                                     ResetRoomValues();
-                                    //if (MessageBoxButtons.OKCancel == DialogResult.Cancel )
-                                    //{
-                                    //}
-                                    //if (vResult == Cancel )
-                                    //{
-                                    //}
-                                    //MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation.
-                                    //The station name MUST be exactly as you wish it to appear in printedEQ Binders, as
-                                    //the station name cannot be changed after creation
-                                    //Yes and then OK button to the message box displayed by EQPro and proceed to
-                                    //enter the Plant Docket Number(s) and Plant Licensing Criteria respectively.Note clicking
-                                    //cancel button suspends Station creation process
-                                    //If the user clicks “OK” button after providing the Docket Number(s), EQPro displays the
-                                    //following message with Plant Licensing Criteria expected values.
-                                    //Station creation has been cancelled
-                                    //sSql = "Insert into tblEnviParameterCurrentInfo(txtPlant, txtPlanRev, txtZoneID,txtPlantSearched) " +
-                                    //       "Values('" + sStationName + "','" + sRoomNo + "','" + sDescription + "')";
-                                    //if (objPubClass.AddNew_Values(sSql) == 1)
-                                    //{
-                                    //    cmbboxStation.Text = "";
-                                    //    MessageBox.Show("Plant added successfully", "Transacntion");
-                                    //    sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-                                    //    objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
-                                    //}
-                                    //else
-                                    //{
-                                    //    MessageBox.Show("Error Plant was not added", "Transacntion");
-                                    //}
+                                    
                                 }
                             }
                         }
@@ -194,9 +166,9 @@ namespace EQProDXApp
             
             return true;
         }
+        
         private void ResetRoomValues()
         {
-
             try
             {
                 cmbboxStation.Text = "";
@@ -213,47 +185,6 @@ namespace EQProDXApp
             }
            
         }
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    string stxtPlant = "";
-        //    try
-        //    {
-        //        DialogResult result = MessageBox.Show("Are you sure you want to Delete the Plant", "Please Confirm", MessageBoxButtons.YesNoCancel);
-
-        //        if (String.IsNullOrEmpty(cmbboxStation.Text) == false)
-        //        {
-        //            stxtPlant = cmbboxStation.Text;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Plant can't be empty", "Empty Field");
-        //        }
-
-        //        if ((result == DialogResult.Yes) && (String.IsNullOrEmpty(cmbboxStation.Text) == false))
-        //        {
-        //            stxtPlant = cmbboxStation.Text;
-        //            //sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-        //            sSql = "Delete FROM tblEnviParameterCurrentInfo where txtPlant = '" + stxtPlant + "'";
-        //            objPubClass.Delete_SelectedValues(sSql);
-
-        //            cmbboxStation.Text = "";
-        //            sSql = "SELECT txtPlant FROM tblEnviParameterCurrentInfo";
-        //            objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
-        //        }
-        //        else if (result == DialogResult.No)
-        //        {
-        //            //do what you want!!
-        //        }
-        //        else
-        //        {
-        //            //do what you want!!
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        new Exception("Error in btnDelete_Click", ex);
-        //    }
-        //}
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -265,7 +196,7 @@ namespace EQProDXApp
             //}           
         }
 
-       private void btnMianPg_Click(object sender, EventArgs e)
+        private void btnMianPg_Click(object sender, EventArgs e)
         {         
             Form objOpenFrm = Application.OpenForms["frmEnvironment"];
             if (objOpenFrm != null)
@@ -275,20 +206,6 @@ namespace EQProDXApp
                 objFrmMain.Show();
             }
             
-        }
-        private void lblEnv_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tBoxPlanRev_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tBoxRoomNo_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
         
         private void cmbboxStation_SelectedIndexChanged(object sender, EventArgs e)
@@ -309,6 +226,18 @@ namespace EQProDXApp
             catch (Exception ex)
             {
                 new Exception("Error in cmbboxStation_SelectedIndexChanged", ex);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ResetRoomValues();
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in btnClear_Click", ex);
             }
         }
     }

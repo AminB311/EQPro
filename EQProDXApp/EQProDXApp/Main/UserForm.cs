@@ -310,7 +310,7 @@ namespace EQProDXApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            //Visible = false;
             ResetForm();
         }
 
@@ -406,35 +406,35 @@ namespace EQProDXApp
                         
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmMain objFrmMain;
-                Form objOpenFrm = Application.OpenForms["frmUser"];
-                if (objOpenFrm != null)
-                {
-                    objOpenFrm.Hide();
-                    objOpenFrm.Close();
-                }                
-            }
-            catch (Exception ex)
-            {
-                new Exception("Error in btnClose_Click", ex);
-            }
-            //Form objOpenFrm = Application.OpenForms["frmEnvParam"];
-            //if (objOpenFrm != null)
-            //{
-            //    pnlEnvParam.Hide();
-            //    //objOpenFrm.Close();
-            //    objOpenFrm.TopLevel = false;
-            //    //Form objFrmMain = Application.OpenForms["frmMain"];
-            //    frmMain objFrmMain = new frmMain();
-            //    //objFrmMain.TopLevel = false;
-            //    //this.centerPanel.Controls.Add(objFrmMain);
-            //    objFrmMain.Dock = DockStyle.Fill;
-            //    objFrmMain.Show();
-        }
+        //private void btnClose_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        frmMain objFrmMain;
+        //        Form objOpenFrm = Application.OpenForms["frmUser"];
+        //        if (objOpenFrm != null)
+        //        {
+        //            objOpenFrm.Hide();
+        //            objOpenFrm.Close();
+        //        }                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        new Exception("Error in btnClose_Click", ex);
+        //    }
+        //    //Form objOpenFrm = Application.OpenForms["frmEnvParam"];
+        //    //if (objOpenFrm != null)
+        //    //{
+        //    //    pnlEnvParam.Hide();
+        //    //    //objOpenFrm.Close();
+        //    //    objOpenFrm.TopLevel = false;
+        //    //    //Form objFrmMain = Application.OpenForms["frmMain"];
+        //    //    frmMain objFrmMain = new frmMain();
+        //    //    //objFrmMain.TopLevel = false;
+        //    //    //this.centerPanel.Controls.Add(objFrmMain);
+        //    //    objFrmMain.Dock = DockStyle.Fill;
+        //    //    objFrmMain.Show();
+        //}
 
             private void btnSignIn_Click(object sender, EventArgs e)
         {

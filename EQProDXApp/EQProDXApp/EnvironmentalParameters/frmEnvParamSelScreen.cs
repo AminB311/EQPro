@@ -165,7 +165,7 @@ namespace EQProDXApp.EnvironmentalParameters
                 sRoomNo = sWordArr[0];
                 sDescrip = sWordArr[1];
                 //iLen = sWord.Length; 
-                sRoomNo = sTmp.Substring(0, sTmp.Length - 1);
+                //sRoomNo = sTmp.Substring(0, sTmp.Length - 1);
                 //001 Plant is loked
                 sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " AND Description = " + sDescrip;
                 dtTblEnvParam = objClssMethods.Get_DataTable(sSql);

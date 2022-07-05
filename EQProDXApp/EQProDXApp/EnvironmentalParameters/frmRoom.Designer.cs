@@ -36,11 +36,9 @@
             this.lblDescription = new DevExpress.XtraEditors.LabelControl();
             this.txtBoxDescription = new DevExpress.XtraEditors.TextEdit();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblEnv = new System.Windows.Forms.Label();
-            this.lblCrtRoom = new System.Windows.Forms.Label();
-            this.txtBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
             this.btnClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblEnv = new System.Windows.Forms.Label();
+            this.txtBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
             this.cmbboxStation = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -120,45 +118,46 @@
             this.txtBoxDescription.Properties.Appearance.Options.UseFont = true;
             this.txtBoxDescription.Size = new System.Drawing.Size(162, 26);
             this.txtBoxDescription.TabIndex = 3;
-            this.txtBoxDescription.EditValueChanged += new System.EventHandler(this.tBoxPlanRev_EditValueChanged);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
+            this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(100, 494);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(373, 89);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(438, 47);
             this.flowLayoutPanel1.TabIndex = 36;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClear.BackColor = System.Drawing.Color.Navy;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(290, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(140, 38);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblEnv
             // 
             this.lblEnv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEnv.AutoSize = true;
-            this.lblEnv.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnv.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnv.ForeColor = System.Drawing.Color.Navy;
-            this.lblEnv.Location = new System.Drawing.Point(20, 164);
+            this.lblEnv.Location = new System.Drawing.Point(57, 217);
             this.lblEnv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnv.Name = "lblEnv";
-            this.lblEnv.Size = new System.Drawing.Size(411, 50);
+            this.lblEnv.Size = new System.Drawing.Size(271, 50);
             this.lblEnv.TabIndex = 37;
-            this.lblEnv.Text = "Environmental Form";
-            this.lblEnv.Click += new System.EventHandler(this.lblEnv_Click);
-            // 
-            // lblCrtRoom
-            // 
-            this.lblCrtRoom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblCrtRoom.AutoSize = true;
-            this.lblCrtRoom.Font = new System.Drawing.Font("Microsoft YaHei UI", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCrtRoom.ForeColor = System.Drawing.Color.Navy;
-            this.lblCrtRoom.Location = new System.Drawing.Point(20, 244);
-            this.lblCrtRoom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCrtRoom.Name = "lblCrtRoom";
-            this.lblCrtRoom.Size = new System.Drawing.Size(242, 45);
-            this.lblCrtRoom.TabIndex = 38;
-            this.lblCrtRoom.Text = "Create Room";
+            this.lblEnv.Text = "Create Room";
             // 
             // txtBoxRoomNo
             // 
@@ -169,21 +168,6 @@
             this.txtBoxRoomNo.Properties.Appearance.Options.UseFont = true;
             this.txtBoxRoomNo.Size = new System.Drawing.Size(162, 26);
             this.txtBoxRoomNo.TabIndex = 2;
-            this.txtBoxRoomNo.EditValueChanged += new System.EventHandler(this.tBoxRoomNo_EditValueChanged);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(0, 0);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
             // 
             // cmbboxStation
             // 
@@ -196,7 +180,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbboxStation.Size = new System.Drawing.Size(162, 26);
             this.cmbboxStation.TabIndex = 1;
-            this.cmbboxStation.Enabled = true;
             this.cmbboxStation.SelectedIndexChanged += new System.EventHandler(this.cmbboxStation_SelectedIndexChanged);
             // 
             // frmCreateRoom
@@ -206,10 +189,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
             this.Controls.Add(this.cmbboxStation);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtBoxRoomNo);
-            this.Controls.Add(this.lblCrtRoom);
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.txtBoxDescription);
@@ -240,11 +220,9 @@
         private DevExpress.XtraEditors.TextEdit txtBoxDescription;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblEnv;
-        private System.Windows.Forms.Label lblCrtRoom;
         private DevExpress.XtraEditors.TextEdit txtBoxRoomNo;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.ComboBoxEdit cmbboxStation;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

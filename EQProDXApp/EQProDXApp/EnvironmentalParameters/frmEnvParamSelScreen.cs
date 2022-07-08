@@ -151,23 +151,15 @@ namespace EQProDXApp.EnvironmentalParameters
         private void cmBoxEdtRoomNo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sSql,sTmp;
-            int iLen = 0;
             try
             {
                 sTmp = cmBoxEdtRoomNo.Text;
-                //sStr = sTmp.Split(""); 
-
-                //string[] sWord = Regex.Split((sTmp,@",");
-                //string[] sTmpArr = sScenarioIDSRC.Split(',');
-                //string[] sTmpArr = sScenarioIDSRC.Split(',');
-
                 string[] sWordArr = sTmp.Split(',');
                 sRoomNo = sWordArr[0];
                 sDescrip = sWordArr[1];
-                //iLen = sWord.Length; 
-                //sRoomNo = sTmp.Substring(0, sTmp.Length - 1);
                 //001 Plant is loked
-                sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " AND Description = " + sDescrip;
+                sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " " +
+                       "AND Description = " + sDescrip;
                 dtTblEnvParam = objClssMethods.Get_DataTable(sSql);
                 if (dtTblEnvParam.Rows.Count > 1)
                 {         
@@ -191,6 +183,11 @@ namespace EQProDXApp.EnvironmentalParameters
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void ResetRoomValues()

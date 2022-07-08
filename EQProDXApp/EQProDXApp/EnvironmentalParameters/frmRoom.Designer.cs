@@ -89,7 +89,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Navy;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(146, 2);
+            this.btnClose.Location = new System.Drawing.Point(290, 2);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(140, 38);
@@ -123,9 +123,9 @@
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Controls.Add(this.btnClose);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(100, 494);
+            this.flowLayoutPanel1.Controls.Add(this.btnClose);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(125, 521);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(438, 47);
@@ -137,7 +137,7 @@
             this.btnClear.BackColor = System.Drawing.Color.Navy;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(290, 2);
+            this.btnClear.Location = new System.Drawing.Point(146, 2);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(140, 38);

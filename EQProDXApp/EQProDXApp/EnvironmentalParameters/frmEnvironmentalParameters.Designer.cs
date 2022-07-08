@@ -132,7 +132,7 @@
             this.btnRoom.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.btnRoom.Size = new System.Drawing.Size(242, 87);
             this.btnRoom.TabIndex = 13;
-            this.btnRoom.Text = "New Room";
+            this.btnRoom.Text = "Create New Room";
             this.btnRoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRoom.UseVisualStyleBackColor = false;
             this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);

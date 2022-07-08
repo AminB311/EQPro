@@ -15,6 +15,8 @@ namespace EQProDXApp
     public partial class frmCreateRoom : Form
     { 
         string sSql = "";
+        Class_PublicMethods objMethods = new Class_PublicMethods();
+
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
         Class_PublicMethods objClssMethods = new Class_PublicMethods();
         //int iCount= 0;
@@ -34,15 +36,15 @@ namespace EQProDXApp
             {
                 //sSql = "Select PlantID,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber,"+
                 //       "Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
-                sSql = "Select PlantName FROM RoomStation";//Station Name
+                sSql = "Select PlantName FROM Plant";//Station Name
                 if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
                 {
                     objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
                 }
                 else
                 {
-                    MessageBox.Show("Error in connection string opening the DB ");
-                    new Exception("Error in connection string opening the DB ");
+                    MessageBox.Show("Error in connection string opening the DB");
+                    new Exception("Error in connection string opening the DB");
                 }
             }
             catch (Exception ex)
@@ -54,8 +56,11 @@ namespace EQProDXApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            int iVal = 0;
             string sPlantNumber, sPlantName, sLocation, sBuilding, sRoomNumber, sDescription, sZone, sDocketNumber, sParameter;
-            string sLicensingCriteria, sStatus, sDescriptionChange, sRevisionNumber;
+            string sLicensingCriteria, sStatus, sDescriptionChange, sRevisionNumber, sReference;
+            string sRevision, sDateAssig, sDateDel, sDateRevised, sDeletedBy, sPlantID, sRoomID;
+            int iPlantID, iRoomID;
             try
             {
                 if (ValidateForm())
@@ -63,7 +68,8 @@ namespace EQProDXApp
                     if (btnAdd.Text == "Add Room")
                     {
                         sPlantNumber = sPlantName = sLocation = sBuilding = sRoomNumber = sDescription = sZone = sDocketNumber = sParameter = "";
-                        sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = "";
+                        sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = sReference = "";
+                        sRevision = sDateAssig = sDateDel = sDateRevised = "";
                         btnAdd.Enabled = false;
                         //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                         //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
@@ -100,19 +106,51 @@ namespace EQProDXApp
                                             sDescription = txtBoxDescription.Text;
                                             sDocketNumber = vDocketResult;
                                             sLicensingCriteria = vLicensing;
-                                            //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
-                                            //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                                            sSql = "Insert into RoomStation(PlantName, Location, Building, RoomNumber, Description, Zone," +
-                                                   "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber) " +
-                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sBuilding + "','" + sRoomNumber + "',"+
-                                                    "'" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
-                                                   "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "')";
-                                            objClssMethods.AddNew_Values(sSql);
+                                            sRevisionNumber = "0";
+                                            sLocation = "Test";
+                                            sStatus = "Revision In Progress";
+                                            sRevision = "0";
+                                            sDateAssig = DateTime.Today.ToString();
+                                            sDateDel = "";
+                                            sDateRevised = "";
+                                            sDeletedBy = "";
+                                            sPlantID = "";
+                                            //Insert into Plant(PlantName, Location, Description, Zone, DocketNumber, Parameter, LicensingCriteria, Status, DescriptionChange, RevisionNumber, Reference)
+                                            //Values('New Test Station', '505', 'Created on July 05', '', 'Docket No 505', '', 'Lic Crit 505', 'Revision In Progress', '', '1', '')
+                                            sSql = "Insert into Plant(PlantName, Location, Description, Zone," +
+                                                   "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber, Reference) " +
+                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
+                                                   "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "','" + sReference + "') " +
+                                                   //"set @trgPlantID = SCOPE_IDENTITY() "+
+                                                   "Insert into Room(Name,Location,Description) " +
+                                                   "Values('" + sRoomNumber + "','" + sLocation + "','" + sDescription + "')";
+                                            iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert
+                                            if (iVal == 1)
+                                            {
+                                                //Get recently added values 
+                                                //Plant ID
+                                                iPlantID = objClssMethods.Get_MaxIDfromTable("PlantID", "Plant");//Get MAX LinkDateID from Target, it returns MAX+1 
+                                                iPlantID--;
+                                                sPlantID = iPlantID.ToString();
+                                                //Room ID
+                                                iRoomID = objClssMethods.Get_MaxIDfromTable("RoomID", "Room");//Get MAX LinkDateID from Target, it returns MAX+1 
+                                                iRoomID--;
+                                                sRoomID = iRoomID.ToString();
+                                                sSql = "Insert into PlantRoomAssignment(Status,PlantID,RoomID,Revision,DateAssigned,DateRevised,DateDeleted,DeletedBy) " +
+                                                      "Values('" + sStatus + "','" + sPlantID + "','" + sRoomID + "','" + sRevision + "','" + sDateAssig + "','" + sDateRevised + "','" + sDateDel + "'," +
+                                                      "'" + sDeletedBy + "')";
+                                                iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert                                                                                    
+
+                                                MessageBox.Show("Room added successfully.", "Room Added", MessageBoxButtons.OK);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Room was not added.", "Error", MessageBoxButtons.OK);
+                                            }
                                         }
                                     }
                                     else
                                     {
-
                                     }
                                     ResetRoomValues();
                                     
@@ -128,7 +166,7 @@ namespace EQProDXApp
             }
             catch (Exception ex)
             {
-                new Exception("Error in btnAdd_Click", ex);
+                new Exception("Error in adding a New Room", ex);
             }
         }
 
@@ -177,6 +215,9 @@ namespace EQProDXApp
                 cmbboxStation.Visible = true;
                 btnAdd.Text = "Add";
                 btnAdd.Enabled = true;
+
+                objMethods.Load_CmbBoxValues("SELECT PlantName from Plant", cmbboxStation);
+
             }
 
             catch (Exception ex)
@@ -217,7 +258,7 @@ namespace EQProDXApp
             try
             {
                 sStatName = cmbboxStation.Text;
-                sSql = "SELECT RoomNumber, Description FROM RoomStation where PlantName =  '" + sStatName + "'";
+                sSql = "SELECT RoomNumber, Description FROM Plant where PlantName =  '" + sStatName + "'";
                 dataTable = objClssMethods.Get_DataTable(sSql);
                 //userID = int.Parse(dataTable.Rows[0][0].ToString());
                 txtBoxRoomNo.Text = dataTable.Rows[0][0].ToString();

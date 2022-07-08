@@ -59,7 +59,6 @@ namespace EQProDXApp
             }
         }
 
-
         public bool Load_CmbTextBoxValues(string sSql, DevExpress.XtraEditors.ComboBoxEdit objCmbBoxName, DevExpress.XtraEditors.TextEdit objTextBoxName)
         {
             string sVal = "";
@@ -163,7 +162,6 @@ namespace EQProDXApp
             }
         }
 
-
         public int CheckForUniqueID(string sSql)
         {
             try
@@ -227,7 +225,6 @@ namespace EQProDXApp
                 throw new Exception("Error in Get_ValuefromTable().", ex);
             }
         } // end     
-
        
         public DataTable Get_DataTable(string sSql)
         {
@@ -242,6 +239,29 @@ namespace EQProDXApp
                 throw new Exception("Error in Get_DataTable", ex);
             }
         }
+
+        public int Get_MaxIDfromTable(string sFieldName, string sTableName)
+        {
+            int iMaxID = 0;
+            string sSql = "";
+            try
+            {              
+                sSql = "SELECT ISNULL(max( " + sFieldName + "),0) FROM " + sTableName + "";
+                //iMaxID = objDALCls.ExecuterScalar<int>(sSql);
+                //SqlConn = objDALCls.getSqlConn();
+                SqlCommand cmd = new SqlCommand(sSql, SqlConn);
+                iMaxID = (int)cmd.ExecuteScalar();
+                iMaxID = iMaxID + 1;
+                return iMaxID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in Method Get_MaxIDfromTable().", ex);
+                //return 0;
+            }
+
+        } // end 
+
 
     }
 }

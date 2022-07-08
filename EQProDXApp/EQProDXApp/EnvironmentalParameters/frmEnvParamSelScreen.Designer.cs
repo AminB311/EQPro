@@ -55,6 +55,7 @@
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.txtReferences = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).BeginInit();
@@ -86,7 +87,7 @@
             this.btnFilter.BackColor = System.Drawing.Color.Navy;
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(798, 241);
+            this.btnFilter.Location = new System.Drawing.Point(806, 241);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(140, 38);
@@ -377,12 +378,28 @@
             this.labelControl10.TabIndex = 61;
             this.labelControl10.Text = "Change Description";
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.BackColor = System.Drawing.Color.Navy;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(806, 803);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(140, 38);
+            this.btnClose.TabIndex = 62;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmEnvParamSelScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.labelControl11);
             this.Controls.Add(this.txtReferences);
@@ -460,5 +477,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.TextEdit txtReferences;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private System.Windows.Forms.Button btnClose;
     }
 }

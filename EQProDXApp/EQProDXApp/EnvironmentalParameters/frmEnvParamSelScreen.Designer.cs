@@ -30,11 +30,7 @@
         {
             this.lblStationName = new DevExpress.XtraEditors.LabelControl();
             this.btnFilter = new System.Windows.Forms.Button();
-            this.txtBoxStatus = new DevExpress.XtraEditors.TextEdit();
             this.lblEnv = new System.Windows.Forms.Label();
-            this.txtBoxStation = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtBoxPrpBy = new DevExpress.XtraEditors.TextEdit();
@@ -48,38 +44,32 @@
             this.txtBoxAppBy = new DevExpress.XtraEditors.TextEdit();
             this.txtBoxDateApp = new DevExpress.XtraEditors.TextEdit();
             this.btnRoleAsg = new System.Windows.Forms.Button();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txtBoxPlantRev = new DevExpress.XtraEditors.TextEdit();
-            this.cmBoxEdtRoomNo = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.txtDescrption = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.txtReferences = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).BeginInit();
+            this.cmbBoxStationName = new System.Windows.Forms.ComboBox();
+            this.gridLookUpEdit1 = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.dataGridRoom = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateRev.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxAppBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateApp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxPlantRev.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmBoxEdtRoomNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescrption.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReferences.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridRoom)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStationName
             // 
             this.lblStationName.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.lblStationName.Appearance.Options.UseFont = true;
-            this.lblStationName.Location = new System.Drawing.Point(69, 250);
+            this.lblStationName.Location = new System.Drawing.Point(69, 179);
             this.lblStationName.Margin = new System.Windows.Forms.Padding(2);
             this.lblStationName.Name = "lblStationName";
-            this.lblStationName.Size = new System.Drawing.Size(217, 19);
+            this.lblStationName.Size = new System.Drawing.Size(121, 19);
             this.lblStationName.TabIndex = 1;
-            this.lblStationName.Text = "Room Number/Description";
+            this.lblStationName.Text = "Station Details";
             // 
             // btnFilter
             // 
@@ -87,7 +77,7 @@
             this.btnFilter.BackColor = System.Drawing.Color.Navy;
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(806, 241);
+            this.btnFilter.Location = new System.Drawing.Point(806, 657);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(140, 38);
@@ -96,60 +86,18 @@
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // txtBoxStatus
-            // 
-            this.txtBoxStatus.Location = new System.Drawing.Point(775, 312);
-            this.txtBoxStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtBoxStatus.Name = "txtBoxStatus";
-            this.txtBoxStatus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtBoxStatus.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxStatus.Size = new System.Drawing.Size(162, 26);
-            this.txtBoxStatus.TabIndex = 4;
-            // 
             // lblEnv
             // 
             this.lblEnv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEnv.AutoSize = true;
-            this.lblEnv.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnv.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnv.ForeColor = System.Drawing.Color.Navy;
-            this.lblEnv.Location = new System.Drawing.Point(20, 164);
+            this.lblEnv.Location = new System.Drawing.Point(60, 90);
             this.lblEnv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnv.Name = "lblEnv";
-            this.lblEnv.Size = new System.Drawing.Size(740, 50);
+            this.lblEnv.Size = new System.Drawing.Size(854, 50);
             this.lblEnv.TabIndex = 37;
-            this.lblEnv.Text = "Environmental Parameters for Rooms";
-            // 
-            // txtBoxStation
-            // 
-            this.txtBoxStation.Location = new System.Drawing.Point(136, 312);
-            this.txtBoxStation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtBoxStation.Name = "txtBoxStation";
-            this.txtBoxStation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtBoxStation.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxStation.Size = new System.Drawing.Size(228, 26);
-            this.txtBoxStation.TabIndex = 3;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(68, 315);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(64, 19);
-            this.labelControl1.TabIndex = 38;
-            this.labelControl1.Text = "Station ";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(708, 315);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(52, 19);
-            this.labelControl2.TabIndex = 39;
-            this.labelControl2.Text = "Status";
+            this.lblEnv.Text = "Environmental Parameters Selection Screen";
             // 
             // labelControl3
             // 
@@ -298,86 +246,6 @@
             this.btnRoleAsg.UseVisualStyleBackColor = false;
             this.btnRoleAsg.Click += new System.EventHandler(this.btnRoleAsg_Click);
             // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(400, 311);
-            this.labelControl9.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(117, 19);
-            this.labelControl9.TabIndex = 54;
-            this.labelControl9.Text = "Plant Revision";
-            // 
-            // txtBoxPlantRev
-            // 
-            this.txtBoxPlantRev.Location = new System.Drawing.Point(527, 308);
-            this.txtBoxPlantRev.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtBoxPlantRev.Name = "txtBoxPlantRev";
-            this.txtBoxPlantRev.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtBoxPlantRev.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxPlantRev.Size = new System.Drawing.Size(162, 26);
-            this.txtBoxPlantRev.TabIndex = 53;
-            // 
-            // cmBoxEdtRoomNo
-            // 
-            this.cmBoxEdtRoomNo.EditValue = "";
-            this.cmBoxEdtRoomNo.Location = new System.Drawing.Point(346, 247);
-            this.cmBoxEdtRoomNo.Name = "cmBoxEdtRoomNo";
-            this.cmBoxEdtRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.cmBoxEdtRoomNo.Properties.Appearance.Options.UseFont = true;
-            this.cmBoxEdtRoomNo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmBoxEdtRoomNo.Size = new System.Drawing.Size(383, 26);
-            this.cmBoxEdtRoomNo.TabIndex = 55;
-            this.cmBoxEdtRoomNo.SelectedIndexChanged += new System.EventHandler(this.cmBoxEdtRoomNo_SelectedIndexChanged);
-            // 
-            // txtDescrption
-            // 
-            this.txtDescrption.Location = new System.Drawing.Point(174, 376);
-            this.txtDescrption.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtDescrption.Name = "txtDescrption";
-            this.txtDescrption.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtDescrption.Properties.Appearance.Options.UseFont = true;
-            this.txtDescrption.Properties.AutoHeight = false;
-            this.txtDescrption.Size = new System.Drawing.Size(763, 140);
-            this.txtDescrption.TabIndex = 56;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl11.Appearance.Options.UseFont = true;
-            this.labelControl11.Location = new System.Drawing.Point(67, 570);
-            this.labelControl11.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(91, 19);
-            this.labelControl11.TabIndex = 59;
-            this.labelControl11.Text = "References";
-            this.labelControl11.Click += new System.EventHandler(this.labelControl11_Click);
-            // 
-            // txtReferences
-            // 
-            this.txtReferences.Location = new System.Drawing.Point(174, 540);
-            this.txtReferences.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtReferences.Name = "txtReferences";
-            this.txtReferences.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtReferences.Properties.Appearance.Options.UseFont = true;
-            this.txtReferences.Properties.AutoHeight = false;
-            this.txtReferences.Size = new System.Drawing.Size(763, 81);
-            this.txtReferences.TabIndex = 58;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl10.Location = new System.Drawing.Point(69, 417);
-            this.labelControl10.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(103, 38);
-            this.labelControl10.TabIndex = 61;
-            this.labelControl10.Text = "Change Description";
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -393,20 +261,51 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // cmbBoxStationName
+            // 
+            this.cmbBoxStationName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxStationName.FormattingEnabled = true;
+            this.cmbBoxStationName.Location = new System.Drawing.Point(232, 171);
+            this.cmbBoxStationName.Name = "cmbBoxStationName";
+            this.cmbBoxStationName.Size = new System.Drawing.Size(666, 27);
+            this.cmbBoxStationName.TabIndex = 63;
+            this.cmbBoxStationName.SelectedIndexChanged += new System.EventHandler(this.cmBoxRoomNo_SelectedIndexChanged);
+            // 
+            // gridLookUpEdit1
+            // 
+            this.gridLookUpEdit1.Location = new System.Drawing.Point(221, 309);
+            this.gridLookUpEdit1.Name = "gridLookUpEdit1";
+            this.gridLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.gridLookUpEdit1.Properties.PopupView = this.gridLookUpEdit1View;
+            this.gridLookUpEdit1.Size = new System.Drawing.Size(100, 20);
+            this.gridLookUpEdit1.TabIndex = 65;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // dataGridRoom
+            // 
+            this.dataGridRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridRoom.Location = new System.Drawing.Point(67, 237);
+            this.dataGridRoom.Name = "dataGridRoom";
+            this.dataGridRoom.Size = new System.Drawing.Size(831, 380);
+            this.dataGridRoom.TabIndex = 66;
+            // 
             // frmEnvParamSelScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
+            this.Controls.Add(this.dataGridRoom);
+            this.Controls.Add(this.gridLookUpEdit1);
+            this.Controls.Add(this.cmbBoxStationName);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.labelControl10);
-            this.Controls.Add(this.labelControl11);
-            this.Controls.Add(this.txtReferences);
-            this.Controls.Add(this.txtDescrption);
-            this.Controls.Add(this.cmBoxEdtRoomNo);
-            this.Controls.Add(this.labelControl9);
-            this.Controls.Add(this.txtBoxPlantRev);
             this.Controls.Add(this.btnRoleAsg);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl8);
@@ -421,29 +320,22 @@
             this.Controls.Add(this.txtBoxPrpBy);
             this.Controls.Add(this.txtBoxDatePrp);
             this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.txtBoxStation);
             this.Controls.Add(this.lblEnv);
-            this.Controls.Add(this.txtBoxStatus);
             this.Controls.Add(this.lblStationName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEnvParamSelScreen";
             this.Text = "Environmental Parameters Selection Screen";
             this.Load += new System.EventHandler(this.frmEnvParamSelScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxStatus.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxStation.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateRev.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxAppBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDateApp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxPlantRev.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmBoxEdtRoomNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDescrption.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReferences.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridRoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,11 +344,7 @@
         #endregion
         private DevExpress.XtraEditors.LabelControl lblStationName;
         private System.Windows.Forms.Button btnFilter;
-        private DevExpress.XtraEditors.TextEdit txtBoxStatus;
         private System.Windows.Forms.Label lblEnv;
-        private DevExpress.XtraEditors.TextEdit txtBoxStation;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtBoxPrpBy;
@@ -470,13 +358,10 @@
         private DevExpress.XtraEditors.TextEdit txtBoxAppBy;
         private DevExpress.XtraEditors.TextEdit txtBoxDateApp;
         private System.Windows.Forms.Button btnRoleAsg;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.TextEdit txtBoxPlantRev;
-        private DevExpress.XtraEditors.ComboBoxEdit cmBoxEdtRoomNo;
-        private DevExpress.XtraEditors.TextEdit txtDescrption;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.TextEdit txtReferences;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ComboBox cmbBoxStationName;
+        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private System.Windows.Forms.DataGridView dataGridRoom;
     }
 }

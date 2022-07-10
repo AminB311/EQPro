@@ -23,7 +23,7 @@ namespace EQProDXApp.EnvironmentalParameters
 
         string sSql = "";
         string sEnvAsgID, sPlantID, sRevisionNumber, sStatus, sDateEnvSel;
-        string sRoomNo, sDescrip;
+        string sRoomNo, sDescrip, sStatName;
         DataTable dtTblEnvParam = new DataTable();
 
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
@@ -39,17 +39,19 @@ namespace EQProDXApp.EnvironmentalParameters
         {
             try
             {
-                sSql = "SELECT Concat(RoomNumber,',',Description) FROM RoomStation";
+                //sSql = "SELECT Concat(RoomNumber,',',Description) FROM RoomStation";
+                sSql = "Select PlantName FROM Plant";//Station Name
 
-                if (objPubClass.Load_CmbBoxValues(sSql, cmBoxEdtRoomNo) == true)
+                if (objPubClass.Load_CmbBoxValues(sSql, cmbBoxStationName) == true)
                 {
-                    objPubClass.Load_CmbBoxValues(sSql, cmBoxEdtRoomNo);
+                    objPubClass.Load_CmbBoxValues(sSql, cmbBoxStationName);
                 }
                 else
                 {
                     MessageBox.Show("Error in connection string opening the DB ");
                     new Exception("Error in connection string opening the DB ");
                 }
+
             }
             catch (Exception ex)
             {
@@ -70,11 +72,11 @@ namespace EQProDXApp.EnvironmentalParameters
                         btnFilter.Enabled = false;
                         //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
                         //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                        if (String.IsNullOrEmpty(cmBoxEdtRoomNo.Text) == false)
+                        if (String.IsNullOrEmpty(cmbBoxStationName.Text) == false)
                         {
                             //sStationName, sRoomNo, sDescription
                             //string sPlantID = "";
-                            sRoomNo = cmBoxEdtRoomNo.Text;
+                            sRoomNo = cmbBoxStationName.Text;
                             sSql = "SELECT RoomNumber FROM EnvParamAssignment where PlantID = '" + sPlantID + "'";
                             sRoomNo = objPubClass.Get_ValueStrfromTable(sSql);
 
@@ -103,24 +105,13 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 ErrorProvider errorProvider = new ErrorProvider();
                 //var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
-                if (cmBoxEdtRoomNo.Text == "")
+                if (cmbBoxStationName.Text == "")
                 {
                     MessageBox.Show("Station Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(cmBoxEdtRoomNo, "Empty Field");
+                    errorProvider.SetError(cmbBoxStationName, "Empty Field");
                     return false;
                 }
-                if (txtBoxStation.Text == "")
-                {
-                    MessageBox.Show("Room Number Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxStation, "Empty Field");
-                    return false;
-                }
-                if (txtBoxStatus.Text == "")
-                {
-                    MessageBox.Show("Description Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(txtBoxStatus, "Empty Field");
-                    return false;
-                }
+               
             }
 
             catch (Exception ex)
@@ -148,29 +139,39 @@ namespace EQProDXApp.EnvironmentalParameters
 
         }
 
-        private void cmBoxEdtRoomNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmBoxRoomNo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sSql,sTmp;
             try
             {
-                sTmp = cmBoxEdtRoomNo.Text;
-                string[] sWordArr = sTmp.Split(',');
-                sRoomNo = sWordArr[0];
-                sDescrip = sWordArr[1];
+                sTmp = cmbBoxStationName.Text;
+                //string[] sWordArr = sTmp.Split(',');
+                //sRoomNo = sWordArr[0];
+                //sDescrip = sWordArr[1];
                 //001 Plant is loked
-                sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " " +
-                       "AND Description = " + sDescrip;
+                sStatName = cmbBoxStationName.Text;
+
+                //sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " " +
+                //       "AND Description = " + sDescrip;
+
+                sSql = "SELECT R.Name as RoomName, P.Description, P.DescriptionChange as ChangeDescription, " +
+                       "P.Reference from Plant P " +
+                        "INNER JOIN PlantRoomAssignment PA " +
+                        "ON PA.PlantID = P.PlantID " +
+                        "INNER JOIN Room R " +
+                        "ON R.RoomID = PA.RoomID " +
+                        "where P.PlantName = '" + sStatName + "'";
                 dtTblEnvParam = objClssMethods.Get_DataTable(sSql);
+                dataGridRoom.DataSource = dtTblEnvParam;
                 if (dtTblEnvParam.Rows.Count > 1)
                 {         
                     //Station Name
-                    txtBoxRevBy.Text = dtTblEnvParam.Rows[0][0].ToString();
-                    txtBoxStatus.Text = dtTblEnvParam.Rows[0][1].ToString();
+                    txtBoxRevBy.Text = dtTblEnvParam.Rows[0][0].ToString();                   
                 }
             }
             catch (Exception ex)
             {
-                new Exception("Error in cmBoxEdtRoomNo_SelectedIndexChanged", ex);
+                new Exception("Error in cmBoxRoomNo_SelectedIndexChanged", ex);
             }
 
         }
@@ -190,14 +191,17 @@ namespace EQProDXApp.EnvironmentalParameters
             this.Close();
         }
 
+        private void dataGridRoom_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ResetRoomValues()
         {
             try
             {
                 //cmbboxStation.Text = "";
-                txtBoxStation.Text = "";
-                txtBoxStatus.Text = "";
-                //cmbboxStation.Visible = true;
+           
                 btnFilter.Text = "Add";
                 btnFilter.Enabled = true;
             }
@@ -232,11 +236,10 @@ namespace EQProDXApp.EnvironmentalParameters
             //int iCount;
             try
             {
-                sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmBoxEdtRoomNo.Text);
+                sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbBoxStationName.Text);
                 dataTable = objClssMethods.Get_DataTable(sSql);
                 //userID = int.Parse(dataTable.Rows[0][0].ToString());
-                txtBoxStation.Text = dataTable.Rows[0][1].ToString();
-                txtBoxStatus.Text = dataTable.Rows[0][2].ToString();
+             
             }
             catch (Exception ex)
             {

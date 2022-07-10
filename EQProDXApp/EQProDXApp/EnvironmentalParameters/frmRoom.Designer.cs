@@ -39,11 +39,10 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblEnv = new System.Windows.Forms.Label();
             this.txtBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
-            this.cmbboxStation = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbboxStation = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStationName
@@ -116,7 +115,7 @@
             this.txtBoxDescription.Name = "txtBoxDescription";
             this.txtBoxDescription.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtBoxDescription.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxDescription.Size = new System.Drawing.Size(162, 26);
+            this.txtBoxDescription.Size = new System.Drawing.Size(264, 26);
             this.txtBoxDescription.TabIndex = 3;
             // 
             // flowLayoutPanel1
@@ -166,19 +165,18 @@
             this.txtBoxRoomNo.Name = "txtBoxRoomNo";
             this.txtBoxRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtBoxRoomNo.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxRoomNo.Size = new System.Drawing.Size(162, 26);
+            this.txtBoxRoomNo.Size = new System.Drawing.Size(264, 26);
             this.txtBoxRoomNo.TabIndex = 2;
             // 
             // cmbboxStation
             // 
-            this.cmbboxStation.EditValue = "";
-            this.cmbboxStation.Location = new System.Drawing.Point(500, 347);
+            this.cmbboxStation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmbboxStation.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbboxStation.FormattingEnabled = true;
+            this.cmbboxStation.Location = new System.Drawing.Point(500, 350);
+            this.cmbboxStation.Margin = new System.Windows.Forms.Padding(2);
             this.cmbboxStation.Name = "cmbboxStation";
-            this.cmbboxStation.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.cmbboxStation.Properties.Appearance.Options.UseFont = true;
-            this.cmbboxStation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbboxStation.Size = new System.Drawing.Size(162, 26);
+            this.cmbboxStation.Size = new System.Drawing.Size(264, 31);
             this.cmbboxStation.TabIndex = 1;
             this.cmbboxStation.SelectedIndexChanged += new System.EventHandler(this.cmbboxStation_SelectedIndexChanged);
             // 
@@ -205,7 +203,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbboxStation.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,8 +218,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblEnv;
         private DevExpress.XtraEditors.TextEdit txtBoxRoomNo;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbboxStation;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox cmbboxStation;
     }
 }
 

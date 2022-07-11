@@ -38,29 +38,30 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClear = new System.Windows.Forms.Button();
             this.lblEnv = new System.Windows.Forms.Label();
-            this.txtBoxRoomNo = new DevExpress.XtraEditors.TextEdit();
+            this.txtBoxRoomName = new DevExpress.XtraEditors.TextEdit();
             this.cmbboxStation = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStationName
             // 
             this.lblStationName.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.lblStationName.Appearance.Options.UseFont = true;
-            this.lblStationName.Location = new System.Drawing.Point(300, 350);
+            this.lblStationName.Location = new System.Drawing.Point(141, 321);
             this.lblStationName.Margin = new System.Windows.Forms.Padding(2);
             this.lblStationName.Name = "lblStationName";
             this.lblStationName.Size = new System.Drawing.Size(126, 38);
             this.lblStationName.TabIndex = 1;
             this.lblStationName.Text = "Select/Enter\r\na Station Name";
+            //this.lblStationName.Click += new System.EventHandler(this.lblStationName_Click);
             // 
             // lblRoomNumber
             // 
             this.lblRoomNumber.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.lblRoomNumber.Appearance.Options.UseFont = true;
-            this.lblRoomNumber.Location = new System.Drawing.Point(300, 400);
+            this.lblRoomNumber.Location = new System.Drawing.Point(141, 403);
             this.lblRoomNumber.Margin = new System.Windows.Forms.Padding(2);
             this.lblRoomNumber.Name = "lblRoomNumber";
             this.lblRoomNumber.Size = new System.Drawing.Size(116, 19);
@@ -101,7 +102,7 @@
             // 
             this.lblDescription.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.lblDescription.Appearance.Options.UseFont = true;
-            this.lblDescription.Location = new System.Drawing.Point(300, 450);
+            this.lblDescription.Location = new System.Drawing.Point(141, 463);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(92, 19);
@@ -110,7 +111,7 @@
             // 
             // txtBoxDescription
             // 
-            this.txtBoxDescription.Location = new System.Drawing.Point(500, 456);
+            this.txtBoxDescription.Location = new System.Drawing.Point(320, 456);
             this.txtBoxDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtBoxDescription.Name = "txtBoxDescription";
             this.txtBoxDescription.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -124,7 +125,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(125, 521);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 521);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(438, 47);
@@ -151,29 +152,29 @@
             this.lblEnv.AutoSize = true;
             this.lblEnv.Font = new System.Drawing.Font("Microsoft YaHei UI", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnv.ForeColor = System.Drawing.Color.Navy;
-            this.lblEnv.Location = new System.Drawing.Point(57, 217);
+            this.lblEnv.Location = new System.Drawing.Point(190, 205);
             this.lblEnv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEnv.Name = "lblEnv";
             this.lblEnv.Size = new System.Drawing.Size(271, 50);
             this.lblEnv.TabIndex = 37;
             this.lblEnv.Text = "Create Room";
             // 
-            // txtBoxRoomNo
+            // txtBoxRoomName
             // 
-            this.txtBoxRoomNo.Location = new System.Drawing.Point(500, 400);
-            this.txtBoxRoomNo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.txtBoxRoomNo.Name = "txtBoxRoomNo";
-            this.txtBoxRoomNo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtBoxRoomNo.Properties.Appearance.Options.UseFont = true;
-            this.txtBoxRoomNo.Size = new System.Drawing.Size(264, 26);
-            this.txtBoxRoomNo.TabIndex = 2;
+            this.txtBoxRoomName.Location = new System.Drawing.Point(320, 396);
+            this.txtBoxRoomName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.txtBoxRoomName.Name = "txtBoxRoomName";
+            this.txtBoxRoomName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtBoxRoomName.Properties.Appearance.Options.UseFont = true;
+            this.txtBoxRoomName.Size = new System.Drawing.Size(264, 26);
+            this.txtBoxRoomName.TabIndex = 2;
             // 
             // cmbboxStation
             // 
             this.cmbboxStation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbboxStation.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbboxStation.FormattingEnabled = true;
-            this.cmbboxStation.Location = new System.Drawing.Point(500, 350);
+            this.cmbboxStation.Location = new System.Drawing.Point(10, 310);
             this.cmbboxStation.Margin = new System.Windows.Forms.Padding(2);
             this.cmbboxStation.Name = "cmbboxStation";
             this.cmbboxStation.Size = new System.Drawing.Size(264, 31);
@@ -187,7 +188,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
             this.Controls.Add(this.cmbboxStation);
-            this.Controls.Add(this.txtBoxRoomNo);
+            this.Controls.Add(this.txtBoxRoomName);
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.txtBoxDescription);
@@ -202,7 +203,7 @@
             this.Load += new System.EventHandler(this.frmCreateRoom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDescription.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBoxRoomName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,7 +218,7 @@
         private DevExpress.XtraEditors.TextEdit txtBoxDescription;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblEnv;
-        private DevExpress.XtraEditors.TextEdit txtBoxRoomNo;
+        private DevExpress.XtraEditors.TextEdit txtBoxRoomName;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ComboBox cmbboxStation;
     }

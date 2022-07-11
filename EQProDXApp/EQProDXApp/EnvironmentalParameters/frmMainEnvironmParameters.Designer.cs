@@ -1,6 +1,6 @@
 ﻿namespace EQProDXApp.EnvironmentalParameters
 {
-    partial class frmEnvParamSelScreen
+    partial class frmMainEnvironmParameters
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEnvParamSelScreen));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblRoomNo = new DevExpress.XtraEditors.LabelControl();
             this.btnFilter = new System.Windows.Forms.Button();
             this.lblEnv = new System.Windows.Forms.Label();
@@ -45,12 +44,10 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.txtBoxAppBy = new DevExpress.XtraEditors.TextEdit();
             this.txtBoxDateApp = new DevExpress.XtraEditors.TextEdit();
-            this.btnRadList = new System.Windows.Forms.Button();
+            this.btnRoleAsg = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cmbBoxStation = new System.Windows.Forms.ComboBox();
+            this.cmbBoxRoomNo = new System.Windows.Forms.ComboBox();
             this.dataGridStation = new System.Windows.Forms.DataGridView();
-            this.cmbBoxStatus = new System.Windows.Forms.ComboBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).BeginInit();
@@ -67,9 +64,9 @@
             this.lblRoomNo.Location = new System.Drawing.Point(69, 179);
             this.lblRoomNo.Margin = new System.Windows.Forms.Padding(2);
             this.lblRoomNo.Name = "lblRoomNo";
-            this.lblRoomNo.Size = new System.Drawing.Size(59, 19);
+            this.lblRoomNo.Size = new System.Drawing.Size(227, 19);
             this.lblRoomNo.TabIndex = 1;
-            this.lblRoomNo.Text = "Station";
+            this.lblRoomNo.Text = "Room Number / Description";
             // 
             // btnFilter
             // 
@@ -77,7 +74,7 @@
             this.btnFilter.BackColor = System.Drawing.Color.Navy;
             this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(865, 208);
+            this.btnFilter.Location = new System.Drawing.Point(470, 430);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(140, 38);
@@ -231,20 +228,20 @@
             this.txtBoxDateApp.Size = new System.Drawing.Size(162, 26);
             this.txtBoxDateApp.TabIndex = 49;
             // 
-            // btnRadList
+            // btnRoleAsg
             // 
-            this.btnRadList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRadList.BackColor = System.Drawing.Color.Navy;
-            this.btnRadList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRadList.ForeColor = System.Drawing.Color.White;
-            this.btnRadList.Location = new System.Drawing.Point(69, 349);
-            this.btnRadList.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRadList.Name = "btnRadList";
-            this.btnRadList.Size = new System.Drawing.Size(159, 52);
-            this.btnRadList.TabIndex = 52;
-            this.btnRadList.Text = "Export Radiation Zone List";
-            this.btnRadList.UseVisualStyleBackColor = false;
-            this.btnRadList.Click += new System.EventHandler(this.btnRadList_Click);
+            this.btnRoleAsg.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRoleAsg.BackColor = System.Drawing.Color.Navy;
+            this.btnRoleAsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoleAsg.ForeColor = System.Drawing.Color.White;
+            this.btnRoleAsg.Location = new System.Drawing.Point(470, 500);
+            this.btnRoleAsg.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRoleAsg.Name = "btnRoleAsg";
+            this.btnRoleAsg.Size = new System.Drawing.Size(140, 38);
+            this.btnRoleAsg.TabIndex = 52;
+            this.btnRoleAsg.Text = "Role Assg";
+            this.btnRoleAsg.UseVisualStyleBackColor = false;
+            this.btnRoleAsg.Click += new System.EventHandler(this.btnRoleAsg_Click);
             // 
             // btnClose
             // 
@@ -252,7 +249,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Navy;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(855, 652);
+            this.btnClose.Location = new System.Drawing.Point(470, 570);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(140, 38);
@@ -261,65 +258,42 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cmbBoxStation
+            // cmbBoxRoomNo
             // 
-            this.cmbBoxStation.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxStation.FormattingEnabled = true;
-            this.cmbBoxStation.Location = new System.Drawing.Point(175, 176);
-            this.cmbBoxStation.Name = "cmbBoxStation";
-            this.cmbBoxStation.Size = new System.Drawing.Size(348, 27);
-            this.cmbBoxStation.TabIndex = 63;
-            this.cmbBoxStation.SelectedIndexChanged += new System.EventHandler(this.cmBoxRoomNo_SelectedIndexChanged);
+            this.cmbBoxRoomNo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxRoomNo.FormattingEnabled = true;
+            this.cmbBoxRoomNo.Location = new System.Drawing.Point(315, 171);
+            this.cmbBoxRoomNo.Name = "cmbBoxRoomNo";
+            this.cmbBoxRoomNo.Size = new System.Drawing.Size(348, 27);
+            this.cmbBoxRoomNo.TabIndex = 63;
+            this.cmbBoxRoomNo.SelectedIndexChanged += new System.EventHandler(this.cmbBoxRoomNo_SelectedIndexChanged);
             // 
             // dataGridStation
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridStation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridStation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridStation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridStation.Location = new System.Drawing.Point(69, 267);
+            this.dataGridStation.Location = new System.Drawing.Point(67, 237);
             this.dataGridStation.Name = "dataGridStation";
             this.dataGridStation.Size = new System.Drawing.Size(831, 56);
             this.dataGridStation.TabIndex = 66;
-            this.dataGridStation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStation_CellContentClick);
             // 
-            // cmbBoxStatus
-            // 
-            this.cmbBoxStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxStatus.FormattingEnabled = true;
-            this.cmbBoxStatus.Location = new System.Drawing.Point(657, 176);
-            this.cmbBoxStatus.Name = "cmbBoxStatus";
-            this.cmbBoxStatus.Size = new System.Drawing.Size(348, 27);
-            this.cmbBoxStatus.TabIndex = 68;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(551, 179);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(93, 19);
-            this.labelControl1.TabIndex = 67;
-            this.labelControl1.Text = "Rev. Status";
-            // 
-            // frmEnvParamSelScreen
+            // frmMainEnvironmParameters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 967);
-            this.Controls.Add(this.cmbBoxStatus);
-            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.dataGridStation);
-            this.Controls.Add(this.cmbBoxStation);
+            this.Controls.Add(this.cmbBoxRoomNo);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnRadList);
+            this.Controls.Add(this.btnRoleAsg);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.txtBoxAppBy);
@@ -336,11 +310,10 @@
             this.Controls.Add(this.lblEnv);
             this.Controls.Add(this.lblRoomNo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmEnvParamSelScreen";
+            this.Name = "frmMainEnvironmParameters";
             this.Text = "Environmental Parameters Selection Screen";
-            this.Load += new System.EventHandler(this.frmEnvParamSelScreen_Load);
+            this.Load += new System.EventHandler(this.frmMainEnvironmParameters_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxPrpBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxDatePrp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxRevBy.Properties)).EndInit();
@@ -369,11 +342,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.TextEdit txtBoxAppBy;
         private DevExpress.XtraEditors.TextEdit txtBoxDateApp;
-        private System.Windows.Forms.Button btnRadList;
+        private System.Windows.Forms.Button btnRoleAsg;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.ComboBox cmbBoxStation;
+        private System.Windows.Forms.ComboBox cmbBoxRoomNo;
         private System.Windows.Forms.DataGridView dataGridStation;
-        private System.Windows.Forms.ComboBox cmbBoxStatus;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
+

@@ -284,7 +284,7 @@
             this.dataGridStation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridStation.Location = new System.Drawing.Point(69, 267);
             this.dataGridStation.Name = "dataGridStation";
-            this.dataGridStation.Size = new System.Drawing.Size(831, 56);
+            this.dataGridStation.Size = new System.Drawing.Size(700, 100);
             this.dataGridStation.TabIndex = 66;
             this.dataGridStation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStation_CellContentClick);
             // 
@@ -292,10 +292,15 @@
             // 
             this.cmbBoxStatus.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBoxStatus.FormattingEnabled = true;
+            this.cmbBoxStatus.Items.AddRange(new object[] {
+            "Active",
+            "Revision In Progress",
+            "Superseded"});
             this.cmbBoxStatus.Location = new System.Drawing.Point(657, 176);
             this.cmbBoxStatus.Name = "cmbBoxStatus";
             this.cmbBoxStatus.Size = new System.Drawing.Size(348, 27);
             this.cmbBoxStatus.TabIndex = 68;
+            this.cmbBoxStatus.SelectedIndexChanged += new System.EventHandler(this.cmbBoxStatus_SelectedIndexChanged);
             // 
             // labelControl1
             // 

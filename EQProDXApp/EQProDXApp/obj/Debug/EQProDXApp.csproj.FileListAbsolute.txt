@@ -208,3 +208,4 @@ C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\de\DevExpress.Office.v21.2.Core.r
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\es\DevExpress.Office.v21.2.Core.resources.dll
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\ja\DevExpress.Office.v21.2.Core.resources.dll
 C:\Amin\GitHub\EQProDXApp\EQProDXApp\bin\Debug\ru\DevExpress.Office.v21.2.Core.resources.dll
+C:\Amin\GitHub\EQProDXApp\EQProDXApp\obj\Debug\EQProDXApp.EnvironmentalParameters.frmMainEnvironmParameters.resources

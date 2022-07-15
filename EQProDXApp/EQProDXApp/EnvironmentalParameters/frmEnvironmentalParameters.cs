@@ -79,7 +79,11 @@ namespace EQProDXApp
 
         private void btnRevision_Click(object sender, EventArgs e)
         {
-
+            frmMainEnvironmParameters objEnvParamMain = new frmMainEnvironmParameters();
+            objEnvParamMain.TopLevel = false;
+            this.centerPanel.Controls.Add(objEnvParamMain);
+            objEnvParamMain.Dock = DockStyle.Fill;
+            objEnvParamMain.Show();
         }
 
 

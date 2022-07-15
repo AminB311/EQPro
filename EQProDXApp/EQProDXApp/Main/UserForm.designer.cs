@@ -57,9 +57,9 @@
             this.textBoxEQProUserID = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnClear = new System.Windows.Forms.Button();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
@@ -297,7 +297,7 @@
             this.comboBoxEQRole.FormattingEnabled = true;
             this.comboBoxEQRole.Items.AddRange(new object[] {
             "Preparer",
-            "Reiewer",
+            "Reviewer",
             "Approver ",
             "ReadOnly"});
             this.comboBoxEQRole.Location = new System.Drawing.Point(534, 286);
@@ -399,22 +399,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(744, 42);
             this.flowLayoutPanel1.TabIndex = 35;
             // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClear.BackColor = System.Drawing.Color.Navy;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(296, 2);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(158, 38);
-            this.btnClear.TabIndex = 33;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // btnSignIn
             // 
             this.btnSignIn.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -446,6 +430,22 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClear.BackColor = System.Drawing.Color.Navy;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(296, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(158, 38);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnEdit
             // 

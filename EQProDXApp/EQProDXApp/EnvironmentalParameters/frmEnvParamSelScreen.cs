@@ -22,8 +22,8 @@ namespace EQProDXApp.EnvironmentalParameters
         }
 
         string sSql = "";
-        string sEnvAsgID, sPlantID, sRevisionNumber, sStatus, sDateEnvSel;
-        string sRoomNo, sDescrip, sStatName;
+        //string sEnvAsgID, sPlantID, sRevisionNumber,  sDateEnvSel,sRoomNo;
+        string sStatus,sDescrip, sStatName;
         DataTable dtTblEnvParam = new DataTable();
 
         Class_PublicDataAccessLayer objDALCls = new Class_PublicDataAccessLayer();
@@ -39,8 +39,7 @@ namespace EQProDXApp.EnvironmentalParameters
         {
             try
             {
-                //sSql = "SELECT Concat(RoomNumber,',',Description) FROM RoomStation";
-                sSql = "Select Concat(Name,' , ',Description) FROM Room";//Room
+                sSql = "SELECT PlantName from Plant";
 
                 if (objPubClass.Load_CmbBoxValues(sSql, cmbBoxStation) == true)
                 {
@@ -59,38 +58,80 @@ namespace EQProDXApp.EnvironmentalParameters
             }
         }
 
+        private void cmbBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sRole;
+            try
+            {
+                sStatus = cmbBoxStatus.Text;
+                sStatName = cmbBoxStation.Text;
+
+                sSql = "SELECT P.PlantName, P.RevisionNumber, P.Status, Concat(UM.FirstName,'', UM.LastName), " +
+                       " PU.Role, PU.DateAccepted " +
+                           "from Plant P " +
+                           "INNER JOIN PlantRoomAssignment PA ON PA.PlantID = P.PlantID " +
+                           "INNER JOIN Room R ON R.RoomID = PA.RoomID " +
+                           "INNER JOIN PlantUserAssignment PU  ON PU.PlantID = P.PlantID " +
+                           "INNER JOIN UserMain UM  ON UM.UserID = PU.UserID " +
+                           "where P.PlantName = '" + sStatName + "'" +
+                           "AND P.Status = '" + sStatus + "' AND PU.DateAccepted is not null";
+                dtTblEnvParam = objClssMethods.Get_DataTable(sSql);
+
+                if (dtTblEnvParam.Rows.Count > 1)
+                {
+
+                    //dataGridStation.DataSource = dtTblEnvParam;
+                    dataGridStation.ColumnCount = 3;
+                    dataGridStation.Columns[0].Name = "Station";
+                    dataGridStation.Columns[0].Width = 500;
+                    string sVal = dtTblEnvParam.Rows[0][0].ToString() + dtTblEnvParam.Rows[0][1].ToString() + dtTblEnvParam.Rows[0][2].ToString();
+                    dataGridStation.Rows.Add(sVal);
+
+                    dataGridStation.Columns[1].Name = "Revision";
+                    dataGridStation.Columns[1].Width = 100;
+
+                    //dtCurrentTable.Rows[i - 1]["Column1"] = box1.Text;
+                    //(TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("TextBox1");
+                    //dataGridStation.Rows.Add(dtTblEnvParam.Rows[0][1].ToString());
+                    //GridView1.Controls[0].Controls.Add(row);
+
+                    dataGridStation.Columns[2].Name = "Status";
+                    dataGridStation.Columns[2].Width = 300;
+                    //dataGridStation.Rows.Add(dtTblEnvParam.Rows[0][2].ToString());
+
+                    for (int i = 0; i< dtTblEnvParam.Rows.Count;i++)
+                    {
+                        sRole = dtTblEnvParam.Rows[i][4].ToString();
+
+                        if (sRole == "Preparer")
+                        {
+                            txtBoxPrpBy.Text = dtTblEnvParam.Rows[i][3].ToString();
+                            txtBoxDatePrp.Text = dtTblEnvParam.Rows[i][4].ToString();
+                        }
+                        if (sRole == "Reviewer")
+                        {
+                            txtBoxRevBy.Text = dtTblEnvParam.Rows[i][3].ToString();
+                            txtBoxDateRev.Text = dtTblEnvParam.Rows[i][4].ToString();
+                        }
+                        if (sRole == "Approver")
+                        {
+                            txtBoxAppBy.Text = dtTblEnvParam.Rows[i][3].ToString();
+                            txtBoxDateApp.Text = dtTblEnvParam.Rows[i][4].ToString();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                new Exception("Error in cmBoxRoomNo_SelectedIndexChanged", ex);
+            }
+        }
+
         private void btnFilter_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (ValidateForm())
-                {
-                    if (btnFilter.Text == "Add Room")
-                    {
-                        sEnvAsgID = sPlantID = sRoomNo  = sRevisionNumber = sStatus = sDateEnvSel = "";
-                        btnFilter.Enabled = false;
-                        //SELECT PlantNumber, PlantName, Location, Building, RoomNumber, Description, Zone, DocketNumber, Parameter,"+
-                        //LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation
-                        if (String.IsNullOrEmpty(cmbBoxStation.Text) == false)
-                        {
-                            //sStationName, sRoomNo, sDescription
-                            //string sPlantID = "";
-                            sRoomNo = cmbBoxStation.Text;
-                            sSql = "SELECT RoomNumber FROM EnvParamAssignment where PlantID = '" + sPlantID + "'";
-                            sRoomNo = objPubClass.Get_ValueStrfromTable(sSql);
-
-                            sSql = "Insert into EnvParamAssignment(PlantNumber, PlantName, Location, Building, RoomNumber, Description)" +
-                                   "Values('" + sPlantID + "','" + sRoomNo + "','" + sRevisionNumber + "'," +
-                                   "'" + sStatus + "','" + sDateEnvSel + ")";
-                            objClssMethods.AddNew_Values(sSql);
-                        }
-                        ResetRoomValues();
-                    }
-                    else
-                    {
-                        //Edit Update SQL
-                    }
-                }
+            {               
             }
             catch (Exception ex)
             {
@@ -102,89 +143,51 @@ namespace EQProDXApp.EnvironmentalParameters
         {
 
         }
-
-        private bool ValidateForm()
-        {
-            try
-            {
-                ErrorProvider errorProvider = new ErrorProvider();
-                //var phoneRegex = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
-                if (cmbBoxStation.Text == "")
-                {
-                    MessageBox.Show("Station Name Field Cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    errorProvider.SetError(cmbBoxStation, "Empty Field");
-                    return false;
-                }               
-            }
-            catch (Exception ex)
-            {
-                new Exception("Error in ValidateForm", ex);
-            }
-            
-            return true;
-        }             
-
         private void cmBoxRoomNo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sSql,sTmp;
-            try
-            {
-                sTmp = cmbBoxStation.Text;
-                string[] sWordArr = sTmp.Split(',');
-                sRoomNo = sWordArr[0];
-                sDescrip = sWordArr[1];
-                //001 Plant is loked
-                sRoomNo = sRoomNo;
+            //try
+            //{
+            //    sTmp = cmbBoxStation.Text;
+            //    string[] sWordArr = sTmp.Split(',');
+            //    sRoomNo = sWordArr[0];
+            //    sDescrip = sWordArr[1];
+            //    //001 Plant is loked
+            //    sRoomNo = sRoomNo;
 
-                //sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " " +
-                //       "AND Description = " + sDescrip;
+            //    //sSql = "SELECT RevisionNumber, Status FROM RoomStation where RoomNumber = " + sRoomNo + " " +
+            //    //       "AND Description = " + sDescrip;
 
-                sSql = "SELECT P.PlantName as Station  , P.RevisionNumber as Revision, P.Status " +
-                       "from Plant P " +
-                       "INNER JOIN PlantRoomAssignment PA " +
-                       "ON PA.PlantID = P.PlantID " +
-                       "INNER JOIN Room R " +
-                       "ON R.RoomID = PA.RoomID " +
-                       "where R.Name = '" + sRoomNo + "'";
-                dtTblEnvParam = objClssMethods.Get_DataTable(sSql);
-                dataGridStation.DataSource = dtTblEnvParam;
+            //    sSql = "SELECT P.PlantName as Station  , P.RevisionNumber as Revision, P.Status " +
+            //           "from Plant P " +
+            //           "INNER JOIN PlantRoomAssignment PA " +
+            //           "ON PA.PlantID = P.PlantID " +
+            //           "INNER JOIN Room R " +
+            //           "ON R.RoomID = PA.RoomID " +
+            //           "where R.Name = '" + sRoomNo + "'";
+            //    dtTblEnvParam = objClssMethods.Get_DataTable(sSql);
+            //    dataGridStation.DataSource = dtTblEnvParam;
                 
-                if (dtTblEnvParam.Rows.Count > 1)
-                {         
-                    //Station Name
-                    txtBoxRevBy.Text = dtTblEnvParam.Rows[0][0].ToString();                   
-                }
-            }
-            catch (Exception ex)
-            {
-                new Exception("Error in cmBoxRoomNo_SelectedIndexChanged", ex);
-            }
+            //    if (dtTblEnvParam.Rows.Count > 1)
+            //    {         
+            //        //Station Name
+            //        txtBoxRevBy.Text = dtTblEnvParam.Rows[0][0].ToString();                   
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    new Exception("Error in cmBoxRoomNo_SelectedIndexChanged", ex);
+            //}
+
 
         }
 
-      
-        private void ResetRoomValues()
-        {
-            try
-            {
-                //cmbboxStation.Text = "";
-           
-                btnFilter.Text = "Add";
-                btnFilter.Enabled = true;
-            }
-
-            catch (Exception ex)
-            {
-                new Exception("Error in ResetRoomValues", ex);
-            }
-        }
-        
+     
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-           
+                 
              
         private void cmbboxStation_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -207,23 +210,9 @@ namespace EQProDXApp.EnvironmentalParameters
 
         private void btnRadList_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Close();
-            frmRoleAssignment objfrmRoleAssg = new frmRoleAssignment();
-            //objfrmRoleAssg.TopLevel = false;
-            //this.centerPanel.Controls.Add(objfrmRoleAssg);
-            //objfrmRoleAssg.Dock = DockStyle.Fill;
-            objfrmRoleAssg.Show();
-
-
-            //frmEnvParamSelScreen objEnvParamSel = new frmEnvParamSelScreen();
-            //objEnvParamSel.TopLevel = false;
-            //this.centerPanel.Controls.Add(objEnvParamSel);
-            //objEnvParamSel.Dock = DockStyle.Fill;
-            //objEnvParamSel.Show();
+            
 
         }
-
 
     }
 }

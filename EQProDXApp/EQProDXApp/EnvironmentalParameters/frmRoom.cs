@@ -34,9 +34,12 @@ namespace EQProDXApp
         {
             try
             {
+                cmbboxStation.Enabled = true;
+
                 //sSql = "Select PlantID,PlantName,Location,Building,RoomNumber,Description,Zone,DocketNumber,"+
                 //       "Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber FROM RoomStation";
                 sSql = "Select PlantName FROM Plant";//Station Name
+
                 if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
                 {
                     objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
@@ -61,12 +64,13 @@ namespace EQProDXApp
             string sLicensingCriteria, sStatus, sDescriptionChange, sRevisionNumber, sReference;
             string sRevision, sDateAssig, sDateDel, sDateRevised, sDeletedBy, sPlantID, sRoomID;
             int iPlantID, iRoomID;
+            double dPlantlife;
             try
             {
                 if (ValidateForm())
                 {
-                    if (btnAdd.Text == "Add Room")
-                    {
+                    //if (btnAdd.Text == "Add Room")
+                    //{
                         sPlantNumber = sPlantName = sLocation = sBuilding = sRoomName = sDescription = sZone = sDocketNumber = sParameter = "";
                         sLicensingCriteria = sStatus = sDescriptionChange = sRevisionNumber = sReference = sDeletedBy = "";
                         sRevision = sDateAssig = sDateDel = sDateRevised = "";
@@ -84,6 +88,7 @@ namespace EQProDXApp
                             sRevisionNumber = "0";
                             sLocation = "Test";
                             sStatus = "Revision In Progress";
+                            dPlantlife = 0;
                             sRevision = "0";
                             sDateAssig = DateTime.Today.ToString();
                             sDateDel = "";
@@ -113,12 +118,13 @@ namespace EQProDXApp
                                     iRoomID--;
                                     sRoomID = iRoomID.ToString();
                                     sSql = "Insert into PlantRoomAssignment(Status,PlantID,RoomID,Revision,DateAssigned,DateRevised,DateDeleted,DeletedBy) " +
-                                          "Values('" + sStatus + "','" + sPlantID + "','" + sRoomID + "','" + sRevision + "','" + sDateAssig + "','" + sDateRevised + "','" + sDateDel + "'," +
-                                          "'" + sDeletedBy + "')";
+                                          "Values('" + sStatus + "','" + sPlantID + "','" + sRoomID + "','" + sRevision + "','" + sDateAssig + "',"+
+                                          "'" + sDateRevised + "','" + sDateDel + "'," +"'" + sDeletedBy + "')";
                                     iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert                                                                                   
                                     if (iVal == 1)
                                     {
-                                        MessageBox.Show("Room added successfully.", "Room Added", MessageBoxButtons.OK);
+                                        MessageBox.Show("Room added to the existing Station.", "Room added successfully", MessageBoxButtons.OK);
+                                        ResetRoomValues();
                                     }
                                     else
                                     {
@@ -127,7 +133,7 @@ namespace EQProDXApp
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Room number alreay exists, please eneter a different one.", "Error", MessageBoxButtons.OK);
+                                    MessageBox.Show("Room alreay exists, please enter a different name.", "Error", MessageBoxButtons.OK);
                                 }
                             }
                             else
@@ -140,48 +146,56 @@ namespace EQProDXApp
                                     if (String.IsNullOrEmpty(vDocketResult) == false)
                                     {
                                         var vLicensing = "";
-                                        vLicensing = XtraInputBox.Show("Please in the Plant Licensing Criterea", "Required Plant Licensing Criterea Needed", "", MessageBoxButtons.OKCancel);
+                                        vLicensing = XtraInputBox.Show("Please fill in the Plant Licensing Criterea", "Required Plant Licensing Criterea Needed", "", MessageBoxButtons.OKCancel);
                                         if (String.IsNullOrEmpty(vLicensing) == false)
                                         {
-                                            sDocketNumber = vDocketResult;
-                                            sLicensingCriteria = vLicensing;
-                                            //Insert into Plant(PlantName, Location, Description, Zone, DocketNumber, Parameter, LicensingCriteria, Status, DescriptionChange, RevisionNumber, Reference)
-                                            //Values('New Test Station', '505', 'Created on July 05', '', 'Docket No 505', '', 'Lic Crit 505', 'Revision In Progress', '', '1', '')
-                                            sSql = "Insert into Plant(PlantName, Location, Description, Zone," +
-                                                   "DocketNumber, Parameter,LicensingCriteria,Status,DescriptionChange,RevisionNumber, Reference) " +
-                                                    "Values('" + sPlantName + "','" + sLocation + "','" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
-                                                   "'" + sLicensingCriteria + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "','" + sReference + "') " +
-                                                   //"set @trgPlantID = SCOPE_IDENTITY() "+
-                                                   "Insert into Room(Name,Location,Description) " +
-                                                   "Values('" + sRoomName + "','" + sLocation + "','" + sDescription + "')";
-                                            iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert
-                                            if (iVal == 1)
+                                            var vPlantLife = "";
+                                            vPlantLife = XtraInputBox.Show("Please fill in the Plant Life Period", "Required Plant Life Period Needed", "", MessageBoxButtons.OKCancel);
+                                            if (String.IsNullOrEmpty(vPlantLife) == false)
                                             {
-                                                //Get recently added values 
-                                                //Plant ID
-                                                iPlantID = objClssMethods.Get_MaxIDfromTable("PlantID", "Plant");//Get MAX LinkDateID from Target, it returns MAX+1 
-                                                iPlantID--;
-                                                sPlantID = iPlantID.ToString();
-                                                //Room ID
-                                                iRoomID = objClssMethods.Get_MaxIDfromTable("RoomID", "Room");//Get MAX LinkDateID from Target, it returns MAX+1 
-                                                iRoomID--;
-                                                sRoomID = iRoomID.ToString();
-                                                sSql = "Insert into PlantRoomAssignment(Status,PlantID,RoomID,Revision,DateAssigned,DateRevised,DateDeleted,DeletedBy) " +
-                                                      "Values('" + sStatus + "','" + sPlantID + "','" + sRoomID + "','" + sRevision + "','" + sDateAssig + "','" + sDateRevised + "','" + sDateDel + "'," +
-                                                      "'" + sDeletedBy + "')";
-                                                iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert                                                                                    
+                                                sDocketNumber = vDocketResult;
+                                                sLicensingCriteria = vLicensing;
+                                                dPlantlife = Convert.ToDouble(vPlantLife);
+                                                //Insert into Plant(PlantName, Location, Description, Zone, DocketNumber, Parameter, LicensingCriteria, Status, DescriptionChange, RevisionNumber, Reference)
+                                                //Values('New Test Station', '505', 'Created on July 05', '', 'Docket No 505', '', 'Lic Crit 505', 'Revision In Progress', '', '1', '')
+                                                sSql = "Insert into Plant(PlantName, Location, Description, Zone," +
+                                                       "DocketNumber, Parameter,LicensingCriteria,Plantlife,Status,DescriptionChange,RevisionNumber, Reference) " +
+                                                        "Values('" + sPlantName + "','" + sLocation + "','" + sDescription + "','" + sZone + "','" + sDocketNumber + "','" + sParameter + "'," +
+                                                       "'" + sLicensingCriteria + "','" + dPlantlife + "','" + sStatus + "','" + sDescriptionChange + "', '" + sRevisionNumber + "','" + sReference + "') " +
+                                                       //"set @trgPlantID = SCOPE_IDENTITY() "+
+                                                       "Insert into Room(Name,Location,Description) " +
+                                                       "Values('" + sRoomName + "','" + sLocation + "','" + sDescription + "')";
+                                                iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert
                                                 if (iVal == 1)
                                                 {
-                                                    MessageBox.Show("Room added successfully.", "Room Added", MessageBoxButtons.OK);
+                                                    //Get recently added values 
+                                                    //Plant ID
+                                                    iPlantID = objClssMethods.Get_MaxIDfromTable("PlantID", "Plant");//Get MAX LinkDateID from Target, it returns MAX+1 
+                                                    iPlantID--;
+                                                    sPlantID = iPlantID.ToString();
+                                                    //Room ID
+                                                    iRoomID = objClssMethods.Get_MaxIDfromTable("RoomID", "Room");//Get MAX LinkDateID from Target, it returns MAX+1 
+                                                    iRoomID--;
+                                                    sRoomID = iRoomID.ToString();
+                                                    sSql = "Insert into PlantRoomAssignment(Status,PlantID,RoomID,Revision,DateAssigned,DateRevised,DateDeleted,DeletedBy) " +
+                                                          "Values('" + sStatus + "','" + sPlantID + "','" + sRoomID + "','" + sRevision + "','" + sDateAssig + "','" + sDateRevised + "','" + sDateDel + "'," +
+                                                          "'" + sDeletedBy + "')";
+                                                    iVal = objClssMethods.AddNew_Values(sSql);// 1 Big Sql for Insert                                                                                    
+                                                    if (iVal == 1)
+                                                    {
+                                                        MessageBox.Show("Station creation was successful.", "Plant Creation Confirmed", MessageBoxButtons.OK);
+                                                        ResetRoomValues();
+
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Station was not added.", "Error", MessageBoxButtons.OK);
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Room was not added.", "Error", MessageBoxButtons.OK);
+                                                    MessageBox.Show("Station was not added.", "Error", MessageBoxButtons.OK);
                                                 }
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("Room was not added.", "Error", MessageBoxButtons.OK);
                                             }
                                         }
                                     }                                   
@@ -189,7 +203,7 @@ namespace EQProDXApp
                                 }
                             }
                         }
-                    }                                      
+                    //}                                      
                 }
             }
             catch (Exception ex)
@@ -237,13 +251,11 @@ namespace EQProDXApp
         {
             try
             {
-                cmbboxStation.Text = "";
+                //cmbboxStation.Text = "";
                 txtBoxRoomName.Text = "";
                 txtBoxDescription.Text = "";
-                cmbboxStation.Visible = true;
-                cmbboxStation.Enabled  = true;
-                btnAdd.Text = "Add Room";
-                btnAdd.Enabled = true;
+                
+              
                 objMethods.Load_CmbBoxValues("SELECT PlantName from Plant", cmbboxStation);
             }
             catch (Exception ex)
@@ -257,19 +269,7 @@ namespace EQProDXApp
             this.Close();
          
         }
-
-        private void btnMianPg_Click(object sender, EventArgs e)
-        {         
-            Form objOpenFrm = Application.OpenForms["frmEnvironment"];
-            if (objOpenFrm != null)
-            {
-                objOpenFrm.Close();
-                frmMain objFrmMain = new frmMain();
-                objFrmMain.Show();
-            }
-            
-        }
-      
+              
         private void btnClear_Click(object sender, EventArgs e)
         {
             try
@@ -284,32 +284,40 @@ namespace EQProDXApp
 
         private void cmbboxStation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //string  sSql, sStatName, stxtPlant, stxtPlanRev, stxtZoneID, stxtPlantSearched;
-            DataTable dataTable = new DataTable();
-            string sSql, sStatName;
-            //int iCount;
+            
             try
             {
-                sStatName = cmbboxStation.Text;
-                //sSql = "SELECT RoomNumber, Description FROM Plant where PlantName =  '" + sStatName + "'";
+                string sPlantName = "";
+                sPlantName = cmbboxStation.Text;
+                DataTable dataTable = new DataTable();
 
-                sSql = "SELECT R.Name, R.Description  from Plant P " +
-                      "INNER JOIN PlantRoomAssignment PA " +
-                      "ON PA.PlantID = P.PlantID " +
-                      "INNER JOIN Room R " +
-                      "ON R.RoomID = PA.RoomID " +
-                      "where P.PlantName = '" + sStatName + "'";
-                dataTable = objClssMethods.Get_DataTable(sSql);
-                //userID = int.Parse(dataTable.Rows[0][0].ToString());
-                txtBoxRoomName.Text = dataTable.Rows[0][0].ToString();
-                txtBoxDescription.Text = dataTable.Rows[0][1].ToString();
+                if (String.IsNullOrEmpty(sPlantName) == true)
+                {
+                    //cmbboxStation.Enabled = true;
+                    sSql = "Select PlantName, Status, RevisionNumber FROM Plant " +
+                           "where PlantName = '" + sPlantName + "'" +
+                           "Order By RevisionNumber Desc";
+
+                    dataTable = objClssMethods.Get_DataTable(sSql);
+
+
+                    if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
+                    {
+                        objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error in connection string opening the DB");
+                        new Exception("Error in connection string opening the DB");
+                    }
+                }
             }
             catch (Exception ex)
             {
-                new Exception("Error in cmbboxStation_SelectedIndexChanged", ex);
+                new Exception("Error in frmCreateRoom_Load", ex);
             }
         }
 
-        
+
     }
 }

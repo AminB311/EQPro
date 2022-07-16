@@ -43,8 +43,38 @@ namespace EQProDXApp.EnvironmentalParameters
             {
                 sSql = "SELECT PlantName, RoomNumber, Description FROM RoomStation where PlantNumber = " + int.Parse(cmbBoxRoomNo.Text);
                 dataTable = objClssMethods.Get_DataTable(sSql);
-                //userID = int.Parse(dataTable.Rows[0][0].ToString());
+                //** Check if Status is Revision In Progress for MAX RevisionNumber
+                //Else display Message
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    //sRole = dataTable.Rows[i][4].ToString();
 
+                    //if (sRole == "Preparer")
+                    //{
+                    //    txtBoxPrpBy.Text = dataTable.Rows[i][3].ToString();
+                    //    txtBoxDatePrp.Text = dataTable.Rows[i][4].ToString();
+                    //}                    
+                }
+
+                sSql = "Select PlantName FROM Plant";//Station Name
+                //if ()
+                //{
+                //    if (objPubClass.Load_CmbBoxValues(sSql, cmbboxStation) == true)
+                //    {
+                //        objPubClass.Load_CmbBoxValues(sSql, cmbboxStation);
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Error in connection string opening the DB");
+                //        new Exception("Error in connection string opening the DB");
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("To add a Room to the selected Station, the Station's Environmemntal Patarmeters" +
+                //        "module must be in 'Revision In Progress'Status(Unlocked) ", "Status Revision Not Present" +
+                //        "", MessageBoxButtons.OK);
+                //}
             }
             catch (Exception ex)
             {
